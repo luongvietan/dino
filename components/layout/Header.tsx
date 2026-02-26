@@ -9,11 +9,10 @@ export function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <header className="sticky top-4 z-50 w-full px-4">
+      <div className="max-w-7xl mx-auto h-16 flex items-center justify-between rounded-full border border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 shadow-sm">
         <Link href="/" className="flex items-center gap-3">
           <Image src="/logo.webp" alt="Dino Network Logo" width={40} height={40} className="object-contain" />
-          <h2 className="text-xl font-bold tracking-tight">Dino Network</h2>
         </Link>
         <nav className="hidden md:flex items-center gap-10">
           <Link className="text-sm font-semibold hover:text-primary transition-colors" href="/">Home</Link>
@@ -48,7 +47,7 @@ export function Header() {
         </nav>
         <Link 
           href="/apply" 
-          className="bg-primary hover:bg-primary/90 text-background-dark px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-lg shadow-primary/20"
+          className="bg-primary hover:bg-primary/90 text-background-dark px-6 py-2.5 rounded-full font-bold text-sm transition-all shadow-lg shadow-primary/20"
         >
           Join Now
         </Link>
