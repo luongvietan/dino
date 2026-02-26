@@ -1,0 +1,241 @@
+﻿________________
+
+
+🦖 Dino Network Website — Development Instructions
+Project Overview
+Build a fully functional website for Dino Network.
+This is not just a landing page — it must be a complete website with working forms, animations, video integration, and responsive design.
+Primary goal: Convert visitors into creator applications.
+All features must work 100% (forms must submit properly and send to email).
+________________
+
+
+TAB 1: HOME
+Navigation & Call-to-Action
+* The primary top-right navigation button must display: Join Now
+* This button must redirect users to the Creator Application form.
+* Remove the “Watch Demo” button entirely.
+* The mid-page primary CTA button must display: Join the Dino Family
+* This button must also redirect to the Creator Application form.
+________________
+
+
+Scroll Animations
+* Implement smooth scrolling across the entire page.
+* Add scroll-triggered animations for sections as users move down the page (fade-in or slide-in effects).
+* Animations must feel modern and smooth, not excessive.
+________________
+
+
+Video Placement
+* Add a video section explaining what a TikTok LIVE agency is.
+* This video must be placed before the “Why Creators Choose Dino Network” section.
+* I will provide the video file.
+________________
+
+
+Section: Why Creators Choose Dino Network
+Title:
+Why Creators Choose Dino Network
+Content:
+Dino Network was built by a streamer who understands the creator's journey firsthand. Having streamed myself, I know the challenges, pressure, and dedication it takes to grow on TikTok LIVE.
+I’ve seen too many creators join random agencies only to experience slow responses, lack of support, and poor guidance when they needed help the most. That’s exactly why Dino Network was created — to be a creator-first network that actually cares.
+We focus on account protection, real engagement, and proven LIVE growth systems, all with the same shared goal: helping creators grow safely, earn consistently, and build something long-term — together.
+________________
+
+
+Section: What Dino Network Provides
+Intro Text:
+Hands-on support, account protection, and proven LIVE strategies to help creators grow safely and earn consistently.
+Benefits (Use original layout and unique icons. Do NOT copy reference site styling.)
+* TikTok Partner Agency — Support with growth, compliance, and monetization
+* 1-on-1 Coaching & Growth Tips — Performance-based LIVE strategy guidance
+* Live Ban Assistance — Fast help resolving bans and restoring LIVE access
+* Exclusive Perks & TikTok Events — Campaigns, bonus opportunities, and event invites
+* Live Pro Badge & Stream Key — Access to OBS/stream tools when eligible
+* Community Discord Server — Private support community and networking space
+Icons must be different from any reference website.
+________________
+
+
+Section: What Makes Dino Network Stand Out
+* Section title must display exactly: What Makes Dino Network Stand Out
+* Add scroll-triggered animations when this section appears.
+* Use original wording and layout different from reference websites.
+________________
+
+
+Section: Testimonials
+Title:
+The Dino Family Speaks
+Subtitle:
+See what creators say about being part of a network that truly supports them.
+Each testimonial must:
+* Display the creator’s username
+* Link the username directly to their TikTok profile
+* Display their niche (Gaming Streamer, Live Battler, etc.)
+* Be styled professionally and clean
+Creator 1
+@huntski0 — Gaming Streamer
+https://www.tiktok.com/@huntski0
+Hey guys! My name is Hunter, my TikTok is @hunt2active. I stream Fortnite and I am a fairly new streamer to TikTok and have been on my journey since July. I've been a member of Dino Network for 2 months now and I have nothing but positive feedback since being a member of the best agency on the app. Dino has helped me with more than just TikTok questions, a genuine agency and person that will talk to you about anything and everything and is nothing but supportive. Dino offers so much more than anyone could ask for and joining was the best decision I've made since clicking that go live button! The community we have and the people I've met through this is incredible! I would highly recommend Dino Network to anyone new to the app or looking for an agency! DINO ON TOP
+
+
+Creator 2
+@jona_breton — Live Battler
+https://www.tiktok.com/@jona_breton
+Hey guys! My name is Jonathan and my TikTok is @jona_breton. I do Banter Battles on TikTok and sometimes stream games on here, still fairly new to my streaming journey. I've been with Dino Network for a little over a month now and honestly have nothing but positive feedback. The community Dino has built is something special, any questions or concerns I've ever had, Dino has been there to answer. We get 1 on 1 support when we need it, a whole discord so we can communicate with others in the agency and so much more! I would 100 percent recommend Dino Network to anyone who's new to streaming and wants to join an amazing community! You won't regret it!
+
+
+Creator 3
+@billyswilly — Gaming Streamer
+https://www.tiktok.com/@billyswilly
+* Yurrr wsg guys, this is Billy (@billyswilly_). l joined Dino Network because they're U.S.based and I saw other real creators already in the family, so I knew it was legit. After joining, I realized they're trustworthy and really focused on helping you grow. I don't regret it one bit. The community is super supportive. They give 1-on-1 help, assist with getting a stream key, and have a Discord full of guides and resources. Dino has helped me a lot, and this agency honestly stands out. From quick personal support to and even picking creators for TikTok events—no one else is doing that. It's more than an agency, it's a community. I love Dino Network and will be with them till the end. I have no regrets and 100% recommend them! Big shoutout to DINO NETWORK!
+
+
+________________
+
+
+TAB 2: CREATOR PATHWAY
+This tab must include a dropdown menu with:
+* Getting Started
+* Invitation Code
+* Accept Invitation
+The primary goal of this tab is to guide users into the Creator Application flow.
+________________
+
+
+CREATOR APPLICATION FLOW
+Trigger
+When a user clicks Join Now, they must be redirected to the Creator Application form.
+The form must have a Typeform-style experience (one question per screen).
+Reference UX structure:
+https://form.typeform.com/to/PhWgDmSO?typeform-source=atrxagency.com
+________________
+
+
+APPLICATION FORM STRUCTURE
+(All fields required unless otherwise specified.)
+________________
+
+
+Landing Screen (Form Intro)
+Title: Creator Application
+Subtitle: Welcome to the Dino Family
+Tagline: This is where your future starts.
+CTA Button: Begin
+Note: Takes 1 minute
+________________
+
+
+Question 1: Invitation Code
+Label: Invitation Code
+Helper Instructions:
+Profile → Menu → TikTok Studio → Live Center → Tools and Resources → Join Creator Network → How to Join
+Validation Rules:
+* Must be exactly 7 characters
+* Field required
+* If invalid, show error message:
+“Invitation code must be exactly 7 characters long.”
+________________
+
+
+Question 2: Location Qualification
+Question:
+Are you located in the United States or Canada?
+Options:
+* Yes
+* No
+Logic:
+If user selects “No,” immediately end the form and display:
+“Sorry, but you do not qualify for our LIVE Agency.
+We are only accepting creators based in the United States or Canada.”
+________________
+
+
+Question 3: Basic Information
+Intro Text:
+Hey! 🦖
+Please answer a few quick questions so we can learn more about you.
+Fields:
+* First Name
+* Last Name
+* Date of Birth (Month and Year only)
+* Email Address
+________________
+
+
+Question 4: TikTok Username
+Dynamic Greeting:
+Nice to meet you, {First Name}
+Question:
+What is your TikTok username?
+Placeholder:
+dinonetworkus
+Required.
+________________
+
+
+Question 5: Account Confirmation
+Question:
+Is this your only TikTok account?
+Options:
+* Yes
+* No
+Required.
+________________
+
+
+Question 6: Streaming Frequency
+Question:
+How often do you go LIVE on TikTok?
+Helper Text:
+We verify activity on our end.
+Options:
+* Daily
+* Weekly
+* Monthly
+* I do not go LIVE at all
+Required.
+________________
+
+
+Question 7: Content Niche
+Question:
+What niche do you target with your content?
+Options:
+* Gaming
+* Battler
+* Musician
+* Dancer
+* Fitness
+Required.
+________________
+
+
+Question 8: Discord Username
+Question:
+Discord Username
+Helper Text:
+Enter your Discord username (example: username#1234)
+Required.
+________________
+
+
+Final Screen: Submission Complete
+Message:
+🎉 Thank you so much for your application!
+Next Steps:
+Join our Discord server and open an Application Ticket once the form is completed.
+Discord Link:
+discord.gg/DinoNetwork
+________________
+
+
+Functional Requirements
+* Form submissions must send to email.
+* Website must be fully responsive (mobile-first).
+* Smooth scroll animations.
+* Clean, modern UI.
+* Fast loading speed.
+________________
