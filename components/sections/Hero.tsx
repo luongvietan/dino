@@ -44,10 +44,9 @@ export function Hero() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="relative aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-primary/20 to-transparent flex items-center justify-center border border-primary/10 shadow-2xl"
+        className="relative aspect-square rounded-3xl overflow-hidden flex items-center justify-center border border-primary/10 shadow-2xl"
       >
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay"></div>
-        <span className="material-symbols-outlined text-[120px] text-primary/80">stadium</span>
+        <div className="absolute inset-0 bg-[url('/hero.webp')] bg-cover bg-center"></div>
       </motion.div>
     </section>
   );

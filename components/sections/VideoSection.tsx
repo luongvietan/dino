@@ -80,7 +80,7 @@ export function VideoSection() {
             <video 
               ref={videoRef}
               src="/guide.mp4" 
-              className={`w-full max-h-[80vh] object-contain transition-opacity duration-300 ${isPlaying ? 'opacity-100' : 'opacity-60'}`}
+              className={`w-full max-h-[80vh] object-contain transition-opacity duration-300 ${isPlaying ? "opacity-100" : "opacity-60"}`}
               onTimeUpdate={handleTimeUpdate}
               onLoadedMetadata={handleLoadedMetadata}
               onEnded={() => setIsPlaying(false)}
