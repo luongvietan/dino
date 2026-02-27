@@ -22,7 +22,7 @@ const testimonials = [
     img: "/jona.webp",
     sideImg: "/jona_img.webp",
     avatarSize: "110%",
-    avatarPosition: "center",
+    avatarPosition: "center 120%",
     url: "https://www.tiktok.com/@jona_breton"
   },
   {

@@ -44,10 +44,16 @@ export function WhyChooseUs() {
           transition={{ duration: 0.8 }}
           className="order-1 md:order-2"
         >
-          <div className="relative aspect-square rounded-[3rem] bg-gradient-to-br from-primary to-emerald-600 overflow-hidden shadow-2xl shadow-primary/20 rotate-3 transition-transform hover:rotate-0">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="material-symbols-outlined text-[200px] text-white/20">token</span>
-              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')] bg-cover bg-center opacity-30 mix-blend-overlay"></div>
+          <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl shadow-primary/20 rotate-3 transition-transform hover:rotate-0">
+            <div className="absolute inset-0">
+              <video
+                src="/guide.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 h-full w-full object-cover"
+              />
             </div>
           </div>
         </motion.div>

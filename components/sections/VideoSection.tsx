@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState, useRef } from "react";
 
 export function VideoSection() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -74,15 +74,20 @@ export function VideoSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative group rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl bg-slate-800 w-full max-w-fit mx-auto inline-block"
+          className="relative group rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl bg-slate-800 w-full max-w-4xl mx-auto"
         >
           <div className="relative flex items-center justify-center cursor-pointer" onClick={togglePlay}>
             <video 
               ref={videoRef}
-              src="/guide.mp4" 
-              className={`w-full max-h-[80vh] object-contain transition-opacity duration-300 ${isPlaying ? "opacity-100" : "opacity-60"}`}
+              src="/guid_1.mp4"
+              autoPlay
+              loop
+              muted
+              className="w-full max-h-[80vh] object-contain opacity-100"
               onTimeUpdate={handleTimeUpdate}
               onLoadedMetadata={handleLoadedMetadata}
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
               onEnded={() => setIsPlaying(false)}
               playsInline 
             />
