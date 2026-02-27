@@ -3,8 +3,9 @@ import Image from "next/image";
 
 export const FooterPrivilege = () => {
   return (
-    <footer className="font-display bg-gradient-to-b from-[#0f172a] via-[#0a1222] to-[#03050b] text-white py-20 px-8 border-t border-white/15 rounded-t-[3.5rem]">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
+    <footer className="relative overflow-hidden font-display bg-gradient-to-b from-[#0f172a] via-[#0a1222] to-[#03050b] text-white py-20 px-8 border-t border-white/15 rounded-t-[3.5rem]">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-primary/20 via-primary/8 to-transparent blur-2xl" />
+      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
         <div>
           <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-[10px] font-bold uppercase tracking-[0.2em]">
             Official TikTok LIVE Partner
@@ -46,7 +47,7 @@ export const FooterPrivilege = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto mt-32 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between text-[10px] uppercase tracking-[0.25em] font-medium text-slate-500 gap-4 md:gap-8">
+      <div className="relative z-10 max-w-7xl mx-auto mt-32 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between text-[10px] uppercase tracking-[0.25em] font-medium text-slate-500 gap-4 md:gap-8">
         <p>© 2026 DINO NETWORK</p>
         <p>All Rights Reserved</p>
         <p>USA & Canada Official TikTok LIVE Partner Agency</p>

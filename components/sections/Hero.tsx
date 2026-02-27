@@ -5,8 +5,10 @@ import { motion } from "framer-motion";
 
 export function Hero() {
   return (
-    <section className="max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-16 -mt-10">
-      <div className="rounded-[2rem] bg-gradient-to-b from-[#111827] to-[#05070d] border border-white/10 p-6 md:p-10 lg:p-12">
+    <section className="relative max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-16 -mt-10">
+      <div className="pointer-events-none absolute -top-24 -left-20 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-28 right-8 h-80 w-80 rounded-full bg-blue-500/10 blur-3xl" />
+      <div className="relative z-10 rounded-[2rem] bg-gradient-to-b from-[#111827] to-[#05070d] border border-white/10 p-6 md:p-10 lg:p-12">
         <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

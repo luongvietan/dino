@@ -54,9 +54,11 @@ export const FeatureFlow: React.FC = () => {
   return (
     <section
       id="perks"
-      className="py-24 px-6 bg-slate-50 dark:bg-slate-900/30 overflow-hidden relative"
+      className="py-24 px-6 bg-slate-50 dark:bg-slate-900/30 relative"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="pointer-events-none absolute -top-28 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 -right-24 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl" />
+      <div className="relative z-10 max-w-7xl mx-auto">
         <Carousel options={{ align: 'start', loop: false }}>
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
             <div className="max-w-xl">
