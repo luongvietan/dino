@@ -1,9 +1,9 @@
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { FooterPrivilege } from "@/components/layout/FooterPrivilege";
 import { Hero } from "@/components/sections/Hero";
 import { VideoSection } from "@/components/sections/VideoSection";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
-import { WhatWeProvide } from "@/components/sections/WhatWeProvide";
+import { FeatureFlow } from "@/components/sections/FeatureFlow";
 import { StandOut } from "@/components/sections/StandOut";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -16,12 +16,12 @@ export default function Home() {
         <Hero />
         <VideoSection />
         <WhyChooseUs />
-        <WhatWeProvide />
+        <FeatureFlow />
         <StandOut />
         <Testimonials />
         <FinalCTA />
       </main>
-      <Footer />
+      <FooterPrivilege />
     </>
   );
 }

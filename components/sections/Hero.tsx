@@ -5,49 +5,63 @@ import { motion } from "framer-motion";
 
 export function Hero() {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="space-y-8"
-      >
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-wider">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-          </span>
-          Official TikTok LIVE Partner
-        </div>
-        <h1 className="text-5xl md:text-7xl font-black leading-[1.1] tracking-tight">
-          Build Your <span className="text-primary">LIVE</span> Career the Right Way
-        </h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-lg leading-relaxed">
-          Official TikTok LIVE Partner Agency for creators in USA and Canada. Grow your audience and monetize your content with expert support.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Link 
-            href="/apply" 
-            className="bg-primary hover:bg-primary/90 text-background-dark px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/20 text-center"
+    <section className="max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-16 -mt-10">
+      <div className="rounded-[2rem] bg-gradient-to-b from-[#111827] to-[#05070d] border border-white/10 p-6 md:p-10 lg:p-12">
+        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-7"
           >
-            Join the Dino Family
-          </Link>
-          <Link 
-            href="#perks" 
-            className="border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 px-8 py-4 rounded-xl font-bold text-lg transition-all text-center"
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-bold uppercase tracking-wider">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Official TikTok LIVE Partner
+            </div>
+
+            <h1 className="text-white text-4xl sm:text-5xl lg:text-7xl font-black leading-[0.95] tracking-[-0.02em]">
+              Build Your <span className="text-primary">LIVE</span> Career
+              <br />
+              <span className="italic font-semibold">the Right Way</span>
+            </h1>
+
+            <div className="h-px w-full bg-white/10" />
+
+            <p className="text-sm sm:text-lg text-slate-300 max-w-xl leading-relaxed">
+              Official TikTok LIVE Partner Agency for creators in USA and
+              Canada. Grow your audience and monetize your content with expert
+              support.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 pt-1">
+              <Link
+                href="/apply"
+                className="inline-flex items-center justify-center bg-[#b9e43a] hover:bg-[#c6f04a] text-black px-8 py-3 rounded-full font-bold text-base transition-colors min-w-[170px]"
+              >
+                Join the Dino Family
+              </Link>
+              <Link
+                href="#perks"
+                className="inline-flex items-center justify-center border border-white/40 hover:border-white/70 hover:bg-white/10 text-white px-8 py-3 rounded-full font-semibold text-base transition-colors min-w-[170px]"
+              >
+                View Perks
+              </Link>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative overflow-hidden rounded-2xl border border-white/10 min-h-[280px] md:min-h-[420px]"
           >
-            View Perks
-          </Link>
+            <div className="absolute inset-0 bg-[url('/hero.webp')] bg-cover bg-center" />
+          </motion.div>
         </div>
-      </motion.div>
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="relative aspect-square rounded-3xl overflow-hidden flex items-center justify-center border border-primary/10 shadow-2xl"
-      >
-        <div className="absolute inset-0 bg-[url('/hero.webp')] bg-cover bg-center"></div>
-      </motion.div>
+      </div>
     </section>
   );
 }

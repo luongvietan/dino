@@ -1,8 +1,15 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import {
+  Carousel,
+  SliderContainer,
+  Slider,
+  SliderPrevButton,
+  SliderNextButton,
+} from "@/components/ui/carousel";
 
 const testimonials = [
   {
@@ -38,22 +45,10 @@ const testimonials = [
 ];
 
 export function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const goToPrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-  };
-
-  const active = testimonials[currentIndex];
-
   return (
-    <section id="testimonials" className="bg-primary/5 py-24 px-6">
+    <section id="testimonials" className="py-24 px-6">
       <div className="max-w-7xl mx-auto space-y-16">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -61,82 +56,80 @@ export function Testimonials() {
         >
           <h2 className="text-4xl font-black">The Dino Family Speaks</h2>
           <p className="text-slate-600 dark:text-slate-400">
-            See what creators say about being part of a network that truly supports them.
+            See what creators say about being part of a network that truly
+            supports them.
           </p>
         </motion.div>
-        
-        <div className="max-w-4xl mx-auto space-y-6">
-          <div className="relative">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active.username}
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -24 }}
-                transition={{ duration: 0.35 }}
-                className="relative overflow-visible bg-white dark:bg-slate-800 p-8 md:p-10 pr-24 md:pr-36 rounded-3xl shadow-sm space-y-6"
-              >
-                <div className="absolute -top-6 right-4 md:-top-10 md:right-8 w-24 h-24 md:w-36 md:h-36 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-xl rotate-3">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url('${active.sideImg}')` }}
-                  ></div>
-                </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="flex items-center gap-4 min-w-0">
-                    <div className="relative w-14 aspect-square shrink-0 rounded-full bg-slate-200 overflow-hidden">
+        <div className="max-w-5xl mx-auto">
+          <Carousel options={{ align: "start", loop: false }}>
+            <div className="absolute left-4 top-0 z-20 flex gap-3">
+              <SliderPrevButton
+                className="size-10 rounded-full border disabled:opacity-40 cursor-pointer border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-800/90 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft className="size-4 text-primary" />
+              </SliderPrevButton>
+              <SliderNextButton
+                className="size-10 rounded-full disabled:opacity-40 cursor-pointer border border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-800/90 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight className="size-4 text-primary" />
+              </SliderNextButton>
+            </div>
+
+            <SliderContainer className="gap-6 pt-14 md:pt-20">
+              {testimonials.map((item, idx) => (
+                <Slider key={item.username} className="basis-full">
+                  <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05, duration: 0.35 }}
+                    className="relative overflow-visible bg-white dark:bg-slate-800 p-8 md:p-10 pr-24 md:pr-36 rounded-3xl shadow-sm space-y-6"
+                  >
+                    <div className="absolute top-2 right-4 md:right-6 -translate-y-1/3 md:-translate-y-1/2 w-24 h-24 md:w-36 md:h-36 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-xl rotate-3">
                       <div
                         className="absolute inset-0 bg-cover bg-center"
-                        style={{
-                          backgroundImage: `url('${active.img}')`,
-                          backgroundSize: active.avatarSize,
-                          backgroundPosition: active.avatarPosition,
-                        }}
+                        style={{ backgroundImage: `url('${item.sideImg}')` }}
                       ></div>
                     </div>
-                    <div>
-                      <Link href={active.url} target="_blank" rel="noopener noreferrer" className="font-bold hover:text-primary transition-colors">
-                        {active.username}
-                      </Link>
-                      <p className="text-xs text-primary font-bold">{active.followers}</p>
+
+                    <div className="flex items-start gap-4">
+                      <div className="flex items-center gap-4 min-w-0">
+                        <div className="relative w-14 aspect-square shrink-0 rounded-full bg-slate-200 overflow-hidden">
+                          <div
+                            className="absolute inset-0 bg-cover bg-center"
+                            style={{
+                              backgroundImage: `url('${item.img}')`,
+                              backgroundSize: item.avatarSize,
+                              backgroundPosition: item.avatarPosition,
+                            }}
+                          />
+                        </div>
+                        <div>
+                          <Link
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-bold hover:text-primary transition-colors"
+                          >
+                            {item.username}
+                          </Link>
+                          <p className="text-xs text-primary font-bold">
+                            {item.followers}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <p className="text-slate-600 dark:text-slate-400 italic">&quot;{active.quote}&quot;</p>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          <div className="flex items-center justify-center gap-3">
-            <button
-              type="button"
-              onClick={goToPrev}
-              className="w-10 h-10 rounded-full border border-slate-300 dark:border-slate-700 hover:border-primary hover:text-primary transition-colors flex items-center justify-center"
-              aria-label="Previous testimonial"
-            >
-              <span className="material-symbols-outlined text-base">chevron_left</span>
-            </button>
-
-            {testimonials.map((item, idx) => (
-              <button
-                key={item.username}
-                type="button"
-                onClick={() => setCurrentIndex(idx)}
-                className={`h-2.5 rounded-full transition-all ${currentIndex === idx ? "w-8 bg-primary" : "w-2.5 bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500"}`}
-                aria-label={`Go to testimonial ${idx + 1}`}
-              />
-            ))}
-
-            <button
-              type="button"
-              onClick={goToNext}
-              className="w-10 h-10 rounded-full border border-slate-300 dark:border-slate-700 hover:border-primary hover:text-primary transition-colors flex items-center justify-center"
-              aria-label="Next testimonial"
-            >
-              <span className="material-symbols-outlined text-base">chevron_right</span>
-            </button>
-          </div>
+                    <p className="text-slate-600 dark:text-slate-400 italic">
+                      &quot;{item.quote}&quot;
+                    </p>
+                  </motion.div>
+                </Slider>
+              ))}
+            </SliderContainer>
+          </Carousel>
         </div>
       </div>
     </section>
