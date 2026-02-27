@@ -1,5 +1,27 @@
-import { Icons } from '@/assets/icons/Icons';
-import preview from '@/assets/preview/Preview';
+const Icons = {
+  doc_icon2: "M4 4h16v16H4z",
+  doc_icon3: "M5 5h14v14H5z",
+  doc_icon4: "M6 6h12v12H6z",
+  doc_icon5: "M7 7h10v10H7z",
+  doc_star: "M12 3l2.6 5.3 5.9.9-4.2 4.1 1 5.8L12 16.8 6.7 19l1-5.8L3.5 9.2l5.9-.9L12 3z",
+  doc_circle: "M12 4a8 8 0 110 16 8 8 0 010-16z",
+  doc_rectangle: "M4 7h16v10H4z",
+  doc_triangle: "M12 5l8 14H4l8-14z",
+} as const;
+
+const preview = {
+  carousel: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1200&auto=format&fit=crop",
+  tabs: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop",
+  faqs: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop",
+  grid: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=1200&auto=format&fit=crop",
+  image_masking:
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
+  image_mousetrail:
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
+  sticky: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
+  galleryNew:
+    "https://images.unsplash.com/photo-1516117172878-fd2c41f4a759?q=80&w=1200&auto=format&fit=crop",
+} as const;
 
 export function Link(props: { href?: string; children?: React.ReactNode }) {
   if (props.href?.startsWith('hover:')) {
