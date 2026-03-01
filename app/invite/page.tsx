@@ -75,7 +75,7 @@ export default function InvitePage() {
           </div>
         </section>
 
-        <section id="step-guide" className="px-4 sm:px-6 pt-8 pb-20 md:pb-24 bg-slate-950">
+        <section id="step-guide" className="px-4 sm:px-6 pt-10 md:pt-14 pb-20 md:pb-24 bg-slate-950">
           <div className="max-w-6xl mx-auto mb-10 md:mb-14 text-center">
             <p className="text-primary font-semibold text-sm uppercase tracking-[0.18em]">
               Follow these steps in your TikTok app
