@@ -1,4 +1,4 @@
-import { NextResponse } from "next/dist/server/web/spec-extension/response";
+import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { ApplicationEmail } from "@/components/emails/ApplicationEmail";
 import { render } from "@react-email/render";

@@ -1,13 +1,13 @@
 import React from 'react'
 import {
-  Target,
+  Handshake,
   ChevronLeft,
   ChevronRight,
-  Shield,
+  ShieldCheck,
   Users,
-  Waypoints,
   Lightbulb,
-  BarChart3,
+  Gift,
+  KeyRound,
 } from 'lucide-react'
 import {
   Carousel,
@@ -19,34 +19,34 @@ import {
 
 const items = [
   {
-    icon: Waypoints,
-    title: 'Official Partner Guidance',
-    desc: 'Get direct agency support on growth, compliance, and monetization with clear weekly action plans.',
+    icon: Handshake,
+    title: 'TikTok Partner Agency',
+    desc: 'Support with growth, compliance, and monetization to build a safer, stronger LIVE presence.',
   },
   {
     icon: Lightbulb,
-    title: '1-on-1 Coaching',
-    desc: 'Receive performance-based LIVE coaching, content positioning tips, and practical stream improvements.',
+    title: '1-on-1 Coaching & Growth Tips',
+    desc: 'Performance-based LIVE strategy guidance with practical coaching tailored to your stream goals.',
   },
   {
-    icon: Shield,
+    icon: ShieldCheck,
     title: 'Live Ban Assistance',
-    desc: 'Fast support for account flags and LIVE restrictions so you can recover access and keep momentum.',
+    desc: 'Fast help resolving bans and restoring LIVE access so your momentum is protected.',
   },
   {
-    icon: Target,
-    title: 'Campaigns & Event Perks',
-    desc: 'Join exclusive TikTok events, bonus campaigns, and seasonal opportunities available to agency creators.',
+    icon: Gift,
+    title: 'Exclusive Perks & TikTok Events',
+    desc: 'Campaigns, bonus opportunities, and event invites available to eligible Dino creators.',
   },
   {
-    icon: BarChart3,
-    title: 'Performance Tracking',
-    desc: 'Understand what drives retention and gifting with structured reporting and ongoing strategy reviews.',
+    icon: KeyRound,
+    title: 'Live Pro Badge & Stream Key',
+    desc: 'Access to OBS and stream tools when eligible so you can level up production quality.',
   },
   {
     icon: Users,
-    title: 'Creator Community Access',
-    desc: 'Connect with other creators in our private network for support, collaboration, and shared wins.',
+    title: 'Community Discord Server',
+    desc: 'Private support community and creator networking space for ongoing help and collaboration.',
   },
 ]
 
