@@ -35,8 +35,8 @@ export function Header() {
                   className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl overflow-hidden py-2"
                 >
                   <Link href="/apply" className="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">Getting Started</Link>
-                  <Link href="/apply" className="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">Invitation Code</Link>
-                  <Link href="/apply" className="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">Accept Invitation</Link>
+                  <Link href="/invite" className="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">Invitation Code</Link>
+                  <Link href="/accept" className="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">Accept Invitation</Link>
                 </motion.div>
               )}
             </AnimatePresence>
