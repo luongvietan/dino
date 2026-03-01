@@ -102,7 +102,7 @@ export default function AcceptPage() {
           </div>
 
           <div className="max-w-4xl mx-auto mt-4 rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8 text-white">
-            <h3 className="text-2xl md:text-3xl font-black tracking-tight">Congratulations! \ud83c\udf89</h3>
+            <h3 className="text-2xl md:text-3xl font-black tracking-tight">Congratulations!</h3>
             <p className="mt-3 text-sm md:text-base text-slate-200 leading-relaxed">
               Once you tap Accept, you'll officially be part of the Dino team and ready to start your TikTok LIVE journey!
             </p>
