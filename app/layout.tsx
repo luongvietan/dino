@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { LenisProvider } from "@/components/providers/LenisProvider";
+import { ScrollToTopOnRouteChange } from "@/components/providers/ScrollToTopOnRouteChange";
 
 const poppins = Poppins({ 
   subsets: ["latin"], 
@@ -31,6 +32,7 @@ export default function RootLayout({
       </head>
       <body className={`${poppins.variable} antialiased bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display overflow-x-hidden`}>
         <LenisProvider>
+          <ScrollToTopOnRouteChange />
           <div className="relative flex min-h-screen w-full flex-col">
             {children}
           </div>

@@ -46,15 +46,16 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="relative py-24 px-6">
+    <section className="relative py-24 px-6">
       <div className="pointer-events-none absolute -top-24 -right-16 h-80 w-80 rounded-full bg-primary/15 blur-3xl" />
       <div className="pointer-events-none absolute bottom-0 -left-20 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
       <div className="relative z-10 max-w-7xl mx-auto space-y-16">
         <motion.div
+          id="testimonials"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center space-y-4"
+          className="text-center space-y-4 scroll-mt-28"
         >
           <h2 className="text-4xl font-black">The Dino Family Speaks</h2>
           <p className="text-slate-600 dark:text-slate-400">

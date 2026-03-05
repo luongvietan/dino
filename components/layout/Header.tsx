@@ -42,8 +42,18 @@ export function Header() {
             </AnimatePresence>
           </div>
           
-          <Link className="text-sm font-semibold hover:text-primary transition-colors" href="/#perks">Perks</Link>
-          <Link className="text-sm font-semibold hover:text-primary transition-colors" href="/#testimonials">Testimonials</Link>
+          <Link
+            className="text-sm font-semibold hover:text-primary transition-colors"
+            href={{ pathname: "/", hash: "perks" }}
+          >
+            Perks
+          </Link>
+          <Link
+            className="text-sm font-semibold hover:text-primary transition-colors"
+            href={{ pathname: "/", hash: "testimonials" }}
+          >
+            Testimonials
+          </Link>
         </nav>
         <Link 
           href="/apply" 
