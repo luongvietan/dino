@@ -49,7 +49,7 @@ export const FooterPrivilege = () => {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto mt-14 sm:mt-20 md:mt-32 pt-6 md:pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] font-medium text-slate-500 gap-3 md:gap-8">
+      <div className="relative z-10 max-w-7xl mx-auto mt-8 sm:mt-10 md:mt-14 pt-4 md:pt-5 border-t border-white/10 flex flex-col md:flex-row justify-between text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] font-medium text-slate-500 gap-2 md:gap-6">
         <p className="text-center md:text-left">© 2026 DINO NETWORK</p>
         <p className="text-center md:text-left">All Rights Reserved</p>
         <p className="text-center md:text-left">USA & Canada Official TikTok LIVE Partner Agency</p>

@@ -10,12 +10,14 @@ type MeshGradientBackgroundProps = {
 
 export function MeshGradientBackground({ className }: MeshGradientBackgroundProps) {
   return (
-    <div aria-hidden className={cn("pointer-events-none absolute inset-0", className)}>
+    <div aria-hidden className={cn("pointer-events-none absolute inset-0 bg-[#070b14]", className)}>
+      <div className="absolute inset-0 bg-[radial-gradient(80%_100%_at_12%_15%,rgba(34,197,94,0.42),transparent_58%),radial-gradient(70%_85%_at_85%_22%,rgba(79,156,249,0.32),transparent_60%),linear-gradient(180deg,#0b1220_0%,#070b14_60%,#05070d_100%)]" />
       <ShaderGradientCanvas
         style={{
           width: "100%",
           height: "100%",
         }}
+        lazyLoad={false}
         pixelDensity={1}
         pointerEvents="none"
       >
@@ -53,7 +55,7 @@ export function MeshGradientBackground({ className }: MeshGradientBackgroundProp
           enableTransition={false}
         />
       </ShaderGradientCanvas>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#111827]/65 via-[#0b1220]/72 to-[#05070d]/90" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#111827]/20 via-[#0b1220]/26 to-[#05070d]/40" />
     </div>
   )
 }
