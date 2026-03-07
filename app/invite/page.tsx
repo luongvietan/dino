@@ -1,6 +1,7 @@
 import { FooterPrivilege } from "@/components/layout/FooterPrivilege";
 import { Header } from "@/components/layout/Header";
 import { InviteStepsStack } from "@/components/sections/InviteStepsStack";
+import { MeshGradientBackground } from "@/components/ui/MeshGradientBackground";
 import Image from "next/image";
 
 export default function InvitePage() {
@@ -9,8 +10,9 @@ export default function InvitePage() {
       <Header />
 
       <main className="flex-1 bg-background-light dark:bg-background-dark">
-        <section className="px-4 sm:px-6 pt-10 pb-12 md:pt-14 md:pb-16">
-          <div className="max-w-6xl mx-auto grid gap-8 lg:gap-14 lg:grid-cols-12 lg:items-start">
+        <section className="relative overflow-hidden px-4 sm:px-6 pt-10 pb-12 md:pt-14 md:pb-16">
+          <MeshGradientBackground className="opacity-35" />
+          <div className="relative z-10 max-w-6xl mx-auto grid gap-8 lg:gap-14 lg:grid-cols-12 lg:items-start">
             <div className="space-y-6 lg:col-span-7 lg:pr-2">
               <p className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-primary">
                 Invitation Code
@@ -25,16 +27,16 @@ export default function InvitePage() {
                 Follow these quick steps in your TikTok app - it takes less than 10 seconds.
               </p>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
                 <a
                   href="#step-guide"
-                  className="rounded-full bg-primary px-6 py-3 text-sm font-bold text-slate-950 hover:bg-primary/90 transition-colors"
+                  className="rounded-full bg-primary px-6 py-3 text-sm font-bold text-slate-950 hover:bg-primary/90 transition-colors text-center w-full sm:w-auto"
                 >
                   Show me how
                 </a>
                 <a
                   href="#see-how-it-works"
-                  className="rounded-full border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-primary/50 hover:text-primary transition-colors"
+                  className="rounded-full border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-primary/50 hover:text-primary transition-colors text-center w-full sm:w-auto"
                 >
                   See How It Works
                 </a>
@@ -65,7 +67,7 @@ export default function InvitePage() {
                   width={600}
                   height={1000}
                   unoptimized
-                  className="mx-auto h-[62vh] sm:h-[72vh] lg:h-[calc(100vh-9rem)] w-auto max-w-full rounded-2xl object-contain"
+                  className="mx-auto h-[52vh] sm:h-[68vh] lg:h-[calc(100vh-9rem)] w-auto max-w-full rounded-2xl object-contain"
                 />
               </div>
               <p className="mt-3 text-center text-xs sm:text-sm text-slate-500 dark:text-slate-400">

@@ -1,6 +1,7 @@
 import { FooterPrivilege } from "@/components/layout/FooterPrivilege";
 import { Header } from "@/components/layout/Header";
 import { AcceptStepsStack } from "@/components/sections/AcceptStepsStack";
+import { MeshGradientBackground } from "@/components/ui/MeshGradientBackground";
 import Image from "next/image";
 
 export default function AcceptPage() {
@@ -9,8 +10,9 @@ export default function AcceptPage() {
       <Header />
 
       <main className="flex-1 bg-background-light dark:bg-background-dark">
-        <section className="px-4 sm:px-6 pt-4 pb-12 md:pt-8 md:pb-16">
-          <div className="max-w-6xl mx-auto grid gap-8 lg:gap-12 lg:grid-cols-12 lg:items-start">
+        <section className="relative overflow-hidden px-4 sm:px-6 pt-4 pb-12 md:pt-8 md:pb-16">
+          <MeshGradientBackground className="opacity-35" />
+          <div className="relative z-10 max-w-6xl mx-auto grid gap-8 lg:gap-12 lg:grid-cols-12 lg:items-start">
             <div className="min-w-0 space-y-6 lg:col-span-7 lg:pr-2">
               <p className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-primary">
                 Accept Invitation
@@ -25,16 +27,16 @@ export default function AcceptPage() {
                 Follow these steps to officially join Dino on TikTok LIVE.
               </p>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
                 <a
                   href="#step-guide"
-                  className="rounded-full bg-primary px-6 py-3 text-sm font-bold text-slate-950 hover:bg-primary/90 transition-colors"
+                  className="rounded-full bg-primary px-6 py-3 text-sm font-bold text-slate-950 hover:bg-primary/90 transition-colors text-center w-full sm:w-auto"
                 >
                   Get Started
                 </a>
                 <a
                   href="#see-how-it-works"
-                  className="rounded-full border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-primary/50 hover:text-primary transition-colors"
+                  className="rounded-full border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-primary/50 hover:text-primary transition-colors text-center w-full sm:w-auto"
                 >
                   Watch Tutorial
                 </a>
@@ -74,7 +76,7 @@ export default function AcceptPage() {
                   width={600}
                   height={1000}
                   unoptimized
-                  className="mx-auto h-[58vh] sm:h-[68vh] lg:h-[calc(100vh-11rem)] w-auto max-w-full rounded-2xl object-contain"
+                  className="mx-auto h-[50vh] sm:h-[64vh] lg:h-[calc(100vh-11rem)] w-auto max-w-full rounded-2xl object-contain"
                 />
               </div>
               <p className="mt-3 text-center text-xs sm:text-sm text-slate-500 dark:text-slate-400">
@@ -101,7 +103,7 @@ export default function AcceptPage() {
             <AcceptStepsStack />
           </div>
 
-          <div className="max-w-4xl mx-auto mt-4 rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8 text-white">
+          <div className="max-w-4xl mx-auto mt-4 rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 md:p-8 text-white">
             <h3 className="text-2xl md:text-3xl font-black tracking-tight">Congratulations!</h3>
             <p className="mt-3 text-sm md:text-base text-slate-200 leading-relaxed">
               Once you tap Accept, you'll officially be part of the Dino team and ready to start your TikTok LIVE journey!

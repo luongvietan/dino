@@ -6,6 +6,7 @@ import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { FeatureFlow } from "@/components/sections/FeatureFlow";
 import { StandOut } from "@/components/sections/StandOut";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { FAQSection } from "@/components/sections/FAQSection";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
         <FeatureFlow />
         <StandOut />
         <Testimonials />
+        <FAQSection />
         <FinalCTA />
       </main>
       <FooterPrivilege />

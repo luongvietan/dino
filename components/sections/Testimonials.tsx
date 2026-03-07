@@ -46,10 +46,10 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="relative py-24 px-6">
+    <section className="relative py-16 md:py-24 px-4 sm:px-6">
       <div className="pointer-events-none absolute -top-24 -right-16 h-80 w-80 rounded-full bg-primary/15 blur-3xl" />
       <div className="pointer-events-none absolute bottom-0 -left-20 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
-      <div className="relative z-10 max-w-7xl mx-auto space-y-16">
+      <div className="relative z-10 max-w-7xl mx-auto space-y-10 md:space-y-16">
         <motion.div
           id="testimonials"
           initial={{ opacity: 0, y: 20 }}
@@ -57,7 +57,7 @@ export function Testimonials() {
           viewport={{ once: true }}
           className="text-center space-y-4 scroll-mt-28"
         >
-          <h2 className="text-4xl font-black">The Dino Family Speaks</h2>
+          <h2 className="text-3xl sm:text-4xl font-black">The Dino Family Speaks</h2>
           <p className="text-slate-600 dark:text-slate-400">
             See what creators say about being part of a network that truly
             supports them.
@@ -66,7 +66,7 @@ export function Testimonials() {
 
         <div className="max-w-5xl mx-auto">
           <Carousel options={{ align: "start", loop: false }}>
-            <div className="absolute left-4 top-0 z-20 flex gap-3">
+            <div className="absolute left-3 sm:left-4 top-0 z-20 flex gap-2 sm:gap-3">
               <SliderPrevButton
                 className="size-10 rounded-full border disabled:opacity-40 cursor-pointer border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-800/90 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                 aria-label="Previous testimonial"
@@ -81,7 +81,7 @@ export function Testimonials() {
               </SliderNextButton>
             </div>
 
-            <SliderContainer className="gap-6 pt-14 md:pt-20">
+            <SliderContainer className="gap-4 sm:gap-6 pt-14 md:pt-20">
               {testimonials.map((item, idx) => (
                 <Slider key={item.username} className="basis-full">
                   <motion.div
@@ -89,9 +89,9 @@ export function Testimonials() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.05, duration: 0.35 }}
-                    className="relative overflow-visible bg-white dark:bg-slate-800 p-8 md:p-10 pr-24 md:pr-36 rounded-3xl shadow-sm space-y-6"
+                    className="relative overflow-visible bg-white dark:bg-slate-800 p-5 sm:p-7 md:p-10 pr-5 sm:pr-24 md:pr-36 rounded-2xl sm:rounded-3xl shadow-sm space-y-5 md:space-y-6"
                   >
-                    <div className="absolute top-2 right-4 md:right-6 -translate-y-1/3 md:-translate-y-1/2 w-24 h-24 md:w-36 md:h-36 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-xl rotate-3">
+                    <div className="hidden sm:block absolute top-2 right-4 md:right-6 -translate-y-1/3 md:-translate-y-1/2 w-24 h-24 md:w-36 md:h-36 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-xl rotate-3">
                       <div
                         className="absolute inset-0 bg-cover bg-center"
                         style={{ backgroundImage: `url('${item.sideImg}')` }}
@@ -125,7 +125,7 @@ export function Testimonials() {
                         </div>
                       </div>
                     </div>
-                    <p className="text-slate-600 dark:text-slate-400 italic">
+                    <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 italic">
                       &quot;{item.quote}&quot;
                     </p>
                   </motion.div>
