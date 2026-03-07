@@ -4,7 +4,7 @@ import { MeshGradientBackground } from "@/components/ui/MeshGradientBackground";
 
 export const FooterPrivilege = () => {
   return (
-    <footer className="relative overflow-hidden font-display bg-gradient-to-b from-[#0f172a] via-[#0a1222] to-[#03050b] text-white py-14 md:py-20 px-4 sm:px-6 md:px-8 border-t border-white/15 rounded-t-[2rem] md:rounded-t-[3.5rem]">
+    <footer className="relative overflow-hidden font-display bg-gradient-to-b from-[#0f172a] via-[#0a1222] to-[#03050b] text-white pt-12 md:pt-16 pb-8 md:pb-10 px-4 sm:px-6 md:px-8 border-t border-white/15 rounded-t-[2rem] md:rounded-t-[3.5rem] min-h-[440px] md:min-h-[540px]">
       <MeshGradientBackground className="opacity-70" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-primary/20 via-primary/8 to-transparent blur-2xl" />
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-end">
@@ -15,8 +15,8 @@ export const FooterPrivilege = () => {
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-[-0.03em] mt-5 md:mt-6 mb-3 md:mb-4">
             Dino Network.
           </h2>
-          <div className="mt-8 sm:mt-12 md:mt-16 flex items-center gap-3 sm:gap-4">
-            <div className="w-12 h-12 rounded-sm overflow-hidden border border-white/20">
+          <div className="mt-6 sm:mt-8 md:mt-10 flex items-center gap-3 sm:gap-4">
+            <div className="w-12 h-12 rounded-sm overflow-hidden">
               <Image
                 src="/logo.webp"
                 alt="Dino Network logo"
@@ -31,7 +31,7 @@ export const FooterPrivilege = () => {
           </div>
         </div>
 
-        <div className="space-y-6 md:space-y-8 md:mt-14">
+        <div className="space-y-6 md:space-y-7 md:mt-6">
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-[-0.03em] text-slate-300">
             Built for <span className="text-primary">LIVE</span> Creators.
           </h2>
@@ -49,7 +49,7 @@ export const FooterPrivilege = () => {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto mt-8 sm:mt-10 md:mt-14 pt-4 md:pt-5 border-t border-white/10 flex flex-col md:flex-row justify-between text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] font-medium text-slate-500 gap-2 md:gap-6">
+      <div className="relative z-10 max-w-7xl mx-auto mt-6 sm:mt-8 md:mt-10 pt-3 md:pt-4 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] font-medium text-slate-500 gap-1 md:gap-4">
         <p className="text-center md:text-left">© 2026 DINO NETWORK</p>
         <p className="text-center md:text-left">All Rights Reserved</p>
         <p className="text-center md:text-left">USA & Canada Official TikTok LIVE Partner Agency</p>
