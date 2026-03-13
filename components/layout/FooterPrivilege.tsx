@@ -1,12 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MeshGradientBackground } from "@/components/ui/MeshGradientBackground";
 
 export const FooterPrivilege = () => {
+  const backgroundStyle = {
+    backgroundImage:
+      "radial-gradient(circle at 14% 22%, rgba(34,197,94,0.16), transparent 28%), radial-gradient(circle at 86% 18%, rgba(59,130,246,0.14), transparent 30%), radial-gradient(circle at 48% 90%, rgba(236,72,153,0.12), transparent 30%), linear-gradient(180deg, #0b1220 0%, #05070d 55%, #03050b 100%)",
+    backgroundColor: "#05070d",
+  };
+
   return (
-    <footer className="relative overflow-hidden font-display bg-gradient-to-b from-[#0f172a] via-[#0a1222] to-[#03050b] text-white pt-12 md:pt-16 pb-8 md:pb-10 px-4 sm:px-6 md:px-8 border-t border-white/15 rounded-t-[2rem] md:rounded-t-[3.5rem] min-h-[440px] md:min-h-[540px]">
-      <MeshGradientBackground className="opacity-70" />
+    <footer
+      className="relative overflow-hidden font-display text-white pt-12 md:pt-16 pb-8 md:pb-10 px-4 sm:px-6 md:px-8 border-t border-white/15 rounded-t-[2rem] md:rounded-t-[3.5rem] min-h-[440px] md:min-h-[540px] shadow-[0_-20px_120px_rgba(5,7,13,0.45)]"
+      style={backgroundStyle}
+    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-primary/20 via-primary/8 to-transparent blur-2xl" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_35%_70%,rgba(255,255,255,0.07),transparent_30%),radial-gradient(circle_at_80%_40%,rgba(255,255,255,0.05),transparent_24%)]" />
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-end">
         <div>
           <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-[10px] font-bold uppercase tracking-[0.2em]">

@@ -2,15 +2,23 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { MeshGradientBackground } from "@/components/ui/MeshGradientBackground";
-
 export function Hero() {
+  const backgroundStyle = {
+    backgroundImage:
+      "radial-gradient(circle at 12% 18%, rgba(34,197,94,0.18), transparent 28%), radial-gradient(circle at 82% 12%, rgba(59,130,246,0.16), transparent 32%), radial-gradient(circle at 50% 88%, rgba(236,72,153,0.14), transparent 30%), linear-gradient(135deg, #0b1220 0%, #05070d 50%, #0b1220 100%)",
+    backgroundColor: "#05070d",
+    backgroundSize: "cover",
+  };
+
   return (
-    <section className="relative max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-14 lg:py-16 -mt-8 md:-mt-10">
+    <section
+      className="relative max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-14 lg:py-16 -mt-8 md:-mt-10 overflow-hidden rounded-[1.5rem] md:rounded-[2rem]"
+      style={backgroundStyle}
+    >
       <div className="pointer-events-none absolute -top-24 -left-20 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-28 right-8 h-80 w-80 rounded-full bg-blue-500/10 blur-3xl" />
-      <div className="relative z-10 overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-gradient-to-b from-[#111827] to-[#05070d] border border-white/10 p-5 sm:p-6 md:p-10 lg:p-12">
-        <MeshGradientBackground className="opacity-85" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_60%,rgba(255,255,255,0.08),transparent_28%),radial-gradient(circle_at_80%_30%,rgba(255,255,255,0.05),transparent_24%)]" />
+      <div className="relative z-10 overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-gradient-to-b from-[#111827]/90 to-[#05070d]/95 border border-white/10 p-5 sm:p-6 md:p-10 lg:p-12 backdrop-blur-[2px] shadow-[0_30px_120px_rgba(5,7,13,0.55)]">
         <div className="relative z-10 grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

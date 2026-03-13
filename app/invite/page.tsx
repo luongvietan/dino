@@ -1,17 +1,25 @@
 import { FooterPrivilege } from "@/components/layout/FooterPrivilege";
 import { Header } from "@/components/layout/Header";
 import { InviteStepsStack } from "@/components/sections/InviteStepsStack";
-import { MeshGradientBackground } from "@/components/ui/MeshGradientBackground";
 import Image from "next/image";
 
 export default function InvitePage() {
+  const backgroundStyle = {
+    backgroundImage:
+      "radial-gradient(circle at 12% 18%, rgba(34,197,94,0.18), transparent 28%), radial-gradient(circle at 82% 12%, rgba(59,130,246,0.16), transparent 32%), radial-gradient(circle at 50% 88%, rgba(236,72,153,0.14), transparent 30%), linear-gradient(135deg, #0b1220 0%, #05070d 50%, #0b1220 100%)",
+    backgroundColor: "#05070d",
+  };
+
   return (
     <>
       <Header />
 
-      <main className="flex-1 bg-background-light dark:bg-background-dark">
+      <main
+        className="relative flex-1 bg-background-light dark:bg-background-dark overflow-hidden"
+        style={backgroundStyle}
+      >
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(255,255,255,0.07),transparent_30%),radial-gradient(circle_at_80%_40%,rgba(255,255,255,0.05),transparent_24%)]" />
         <section className="relative overflow-hidden px-4 sm:px-6 pt-10 pb-12 md:pt-14 md:pb-16">
-          <MeshGradientBackground className="opacity-35" />
           <div className="relative z-10 max-w-6xl mx-auto grid gap-8 lg:gap-14 lg:grid-cols-12 lg:items-start">
             <div className="space-y-6 lg:col-span-7 lg:pr-2">
               <p className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-primary">

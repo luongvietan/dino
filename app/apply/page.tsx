@@ -1,14 +1,22 @@
 "use client";
 
 import { ApplicationForm } from "@/components/application-form/ApplicationForm";
-import { MeshGradientBackground } from "@/components/ui/MeshGradientBackground";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function ApplyPage() {
+  const backgroundStyle = {
+    backgroundImage:
+      "radial-gradient(circle at 12% 18%, rgba(34,197,94,0.18), transparent 28%), radial-gradient(circle at 82% 12%, rgba(59,130,246,0.16), transparent 32%), radial-gradient(circle at 50% 88%, rgba(236,72,153,0.14), transparent 30%), linear-gradient(135deg, #0b1220 0%, #05070d 50%, #0b1220 100%)",
+    backgroundColor: "#05070d",
+  };
+
   return (
-    <main className="relative overflow-hidden min-h-screen bg-background-light dark:bg-background-dark flex flex-col">
-      <MeshGradientBackground className="opacity-50" />
+    <main
+      className="relative overflow-hidden min-h-screen bg-background-light dark:bg-background-dark flex flex-col"
+      style={backgroundStyle}
+    >
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(255,255,255,0.07),transparent_30%),radial-gradient(circle_at_80%_40%,rgba(255,255,255,0.05),transparent_24%)]" />
       <header className="px-4 sm:px-6 py-4 sm:py-6 absolute top-0 w-full z-10 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/logo.webp" alt="Dino Network Logo" width={32} height={32} className="object-contain" />
