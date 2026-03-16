@@ -35,7 +35,7 @@ const initialFormData: FormData = {
 };
 
 export function ApplicationForm() {
-  const [step, setStep] = useState(0); // 0 = Landing, 1-8 = Questions, 9 = Rejection, 10 = Success
+  const [step, setStep] = useState(0); // 0 = Landing, 1 = Getting Started, 2-9 = Questions, 10 = Rejection, 11 = Success
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -48,22 +48,22 @@ export function ApplicationForm() {
 
   const nextStep = () => {
     // Validation
-    if (step === 1) {
+    if (step === 2) {
       if (formData.invitationCode.length !== 7) {
         setError("Invitation code must be exactly 7 characters long.");
         return;
       }
     }
-    if (step === 2) {
+    if (step === 3) {
       if (formData.isUsOrCanada === "No") {
-        setStep(9); // Rejection
+        setStep(10); // Rejection
         return;
       } else if (!formData.isUsOrCanada) {
         setError("Please select an option.");
         return;
       }
     }
-    if (step === 3) {
+    if (step === 4) {
       if (!formData.firstName || !formData.lastName || !formData.dobMonth || !formData.dobYear || !formData.email) {
         setError("Please fill out all fields.");
         return;
@@ -73,23 +73,23 @@ export function ApplicationForm() {
         return;
       }
     }
-    if (step === 4 && !formData.tiktokUsername) {
+    if (step === 5 && !formData.tiktokUsername) {
       setError("Please enter your TikTok username.");
       return;
     }
-    if (step === 5 && !formData.onlyTiktokAccount) {
+    if (step === 6 && !formData.onlyTiktokAccount) {
       setError("Please select an option.");
       return;
     }
-    if (step === 6 && !formData.streamingFrequency) {
+    if (step === 7 && !formData.streamingFrequency) {
       setError("Please select an option.");
       return;
     }
-    if (step === 7 && !formData.contentNiche) {
+    if (step === 8 && !formData.contentNiche) {
       setError("Please select an option.");
       return;
     }
-    if (step === 8) {
+    if (step === 9) {
       if (!formData.discordUsername) {
         setError("Please enter your Discord username.");
         return;
@@ -108,7 +108,7 @@ export function ApplicationForm() {
   };
 
   const prevStep = () => {
-    if (step > 0 && step < 9) {
+    if (step > 0 && step < 10) {
       setError("");
       setStep(prev => prev - 1);
     }
@@ -123,7 +123,7 @@ export function ApplicationForm() {
         body: JSON.stringify({ ...formData, turnstileToken })
       });
       if (res.ok) {
-        setStep(10); // Success
+        setStep(11); // Success
       } else {
         const data = await res.json();
         setError(data.error || "Something went wrong. Please try again.");
@@ -141,8 +141,16 @@ export function ApplicationForm() {
     exit: { opacity: 0, y: -50 }
   };
 
+  const isGettingStartedStep = step === 1;
+
   return (
-    <div className="w-full max-w-2xl mt-12 mb-20 relative">
+    <div
+      className={`w-full relative ${
+        isGettingStartedStep
+          ? "max-w-4xl flex items-center justify-center py-1"
+          : "max-w-2xl mt-12 mb-20"
+      }`}
+    >
       <AnimatePresence mode="wait">
         {step === 0 && (
           <motion.div key="step0" variants={variants} initial="initial" animate="animate" exit="exit" className="text-center space-y-8">
@@ -159,11 +167,59 @@ export function ApplicationForm() {
         )}
 
         {step === 1 && (
-          <motion.div key="step1" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
-            <h2 className="text-3xl font-bold">1. Invitation Code</h2>
-            <p className="text-slate-600 dark:text-slate-400">
-              Profile → Menu → TikTok Studio → Live Center → Tools and Resources → Join Creator Network → How to Join
+          <motion.div
+            key="getting-started"
+            variants={variants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="w-full max-w-3xl space-y-5 md:space-y-6 rounded-3xl border border-violet-400/20 bg-gradient-to-b from-violet-500/10 via-fuchsia-500/5 to-transparent p-5 md:p-7 text-center"
+          >
+            <p className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-violet-300">
+              Getting Started
             </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">COMPLETELY FREE</h2>
+            <p className="text-base md:text-lg text-slate-200">Zero upfront fees. No hidden costs.</p>
+            <p className="text-sm md:text-base text-slate-300 max-w-xl mx-auto">
+              We invest in your talent and only succeed when you do.
+            </p>
+
+            <div className="grid gap-2 sm:grid-cols-2 max-w-xl mx-auto text-left">
+              {["No Joining Fee", "Free Training", "Free Equipment Support"].map(item => (
+                <p key={item} className="inline-flex items-center gap-2 text-sm md:text-base text-slate-100">
+                  <span className="material-symbols-outlined text-violet-400 text-[20px]">check_circle</span>
+                  {item}
+                </p>
+              ))}
+            </div>
+
+            <button
+              onClick={nextStep}
+              className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary to-lime-300 px-8 py-3.5 text-base font-black text-slate-950 shadow-lg shadow-primary/20 hover:shadow-primary/35 hover:-translate-y-0.5 transition-all"
+            >
+              Continue
+              <span className="material-symbols-outlined transition-transform group-hover:translate-x-0.5">arrow_forward</span>
+            </button>
+          </motion.div>
+        )}
+
+        {step === 2 && (
+          <motion.div key="step2" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
+            <h2 className="text-3xl font-bold">1. Invitation Code</h2>
+            <div className="space-y-3">
+              <p className="text-slate-600 dark:text-slate-400">
+                Profile → Menu → TikTok Studio → Live Center → Tools and Resources → Join Creator Network → How to Join
+              </p>
+              <a
+                href="/invite"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+              >
+                Need help? Open the Invitation Code tutorial
+                <span className="material-symbols-outlined text-base">open_in_new</span>
+              </a>
+            </div>
             <input 
               type="text" 
               maxLength={7}
@@ -176,8 +232,8 @@ export function ApplicationForm() {
           </motion.div>
         )}
 
-        {step === 2 && (
-          <motion.div key="step2" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
+        {step === 3 && (
+          <motion.div key="step3" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
             <h2 className="text-3xl font-bold">2. Are you located in the United States or Canada?</h2>
             <div className="space-y-4">
               {["Yes", "No"].map(option => (
@@ -197,8 +253,8 @@ export function ApplicationForm() {
           </motion.div>
         )}
 
-        {step === 3 && (
-          <motion.div key="step3" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
+        {step === 4 && (
+          <motion.div key="step4" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
             <h2 className="text-3xl font-bold">3. Basic Information</h2>
             <p className="text-slate-600 dark:text-slate-400">Hey! 🦖 Please answer a few quick questions so we can learn more about you.</p>
             <div className="grid grid-cols-2 gap-6">
@@ -256,8 +312,8 @@ export function ApplicationForm() {
           </motion.div>
         )}
 
-        {step === 4 && (
-          <motion.div key="step4" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
+        {step === 5 && (
+          <motion.div key="step5" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
             <h2 className="text-3xl font-bold">4. What is your TikTok username?</h2>
             <p className="text-slate-600 dark:text-slate-400">Nice to meet you, {formData.firstName || "there"}</p>
             <div className="relative">
@@ -274,8 +330,8 @@ export function ApplicationForm() {
           </motion.div>
         )}
 
-        {step === 5 && (
-          <motion.div key="step5" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
+        {step === 6 && (
+          <motion.div key="step6" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
             <h2 className="text-3xl font-bold">5. Is this your only TikTok account?</h2>
             <div className="space-y-4">
               {["Yes", "No"].map(option => (
@@ -295,8 +351,8 @@ export function ApplicationForm() {
           </motion.div>
         )}
 
-        {step === 6 && (
-          <motion.div key="step6" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
+        {step === 7 && (
+          <motion.div key="step7" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
             <h2 className="text-3xl font-bold">6. How often do you go LIVE on TikTok?</h2>
             <p className="text-slate-600 dark:text-slate-400">We verify activity on our end.</p>
             <div className="space-y-4">
@@ -317,8 +373,8 @@ export function ApplicationForm() {
           </motion.div>
         )}
 
-        {step === 7 && (
-          <motion.div key="step7" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
+        {step === 8 && (
+          <motion.div key="step8" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
             <h2 className="text-3xl font-bold">7. What niche do you target with your content?</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {["Gaming", "Battler", "Musician", "Dancer", "Fitness"].map(option => (
@@ -338,8 +394,8 @@ export function ApplicationForm() {
           </motion.div>
         )}
 
-        {step === 8 && (
-          <motion.div key="step8" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
+        {step === 9 && (
+          <motion.div key="step9" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
             <h2 className="text-3xl font-bold">8. Discord Username</h2>
             <p className="text-slate-600 dark:text-slate-400">Enter your Discord username (example: username#1234)</p>
             <input 
@@ -360,8 +416,8 @@ export function ApplicationForm() {
           </motion.div>
         )}
 
-        {step === 9 && (
-          <motion.div key="step9" variants={variants} initial="initial" animate="animate" exit="exit" className="text-center space-y-8 py-12">
+        {step === 10 && (
+          <motion.div key="step10" variants={variants} initial="initial" animate="animate" exit="exit" className="text-center space-y-8 py-12">
             <span className="material-symbols-outlined text-[80px] text-red-500">error</span>
             <h2 className="text-3xl font-bold">Application Unsuccessful</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-md mx-auto">
@@ -370,8 +426,8 @@ export function ApplicationForm() {
           </motion.div>
         )}
 
-        {step === 10 && (
-          <motion.div key="step10" variants={variants} initial="initial" animate="animate" exit="exit" className="text-center space-y-8 py-12">
+        {step === 11 && (
+          <motion.div key="step11" variants={variants} initial="initial" animate="animate" exit="exit" className="text-center space-y-8 py-12">
             <span className="text-6xl">🎉</span>
             <h2 className="text-4xl font-bold text-primary">Thank you so much for your application!</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-lg mx-auto">
@@ -393,7 +449,7 @@ export function ApplicationForm() {
       </AnimatePresence>
 
       {/* Navigation Footer */}
-      {step > 0 && step < 9 && (
+      {step > 1 && step < 10 && (
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -406,10 +462,10 @@ export function ApplicationForm() {
                 disabled={isSubmitting}
                 className="flex items-center justify-center w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors disabled:opacity-50"
               >
-                <span className="material-symbols-outlined">expand_less</span>
+                <span className="material-symbols-outlined">arrow_back</span>
               </button>
               <div className="text-sm font-medium text-slate-500">
-                Step {step} of 8
+                Question {step - 1} of 8
               </div>
             </div>
             
@@ -423,9 +479,9 @@ export function ApplicationForm() {
                 {isSubmitting ? (
                   <span className="material-symbols-outlined animate-spin">progress_activity</span>
                 ) : (
-                  step === 8 ? "Submit" : "Next"
+                  step === 9 ? "Submit" : "Next"
                 )}
-                {step !== 8 && !isSubmitting && <span className="material-symbols-outlined">expand_more</span>}
+                {step !== 9 && !isSubmitting && <span className="material-symbols-outlined">arrow_forward</span>}
               </button>
             </div>
           </div>

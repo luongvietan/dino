@@ -26,7 +26,7 @@ export const FooterPrivilege = () => {
           <div className="mt-6 sm:mt-8 md:mt-10 flex items-center gap-3 sm:gap-4">
             <div className="w-12 h-12 rounded-sm overflow-hidden">
               <Image
-                src="/logo.webp"
+                src="/logo.jpeg"
                 alt="Dino Network logo"
                 width={48}
                 height={48}

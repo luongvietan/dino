@@ -14,8 +14,9 @@ export const metadata: Metadata = {
   title: "Dino Network",
   description: "Official TikTok LIVE Partner Agency for creators in USA and Canada. Grow your audience and monetize your content with expert support.",
   icons: {
-    icon: [{ url: "/logo.webp", type: "image/webp" }],
-    shortcut: ["/logo.webp"],
+    icon: [{ url: "/logo.jpeg", type: "image/jpeg" }],
+    shortcut: ["/logo.jpeg"],
+    apple: ["/logo.jpeg"],
   },
 };
 

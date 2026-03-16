@@ -2,6 +2,7 @@ import { FooterPrivilege } from "@/components/layout/FooterPrivilege";
 import { Header } from "@/components/layout/Header";
 import { InviteStepsStack } from "@/components/sections/InviteStepsStack";
 import Image from "next/image";
+import { FaDiscord } from "react-icons/fa";
 
 export default function InvitePage() {
   const backgroundStyle = {
@@ -100,6 +101,42 @@ export default function InvitePage() {
 
           <div className="max-w-6xl mx-auto">
             <InviteStepsStack />
+          </div>
+
+          <div className="max-w-4xl mx-auto mt-4 rounded-3xl border border-white/15 bg-white/[0.03] p-5 sm:p-6 md:p-8 text-white backdrop-blur-sm">
+            <div className="mx-auto max-w-2xl text-center">
+              <h3 className="mt-2 text-2xl md:text-3xl font-black tracking-tight inline-flex items-center justify-center gap-2">
+                <span className="material-symbols-outlined text-primary">key</span>
+                What to do with your code:
+              </h3>
+              <p className="mt-3 text-sm md:text-base text-slate-200 leading-relaxed">
+                Send it to us through any of the application methods (Application Form, Discord, etc).
+              </p>
+
+              <div className="mt-5 flex flex-col sm:flex-row justify-center gap-3">
+                <a
+                  href="/apply"
+                  className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-fuchsia-500 to-violet-600 px-5 py-3 text-sm font-bold text-white hover:opacity-90 transition-opacity"
+                >
+                  <span className="material-symbols-outlined mr-2 text-[18px]">description</span>
+                  Application Form
+                </a>
+                <a
+                  href="https://discord.gg/DinoNetwork"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl border border-violet-400/40 bg-violet-500/10 px-5 py-3 text-sm font-bold text-violet-100 hover:bg-violet-500/20 transition-colors"
+                >
+                  <FaDiscord className="mr-2 text-[18px]" aria-hidden />
+                  Discord
+                </a>
+              </div>
+
+              <p className="mt-4 text-xs sm:text-sm font-semibold text-violet-300 inline-flex items-center justify-center gap-1">
+                <span className="material-symbols-outlined text-base">near_me</span>
+                Choose your preferred method
+              </p>
+            </div>
           </div>
         </section>
       </main>
