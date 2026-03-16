@@ -40,7 +40,7 @@ const testimonials = [
     sideImg: "/billy_img.webp",
     avatarSize: "110%",
     avatarPosition: "center",
-    url: "https://www.tiktok.com/@billyswilly"
+    url: "https://www.tiktok.com/@billyswilly_?_r=1&_t=ZP-94kSXFn36FD"
   }
 ];
 

@@ -34,22 +34,41 @@ const initialFormData: FormData = {
   discordUsername: "",
 };
 
+/** Inline "Required" message shown under a field when validation fails */
+function RequiredMessage({ message }: { message?: string }) {
+  if (!message) return null;
+  return (
+    <div className="mt-1.5 flex items-center gap-2 rounded-lg bg-amber-600/90 px-3 py-2 text-sm font-medium text-white">
+      <span className="material-symbols-outlined text-base shrink-0">warning</span>
+      <span>{message}</span>
+    </div>
+  );
+}
+
 export function ApplicationForm() {
   const [step, setStep] = useState(0); // 0 = Landing, 1 = Getting Started, 2-9 = Questions, 10 = Rejection, 11 = Success
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof FormData | "turnstile", string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState("");
 
   const updateForm = (fields: Partial<FormData>) => {
     setFormData(prev => ({ ...prev, ...fields }));
     setError("");
+    setFieldErrors(prev => {
+      const next = { ...prev };
+      for (const key of Object.keys(fields) as (keyof FormData)[]) next[key] = "";
+      return next;
+    });
   };
 
   const nextStep = () => {
-    // Validation
+    setFieldErrors({});
+
     if (step === 2) {
       if (formData.invitationCode.length !== 7) {
+        setFieldErrors({ invitationCode: "Please fill this in" });
         setError("Invitation code must be exactly 7 characters long.");
         return;
       }
@@ -58,51 +77,70 @@ export function ApplicationForm() {
       if (formData.isUsOrCanada === "No") {
         setStep(10); // Rejection
         return;
-      } else if (!formData.isUsOrCanada) {
+      }
+      if (!formData.isUsOrCanada) {
+        setFieldErrors({ isUsOrCanada: "Please fill this in" });
         setError("Please select an option.");
         return;
       }
     }
     if (step === 4) {
-      if (!formData.firstName || !formData.lastName || !formData.dobMonth || !formData.dobYear || !formData.email) {
-        setError("Please fill out all fields.");
+      const missing: Partial<Record<keyof FormData, string>> = {};
+      if (!formData.firstName?.trim()) missing.firstName = "Please fill this in";
+      if (!formData.lastName?.trim()) missing.lastName = "Please fill this in";
+      if (!formData.dobMonth) missing.dobMonth = "Please fill this in";
+      if (!formData.dobYear?.trim()) missing.dobYear = "Please fill this in";
+      if (!formData.email?.trim()) missing.email = "Please fill this in";
+      else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+        missing.email = "Please enter a valid email address.";
+      }
+      if (Object.keys(missing).length > 0) {
+        setFieldErrors(missing);
+        setError("Please fill out all required fields.");
         return;
       }
-      if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-        setError("Please enter a valid email address.");
+    }
+    if (step === 5) {
+      if (!formData.tiktokUsername?.trim()) {
+        setFieldErrors({ tiktokUsername: "Please fill this in" });
+        setError("Please enter your TikTok username.");
         return;
       }
     }
-    if (step === 5 && !formData.tiktokUsername) {
-      setError("Please enter your TikTok username.");
-      return;
+    if (step === 6) {
+      if (!formData.onlyTiktokAccount) {
+        setFieldErrors({ onlyTiktokAccount: "Please fill this in" });
+        setError("Please select an option.");
+        return;
+      }
     }
-    if (step === 6 && !formData.onlyTiktokAccount) {
-      setError("Please select an option.");
-      return;
+    if (step === 7) {
+      if (!formData.streamingFrequency) {
+        setFieldErrors({ streamingFrequency: "Please fill this in" });
+        setError("Please select an option.");
+        return;
+      }
     }
-    if (step === 7 && !formData.streamingFrequency) {
-      setError("Please select an option.");
-      return;
-    }
-    if (step === 8 && !formData.contentNiche) {
-      setError("Please select an option.");
-      return;
+    if (step === 8) {
+      if (!formData.contentNiche) {
+        setFieldErrors({ contentNiche: "Please fill this in" });
+        setError("Please select an option.");
+        return;
+      }
     }
     if (step === 9) {
-      if (!formData.discordUsername) {
-        setError("Please enter your Discord username.");
+      const missing: Partial<Record<keyof FormData | "turnstile", string>> = {};
+      if (!formData.discordUsername?.trim()) missing.discordUsername = "Please fill this in";
+      if (!turnstileToken) missing.turnstile = "Please complete the captcha.";
+      if (Object.keys(missing).length > 0) {
+        setFieldErrors(missing);
+        setError("Please complete all required fields.");
         return;
       }
-      if (!turnstileToken) {
-        setError("Please complete the captcha.");
-        return;
-      }
-      // Submit
       submitForm();
       return;
     }
-    
+
     setError("");
     setStep(prev => prev + 1);
   };
@@ -110,6 +148,7 @@ export function ApplicationForm() {
   const prevStep = () => {
     if (step > 0 && step < 10) {
       setError("");
+      setFieldErrors({});
       setStep(prev => prev - 1);
     }
   };
@@ -226,9 +265,12 @@ export function ApplicationForm() {
               placeholder="7 characters" 
               value={formData.invitationCode}
               onChange={e => updateForm({ invitationCode: e.target.value.toUpperCase() })}
-              className="w-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-xl px-6 py-4 text-2xl font-mono uppercase focus:border-primary focus:ring-0 transition-colors"
+              className={`w-full bg-white dark:bg-slate-800 border-2 rounded-xl px-6 py-4 text-2xl font-mono uppercase focus:ring-0 transition-colors ${
+                fieldErrors.invitationCode ? "border-red-500 focus:border-red-500" : "border-slate-200 dark:border-slate-700 focus:border-primary"
+              }`}
               autoFocus
             />
+            <RequiredMessage message={fieldErrors.invitationCode} />
           </motion.div>
         )}
 
@@ -239,10 +281,13 @@ export function ApplicationForm() {
               {["Yes", "No"].map(option => (
                 <button
                   key={option}
+                  type="button"
                   onClick={() => { updateForm({ isUsOrCanada: option }); }}
                   className={`w-full text-left px-6 py-4 rounded-xl border-2 transition-all text-xl font-medium ${
                     formData.isUsOrCanada === option 
                     ? "border-primary bg-primary/10 text-primary" 
+                    : fieldErrors.isUsOrCanada 
+                    ? "border-red-500 dark:border-red-500 hover:border-red-500" 
                     : "border-slate-200 dark:border-slate-700 hover:border-primary/50"
                   }`}
                 >
@@ -250,6 +295,7 @@ export function ApplicationForm() {
                 </button>
               ))}
             </div>
+            <RequiredMessage message={fieldErrors.isUsOrCanada} />
           </motion.div>
         )}
 
@@ -259,55 +305,70 @@ export function ApplicationForm() {
             <p className="text-slate-600 dark:text-slate-400">Hey! 🦖 Please answer a few quick questions so we can learn more about you.</p>
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-500">First Name</label>
+                <label className="text-sm font-bold text-slate-500">First Name *</label>
                 <input 
                   type="text" 
                   value={formData.firstName}
                   onChange={e => updateForm({ firstName: e.target.value })}
-                  className="w-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 focus:border-primary focus:ring-0"
+                  className={`w-full bg-white dark:bg-slate-800 border-2 rounded-xl px-4 py-3 focus:ring-0 transition-colors ${
+                    fieldErrors.firstName ? "border-red-500 focus:border-red-500" : "border-slate-200 dark:border-slate-700 focus:border-primary"
+                  }`}
                 />
+                <RequiredMessage message={fieldErrors.firstName} />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-500">Last Name</label>
+                <label className="text-sm font-bold text-slate-500">Last Name *</label>
                 <input 
                   type="text" 
                   value={formData.lastName}
                   onChange={e => updateForm({ lastName: e.target.value })}
-                  className="w-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 focus:border-primary focus:ring-0"
+                  className={`w-full bg-white dark:bg-slate-800 border-2 rounded-xl px-4 py-3 focus:ring-0 transition-colors ${
+                    fieldErrors.lastName ? "border-red-500 focus:border-red-500" : "border-slate-200 dark:border-slate-700 focus:border-primary"
+                  }`}
                 />
+                <RequiredMessage message={fieldErrors.lastName} />
               </div>
             </div>
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-500">Date of Birth (Month)</label>
+                <label className="text-sm font-bold text-slate-500">Date of Birth (Month) *</label>
                 <select 
                   value={formData.dobMonth}
                   onChange={e => updateForm({ dobMonth: e.target.value })}
-                  className="w-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 focus:border-primary focus:ring-0"
+                  className={`w-full bg-white dark:bg-slate-800 border-2 rounded-xl px-4 py-3 focus:ring-0 transition-colors ${
+                    fieldErrors.dobMonth ? "border-red-500 focus:border-red-500" : "border-slate-200 dark:border-slate-700 focus:border-primary"
+                  }`}
                 >
                   <option value="">Select Month</option>
                   {["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"].map(m => <option key={m} value={m}>{m}</option>)}
                 </select>
+                <RequiredMessage message={fieldErrors.dobMonth} />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-500">Date of Birth (Year)</label>
+                <label className="text-sm font-bold text-slate-500">Date of Birth (Year) *</label>
                 <input 
                   type="number" 
                   placeholder="YYYY"
                   value={formData.dobYear}
                   onChange={e => updateForm({ dobYear: e.target.value })}
-                  className="w-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 focus:border-primary focus:ring-0"
+                  className={`w-full bg-white dark:bg-slate-800 border-2 rounded-xl px-4 py-3 focus:ring-0 transition-colors ${
+                    fieldErrors.dobYear ? "border-red-500 focus:border-red-500" : "border-slate-200 dark:border-slate-700 focus:border-primary"
+                  }`}
                 />
+                <RequiredMessage message={fieldErrors.dobYear} />
               </div>
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-bold text-slate-500">Email Address</label>
+              <label className="text-sm font-bold text-slate-500">Email Address *</label>
               <input 
                 type="email" 
                 value={formData.email}
                 onChange={e => updateForm({ email: e.target.value })}
-                className="w-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 focus:border-primary focus:ring-0"
+                className={`w-full bg-white dark:bg-slate-800 border-2 rounded-xl px-4 py-3 focus:ring-0 transition-colors ${
+                  fieldErrors.email ? "border-red-500 focus:border-red-500" : "border-slate-200 dark:border-slate-700 focus:border-primary"
+                }`}
               />
+              <RequiredMessage message={fieldErrors.email} />
             </div>
           </motion.div>
         )}
@@ -316,16 +377,21 @@ export function ApplicationForm() {
           <motion.div key="step5" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
             <h2 className="text-3xl font-bold">4. What is your TikTok username?</h2>
             <p className="text-slate-600 dark:text-slate-400">Nice to meet you, {formData.firstName || "there"}</p>
-            <div className="relative">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl text-slate-400">@</span>
-              <input 
-                type="text" 
-                placeholder="dinonetworkus" 
-                value={formData.tiktokUsername}
-                onChange={e => updateForm({ tiktokUsername: e.target.value.replace('@', '') })}
-                className="w-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-xl pl-12 pr-6 py-4 text-2xl focus:border-primary focus:ring-0 transition-colors"
-                autoFocus
-              />
+            <div className="space-y-2">
+              <div className="relative">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl text-slate-400 pointer-events-none">@</span>
+                <input 
+                  type="text" 
+                  placeholder="dinonetworkus" 
+                  value={formData.tiktokUsername}
+                  onChange={e => updateForm({ tiktokUsername: e.target.value.replace('@', '') })}
+                  className={`w-full bg-white dark:bg-slate-800 border-2 rounded-xl pl-12 pr-6 py-4 text-2xl focus:ring-0 transition-colors ${
+                    fieldErrors.tiktokUsername ? "border-red-500 focus:border-red-500" : "border-slate-200 dark:border-slate-700 focus:border-primary"
+                  }`}
+                  autoFocus
+                />
+              </div>
+              <RequiredMessage message={fieldErrors.tiktokUsername} />
             </div>
           </motion.div>
         )}
@@ -338,9 +404,12 @@ export function ApplicationForm() {
                 <button
                   key={option}
                   onClick={() => { updateForm({ onlyTiktokAccount: option }); }}
+                  type="button"
                   className={`w-full text-left px-6 py-4 rounded-xl border-2 transition-all text-xl font-medium ${
                     formData.onlyTiktokAccount === option 
                     ? "border-primary bg-primary/10 text-primary" 
+                    : fieldErrors.onlyTiktokAccount 
+                    ? "border-red-500 dark:border-red-500 hover:border-red-500" 
                     : "border-slate-200 dark:border-slate-700 hover:border-primary/50"
                   }`}
                 >
@@ -348,6 +417,7 @@ export function ApplicationForm() {
                 </button>
               ))}
             </div>
+            <RequiredMessage message={fieldErrors.onlyTiktokAccount} />
           </motion.div>
         )}
 
@@ -359,10 +429,13 @@ export function ApplicationForm() {
               {["Daily", "Weekly", "Monthly", "I do not go LIVE at all"].map(option => (
                 <button
                   key={option}
+                  type="button"
                   onClick={() => { updateForm({ streamingFrequency: option }); }}
                   className={`w-full text-left px-6 py-4 rounded-xl border-2 transition-all text-xl font-medium ${
                     formData.streamingFrequency === option 
                     ? "border-primary bg-primary/10 text-primary" 
+                    : fieldErrors.streamingFrequency 
+                    ? "border-red-500 dark:border-red-500 hover:border-red-500" 
                     : "border-slate-200 dark:border-slate-700 hover:border-primary/50"
                   }`}
                 >
@@ -370,6 +443,7 @@ export function ApplicationForm() {
                 </button>
               ))}
             </div>
+            <RequiredMessage message={fieldErrors.streamingFrequency} />
           </motion.div>
         )}
 
@@ -377,13 +451,16 @@ export function ApplicationForm() {
           <motion.div key="step8" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
             <h2 className="text-3xl font-bold">7. What niche do you target with your content?</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {["Gaming", "Battler", "Musician", "Dancer", "Fitness"].map(option => (
+              {["Gaming", "Battler", "Musician", "Dancer", "Fitness", "Other"].map(option => (
                 <button
                   key={option}
+                  type="button"
                   onClick={() => { updateForm({ contentNiche: option }); }}
                   className={`w-full text-left px-6 py-4 rounded-xl border-2 transition-all text-xl font-medium ${
                     formData.contentNiche === option 
                     ? "border-primary bg-primary/10 text-primary" 
+                    : fieldErrors.contentNiche 
+                    ? "border-red-500 dark:border-red-500 hover:border-red-500" 
                     : "border-slate-200 dark:border-slate-700 hover:border-primary/50"
                   }`}
                 >
@@ -391,6 +468,7 @@ export function ApplicationForm() {
                 </button>
               ))}
             </div>
+            <RequiredMessage message={fieldErrors.contentNiche} />
           </motion.div>
         )}
 
@@ -398,20 +476,26 @@ export function ApplicationForm() {
           <motion.div key="step9" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
             <h2 className="text-3xl font-bold">8. Discord Username</h2>
             <p className="text-slate-600 dark:text-slate-400">Enter your Discord username (example: username#1234)</p>
-            <input 
-              type="text" 
-              placeholder="username" 
-              value={formData.discordUsername}
-              onChange={e => updateForm({ discordUsername: e.target.value })}
-              className="w-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-xl px-6 py-4 text-2xl focus:border-primary focus:ring-0 transition-colors"
-              autoFocus
-            />
+            <div className="space-y-2">
+              <input 
+                type="text" 
+                placeholder="username" 
+                value={formData.discordUsername}
+                onChange={e => updateForm({ discordUsername: e.target.value })}
+                className={`w-full bg-white dark:bg-slate-800 border-2 rounded-xl px-6 py-4 text-2xl focus:ring-0 transition-colors ${
+                  fieldErrors.discordUsername ? "border-red-500 focus:border-red-500" : "border-slate-200 dark:border-slate-700 focus:border-primary"
+                }`}
+                autoFocus
+              />
+              <RequiredMessage message={fieldErrors.discordUsername} />
+            </div>
             
-            <div className="pt-4 flex justify-center">
+            <div className="pt-4 flex flex-col items-center gap-2">
               <Turnstile 
                 siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"} // Use a fallback for dev
-                onSuccess={(token) => setTurnstileToken(token)}
+                onSuccess={(token) => { setTurnstileToken(token); setFieldErrors(prev => ({ ...prev, turnstile: "" })); }}
               />
+              <RequiredMessage message={fieldErrors.turnstile} />
             </div>
           </motion.div>
         )}

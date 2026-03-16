@@ -149,3 +149,159 @@ body {
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
+
+/* Phone mockup wrapper – fit in one viewport */
+.phone-mockup-wrapper {
+  max-height: calc(100vh - 6rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Phone mockup – black case, screen shows content (e.g. GIF) */
+.phone-graphic {
+  position: relative;
+  width: 330px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  transform-origin: center center;
+}
+
+/* Scale phone down on shorter viewports so it fits in one screen */
+@media (max-height: 900px) {
+  .phone-mockup-wrapper .phone-graphic {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-height: 800px) {
+  .phone-mockup-wrapper .phone-graphic {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-height: 700px) {
+  .phone-mockup-wrapper .phone-graphic {
+    transform: scale(0.7);
+  }
+}
+
+@media (max-height: 600px) {
+  .phone-mockup-wrapper .phone-graphic {
+    transform: scale(0.6);
+  }
+}
+
+.phone-case {
+  border-radius: 50px;
+  width: 330px;
+  padding: 10px;
+}
+
+.phone-case-black {
+  background: #000;
+  box-shadow:
+    inset 3px 3px 8px #1a1a1a,
+    inset 0 0 3px #000,
+    inset -3px -3px 8px 0 #0a0a0a,
+    10px 10px 15px #333;
+}
+
+.phone-case-black::before {
+  content: "";
+  position: absolute;
+  background: #000;
+  width: 5px;
+  height: 30px;
+  left: -5px;
+  top: 140px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  box-shadow: inset 4px 0 2px #1a1a1a;
+}
+
+.phone-case-black::after {
+  content: "";
+  position: absolute;
+  background: #000;
+  width: 5px;
+  height: 70px;
+  left: 330px;
+  top: 150px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: inset 1px 0 4px #000, inset -2px 3px 5px #1a1a1a, 10px 10px 15px #333;
+}
+
+.phone-container-outer {
+  position: relative;
+  font-family: helvetica, sans-serif;
+  font-size: 0.8rem;
+  border: 1px solid #333;
+  border-radius: 40px;
+  box-shadow:
+    inset 1px 1px 10px #1a1a1a,
+    inset 1px 1px 3px #333,
+    0 0 6px #000;
+  background-color: #000;
+}
+
+.phone-container-inner {
+  position: relative;
+  background: #fff;
+  margin: 13px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.phone-container-outer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 650px;
+  background: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0) 25%
+  );
+  z-index: 5;
+  border-radius: 40px;
+  pointer-events: none;
+}
+
+.phone-container-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  background-color: #000;
+  width: 110px;
+  height: 17px;
+  left: calc(50% - 55px);
+  border-radius: 0 0 20px 20px;
+  z-index: 2;
+}
+
+.phone-screen-content {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 19.2;
+  max-height: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  overflow: hidden;
+}
+
+.phone-screen-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}

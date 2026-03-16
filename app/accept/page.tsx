@@ -1,7 +1,7 @@
 import { FooterPrivilege } from "@/components/layout/FooterPrivilege";
 import { Header } from "@/components/layout/Header";
+import { PhoneMockup } from "@/components/PhoneMockup";
 import { AcceptStepsStack } from "@/components/sections/AcceptStepsStack";
-import Image from "next/image";
 
 export default function AcceptPage() {
   const backgroundStyle = {
@@ -77,14 +77,11 @@ export default function AcceptPage() {
             </div>
 
             <div className="min-w-0 lg:col-span-5 lg:sticky lg:top-24">
-              <div className="rounded-3xl border border-slate-200/80 dark:border-slate-700 bg-white/65 dark:bg-slate-900/45 p-3 sm:p-4 shadow-lg">
-                <Image
+              <div className="phone-mockup-wrapper rounded-3xl bg-white/65 dark:bg-slate-900/45 px-3 sm:px-4 py-1.5 sm:py-2 shadow-lg">
+                <PhoneMockup
                   src="/HOW TO ACCEPT INVITATION CODE.gif"
                   alt="How to accept TikTok agency invitation tutorial"
-                  width={600}
-                  height={1000}
-                  unoptimized
-                  className="mx-auto h-[50vh] sm:h-[64vh] lg:h-[calc(100vh-11rem)] w-auto max-w-full rounded-2xl object-contain"
+                  imgClassName="rounded-2xl"
                 />
               </div>
               <p className="mt-3 text-center text-xs sm:text-sm text-slate-500 dark:text-slate-400">
