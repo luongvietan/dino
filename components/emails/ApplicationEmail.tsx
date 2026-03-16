@@ -23,6 +23,7 @@ interface ApplicationEmailProps {
   onlyTiktokAccount: string;
   streamingFrequency: string;
   contentNiche: string;
+  contentNicheOther?: string;
   discordUsername: string;
 }
 
@@ -61,7 +62,12 @@ export const ApplicationEmail = (props: ApplicationEmailProps) => {
             <Text style={value}>{props.streamingFrequency}</Text>
             
             <Text style={label}>7. Content Niche:</Text>
-            <Text style={value}>{props.contentNiche}</Text>
+            <Text style={value}>
+              {props.contentNiche}
+              {props.contentNiche === "Other" && props.contentNicheOther && (
+                <> – {props.contentNicheOther}</>
+              )}
+            </Text>
             
             <Text style={label}>8. Discord Username:</Text>
             <Text style={value}>{props.discordUsername}</Text>

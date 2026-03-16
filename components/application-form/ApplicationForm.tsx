@@ -16,6 +16,7 @@ type FormData = {
   onlyTiktokAccount: string;
   streamingFrequency: string;
   contentNiche: string;
+  contentNicheOther: string;
   discordUsername: string;
 };
 
@@ -31,6 +32,7 @@ const initialFormData: FormData = {
   onlyTiktokAccount: "",
   streamingFrequency: "",
   contentNiche: "",
+  contentNicheOther: "",
   discordUsername: "",
 };
 
@@ -125,6 +127,11 @@ export function ApplicationForm() {
       if (!formData.contentNiche) {
         setFieldErrors({ contentNiche: "Please fill this in" });
         setError("Please select an option.");
+        return;
+      }
+      if (formData.contentNiche === "Other" && !formData.contentNicheOther?.trim()) {
+        setFieldErrors({ contentNicheOther: "Please fill this in" });
+        setError("Please describe your niche.");
         return;
       }
     }
@@ -468,6 +475,21 @@ export function ApplicationForm() {
                 </button>
               ))}
             </div>
+            {formData.contentNiche === "Other" && (
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-slate-500">Please specify your niche</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Cooking, Art, Tech..."
+                  value={formData.contentNicheOther}
+                  onChange={e => updateForm({ contentNicheOther: e.target.value })}
+                  className={`w-full bg-white dark:bg-slate-800 border-2 rounded-xl px-4 py-3 focus:ring-0 transition-colors ${
+                    fieldErrors.contentNicheOther ? "border-red-500 focus:border-red-500" : "border-slate-200 dark:border-slate-700 focus:border-primary"
+                  }`}
+                />
+                <RequiredMessage message={fieldErrors.contentNicheOther} />
+              </div>
+            )}
             <RequiredMessage message={fieldErrors.contentNiche} />
           </motion.div>
         )}
