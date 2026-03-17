@@ -4,11 +4,11 @@ import { ApplicationForm } from "@/components/application-form/ApplicationForm";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 
 const VALID_REGIONS = ["usa-canada", "philippines"] as const;
 
-export default function ApplyPage() {
+function ApplyPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const region = searchParams.get("region");
@@ -58,5 +58,23 @@ export default function ApplyPage() {
         <ApplicationForm region={region as "usa-canada" | "philippines"} />
       </div>
     </main>
+  );
+}
+
+function ApplyPageFallback() {
+  return (
+    <main className="min-h-screen bg-background-light dark:bg-background-dark flex items-center justify-center">
+      <div className="text-center">
+        <p className="text-slate-500 dark:text-slate-400">Loading...</p>
+      </div>
+    </main>
+  );
+}
+
+export default function ApplyPage() {
+  return (
+    <Suspense fallback={<ApplyPageFallback />}>
+      <ApplyPageContent />
+    </Suspense>
   );
 }

@@ -5,13 +5,14 @@ import Image from "next/image";
 import { Header } from "@/components/layout/Header";
 import { FooterPrivilege } from "@/components/layout/FooterPrivilege";
 
+// Ảnh con người theo từng vùng (Unsplash)
 const REGIONS = [
   {
     id: "usa-canada",
     title: "USA & CANADA CREATORS",
     href: "/apply?region=usa-canada",
     comingSoon: false,
-    image: "/hero.webp",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop",
     alt: "USA & Canada creators",
   },
   {
@@ -19,7 +20,7 @@ const REGIONS = [
     title: "AUSTRALIA & NEW ZEALAND CREATORS",
     href: null,
     comingSoon: true,
-    image: "/hero.webp",
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80&auto=format&fit=crop",
     alt: "Australia & New Zealand creators",
   },
   {
@@ -27,7 +28,7 @@ const REGIONS = [
     title: "PHILIPPINES CREATORS",
     href: "/apply?region=philippines",
     comingSoon: false,
-    image: "/hero.webp",
+    image: "https://images.unsplash.com/photo-1763896081109-ed6bf56ae955?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     alt: "Philippines creators",
   },
 ] as const;
