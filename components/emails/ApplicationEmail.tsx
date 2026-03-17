@@ -14,6 +14,7 @@ import * as React from "react";
 interface ApplicationEmailProps {
   invitationCode: string;
   isUsOrCanada: string;
+  region?: string;
   firstName: string;
   lastName: string;
   dobMonth: string;
@@ -42,8 +43,8 @@ export const ApplicationEmail = (props: ApplicationEmailProps) => {
             <Text style={label}>1. Invitation Code:</Text>
             <Text style={value}>{props.invitationCode}</Text>
             
-            <Text style={label}>2. US/Canada Location:</Text>
-            <Text style={value}>{props.isUsOrCanada}</Text>
+            <Text style={label}>2. Region:</Text>
+            <Text style={value}>{props.isUsOrCanada || props.region || "—"}</Text>
             
             <Text style={label}>3. Basic Information:</Text>
             <Text style={value}>

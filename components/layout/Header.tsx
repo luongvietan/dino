@@ -54,7 +54,7 @@ export function Header() {
                     exit={{ opacity: 0, y: 10 }}
                     className="absolute top-full left-0 mt-2 w-52 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl overflow-hidden py-2"
                   >
-                    <Link href="/apply" className="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">Getting Started</Link>
+                    <Link href="/apply" className="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">Onboarding</Link>
                     <Link href="/invite" className="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">Invitation Code</Link>
                     <Link href="/accept" className="block px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">Accept Invitation</Link>
                   </motion.div>
@@ -77,7 +77,7 @@ export function Header() {
           </nav>
           <div className="flex items-center gap-2">
             <Link 
-              href="/apply" 
+              href="/join" 
               className="hidden sm:inline-flex bg-primary hover:bg-primary/90 text-background-dark px-5 py-2.5 rounded-full font-bold text-sm transition-all shadow-lg shadow-primary/20"
             >
               Join Now
@@ -108,7 +108,7 @@ export function Header() {
             >
               <div className="flex flex-col gap-1">
                 <Link onClick={() => setIsMobileMenuOpen(false)} className="px-3 py-2.5 rounded-lg text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="/">Home</Link>
-                <Link onClick={() => setIsMobileMenuOpen(false)} className="px-3 py-2.5 rounded-lg text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="/apply">Getting Started</Link>
+                <Link onClick={() => setIsMobileMenuOpen(false)} className="px-3 py-2.5 rounded-lg text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="/apply">Onboarding</Link>
                 <Link onClick={() => setIsMobileMenuOpen(false)} className="px-3 py-2.5 rounded-lg text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="/invite">Invitation Code</Link>
                 <Link onClick={() => setIsMobileMenuOpen(false)} className="px-3 py-2.5 rounded-lg text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="/accept">Accept Invitation</Link>
                 <Link
@@ -128,7 +128,7 @@ export function Header() {
               </div>
               <Link
                 onClick={() => setIsMobileMenuOpen(false)}
-                href="/apply"
+                href="/join"
                 className="mt-3 inline-flex w-full items-center justify-center bg-primary hover:bg-primary/90 text-background-dark px-5 py-3 rounded-full font-bold text-sm transition-all shadow-lg shadow-primary/20"
               >
                 Join Now

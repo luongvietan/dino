@@ -4,7 +4,10 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Turnstile } from "@marsidev/react-turnstile";
 
+export type ApplyRegion = "usa-canada" | "philippines";
+
 type FormData = {
+  region: string;
   invitationCode: string;
   isUsOrCanada: string;
   firstName: string;
@@ -21,6 +24,7 @@ type FormData = {
 };
 
 const initialFormData: FormData = {
+  region: "",
   invitationCode: "",
   isUsOrCanada: "",
   firstName: "",
@@ -36,6 +40,11 @@ const initialFormData: FormData = {
   discordUsername: "",
 };
 
+const REGION_LABELS: Record<ApplyRegion, string> = {
+  "usa-canada": "USA & Canada",
+  philippines: "Philippines",
+};
+
 /** Inline "Required" message shown under a field when validation fails */
 function RequiredMessage({ message }: { message?: string }) {
   if (!message) return null;
@@ -47,9 +56,16 @@ function RequiredMessage({ message }: { message?: string }) {
   );
 }
 
-export function ApplicationForm() {
-  const [step, setStep] = useState(0); // 0 = Landing, 1 = Getting Started, 2-9 = Questions, 10 = Rejection, 11 = Success
-  const [formData, setFormData] = useState<FormData>(initialFormData);
+export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion } = {}) {
+  const [step, setStep] = useState(0); // 0 = Landing, 1 = Onboarding, 2-9 = Questions, 10 = Rejection, 11 = Success
+  const [formData, setFormData] = useState<FormData>(() => ({
+    ...initialFormData,
+    ...(regionProp && {
+      region: REGION_LABELS[regionProp],
+      isUsOrCanada: REGION_LABELS[regionProp],
+    }),
+  }));
+  const hasRegion = Boolean(regionProp);
   const [error, setError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof FormData | "turnstile", string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -74,8 +90,13 @@ export function ApplicationForm() {
         setError("Invitation code must be exactly 7 characters long.");
         return;
       }
+      if (hasRegion) {
+        setError("");
+        setStep(4);
+        return;
+      }
     }
-    if (step === 3) {
+    if (step === 3 && !hasRegion) {
       if (formData.isUsOrCanada === "No") {
         setStep(10); // Rejection
         return;
@@ -156,7 +177,11 @@ export function ApplicationForm() {
     if (step > 0 && step < 10) {
       setError("");
       setFieldErrors({});
-      setStep(prev => prev - 1);
+      if (step === 4 && hasRegion) {
+        setStep(2);
+      } else {
+        setStep(prev => prev - 1);
+      }
     }
   };
 
@@ -222,7 +247,7 @@ export function ApplicationForm() {
             className="w-full max-w-3xl space-y-5 md:space-y-6 rounded-3xl border border-violet-400/20 bg-gradient-to-b from-violet-500/10 via-fuchsia-500/5 to-transparent p-5 md:p-7 text-center"
           >
             <p className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-violet-300">
-              Getting Started
+              Onboarding
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">COMPLETELY FREE</h2>
             <p className="text-base md:text-lg text-slate-200">Zero upfront fees. No hidden costs.</p>
@@ -278,10 +303,25 @@ export function ApplicationForm() {
               autoFocus
             />
             <RequiredMessage message={fieldErrors.invitationCode} />
+
+            <div className="flex flex-col items-center gap-3 pt-2">
+              <span className="text-slate-500 dark:text-slate-400 text-sm font-medium">or</span>
+              <p className="text-slate-600 dark:text-slate-400 text-sm text-center">
+                Prefer to apply directly through TikTok?{" "}
+                <a
+                  href="https://www.tiktok.com/t/ZMB3WNJJ9/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-primary hover:text-primary/80 underline underline-offset-2 transition-colors"
+                >
+                  Click Here
+                </a>
+              </p>
+            </div>
           </motion.div>
         )}
 
-        {step === 3 && (
+        {step === 3 && !hasRegion && (
           <motion.div key="step3" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
             <h2 className="text-3xl font-bold">2. Are you located in the United States or Canada?</h2>
             <div className="space-y-4">
@@ -571,7 +611,7 @@ export function ApplicationForm() {
                 <span className="material-symbols-outlined">arrow_back</span>
               </button>
               <div className="text-sm font-medium text-slate-500">
-                Question {step - 1} of 8
+                Question {hasRegion ? (step === 2 ? 1 : step - 2) : step - 1} of {hasRegion ? 7 : 8}
               </div>
             </div>
             

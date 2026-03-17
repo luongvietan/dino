@@ -103,7 +103,7 @@ This is a service-based recruitment website (not e-commerce).
 # 4. TAB 2 — CREATOR PATHWAY
 
 - Must include **dropdown menu:**
-  - Getting Started
+  - Onboarding
   - Invitation Code
   - Accept Invitation
 - **Primary purpose:** Guide user into Creator Application flow.
