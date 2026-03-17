@@ -12,7 +12,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Dino Network",
-  description: "Official TikTok LIVE Partner Agency for creators in USA and Canada. Grow your audience and monetize your content with expert support.",
+  description: "Official TikTok LIVE Partner Agency for creators in USA, Canada and Philippines. Grow your audience and monetize your content with expert support.",
   icons: {
     icon: [{ url: "/logo.jpeg", type: "image/jpeg" }],
     shortcut: ["/logo.jpeg"],

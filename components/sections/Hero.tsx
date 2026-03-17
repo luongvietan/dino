@@ -56,10 +56,10 @@ export function Hero() {
                 Join the Dino Family
               </Link>
               <Link
-                href="#perks"
+                href="#why-join"
                 className="inline-flex w-full sm:w-auto items-center justify-center border border-white/40 hover:border-white/70 hover:bg-white/10 text-white px-6 sm:px-8 py-3 rounded-full font-semibold text-sm sm:text-base transition-colors sm:min-w-[170px]"
               >
-                View Perks
+                Why Join
               </Link>
             </div>
           </motion.div>

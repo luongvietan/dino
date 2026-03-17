@@ -35,7 +35,7 @@ const items = [
   },
   {
     icon: Gift,
-    title: 'Exclusive Perks & TikTok Events',
+    title: 'Why Join: TikTok Events & Bonuses',
     desc: 'Campaigns, bonus opportunities, and event invites available to eligible Dino creators.',
   },
   {
@@ -53,7 +53,7 @@ const items = [
 export const FeatureFlow: React.FC = () => {
   return (
     <section
-      id="perks"
+      id="why-join"
       className="py-16 md:py-24 px-4 sm:px-6 bg-slate-50 dark:bg-slate-900/30 relative"
     >
       <div className="pointer-events-none absolute -top-28 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
@@ -63,7 +63,7 @@ export const FeatureFlow: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between md:items-end mb-10 md:mb-16 gap-6 md:gap-8">
             <div className="max-w-xl">
               <span className="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest rounded mb-6 inline-block">
-                Agency Perks
+                Why Join
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-4 md:mb-6 tracking-tight">
                 What Dino Network Provides

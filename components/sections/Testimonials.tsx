@@ -119,13 +119,13 @@ export function Testimonials() {
                           >
                             {item.username}
                           </Link>
-                          <p className="text-xs text-primary font-bold">
+                          <p className="text-sm text-primary font-bold">
                             {item.followers}
                           </p>
                         </div>
                       </div>
                     </div>
-                    <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 italic">
+                    <p className="text-base sm:text-lg text-slate-700 dark:text-slate-200 italic leading-relaxed">
                       &quot;{item.quote}&quot;
                     </p>
                   </motion.div>

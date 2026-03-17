@@ -10,15 +10,12 @@ export function Header() {
   const pathname = usePathname();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [mobileSections, setMobileSections] = useState({
-    overview: false,
-    process: false,
-    resources: false,
-  });
+  const [isMobileCreatorPathwayOpen, setIsMobileCreatorPathwayOpen] = useState(false);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setIsDropdownOpen(false);
+    setIsMobileCreatorPathwayOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -31,13 +28,6 @@ export function Header() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const toggleMobileSection = (section: keyof typeof mobileSections) => {
-    setMobileSections((prev) => ({
-      ...prev,
-      [section]: !prev[section],
-    }));
-  };
 
   return (
     <header className="sticky top-2 sm:top-4 z-50 w-full px-3 sm:px-4">
@@ -94,9 +84,9 @@ export function Header() {
             
             <Link
               className="text-sm font-semibold hover:text-primary transition-colors"
-              href={{ pathname: "/", hash: "perks" }}
+              href={{ pathname: "/", hash: "why-join" }}
             >
-              Perks
+              Why Join
             </Link>
             <Link
               className="text-sm font-semibold hover:text-primary transition-colors"
@@ -136,72 +126,46 @@ export function Header() {
               exit={{ opacity: 0, y: -8 }}
               className="lg:hidden mt-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md p-4 shadow-sm"
             >
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-1">
+                <Link
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block rounded-xl px-3 py-2.5 text-base font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100/70 dark:hover:bg-slate-800/70 transition-colors"
+                  href="/"
+                >
+                  Home
+                </Link>
                 <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40">
                   <button
                     type="button"
-                    onClick={() => toggleMobileSection("overview")}
-                    className="w-full flex items-center justify-between px-3 py-2.5 text-left"
+                    onClick={() => setIsMobileCreatorPathwayOpen((prev) => !prev)}
+                    className="w-full flex items-center justify-between px-3 py-2.5 text-left text-base font-semibold text-slate-700 dark:text-slate-200"
                   >
-                    <span className="text-lg font-bold">Overview</span>
+                    <span>Creator Pathway</span>
                     <span className="material-symbols-outlined text-base">
-                      {mobileSections.overview ? "expand_less" : "expand_more"}
+                      {isMobileCreatorPathwayOpen ? "expand_less" : "expand_more"}
                     </span>
                   </button>
-                  {mobileSections.overview && (
+                  {isMobileCreatorPathwayOpen && (
                     <div className="pb-2">
-                      <Link onClick={() => setIsMobileMenuOpen(false)} className="block px-7 py-2 text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="/">Home</Link>
-                    </div>
-                  )}
-                </div>
-
-                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40">
-                  <button
-                    type="button"
-                    onClick={() => toggleMobileSection("process")}
-                    className="w-full flex items-center justify-between px-3 py-2.5 text-left"
-                  >
-                    <span className="text-lg font-bold">The Process</span>
-                    <span className="material-symbols-outlined text-base">
-                      {mobileSections.process ? "expand_less" : "expand_more"}
-                    </span>
-                  </button>
-                  {mobileSections.process && (
-                    <div className="pb-3">
                       <Link onClick={() => setIsMobileMenuOpen(false)} className="block px-7 py-2 text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="/invite">Invitation Code</Link>
                       <Link onClick={() => setIsMobileMenuOpen(false)} className="block px-7 py-2 text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="/accept">Accept Invitation</Link>
-                      <div className="px-5 pt-2">
-                        <Link
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          href="/join"
-                          className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-slate-950 hover:bg-primary/90 transition-colors"
-                        >
-                          Join Now
-                          <span className="material-symbols-outlined text-base">chevron_right</span>
-                        </Link>
-                      </div>
                     </div>
                   )}
                 </div>
-
-                <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40">
-                  <button
-                    type="button"
-                    onClick={() => toggleMobileSection("resources")}
-                    className="w-full flex items-center justify-between px-3 py-2.5 text-left"
-                  >
-                    <span className="text-lg font-bold">Resources</span>
-                    <span className="material-symbols-outlined text-base">
-                      {mobileSections.resources ? "expand_less" : "expand_more"}
-                    </span>
-                  </button>
-                  {mobileSections.resources && (
-                    <div className="pb-2">
-                      <Link onClick={() => setIsMobileMenuOpen(false)} className="block px-7 py-2 text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href={{ pathname: "/", hash: "perks" }}>Perks</Link>
-                      <Link onClick={() => setIsMobileMenuOpen(false)} className="block px-7 py-2 text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href={{ pathname: "/", hash: "testimonials" }}>Testimonials</Link>
-                    </div>
-                  )}
-                </div>
+                <Link
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block rounded-xl px-3 py-2.5 text-base font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100/70 dark:hover:bg-slate-800/70 transition-colors"
+                  href={{ pathname: "/", hash: "why-join" }}
+                >
+                  Why Join
+                </Link>
+                <Link
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block rounded-xl px-3 py-2.5 text-base font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100/70 dark:hover:bg-slate-800/70 transition-colors"
+                  href={{ pathname: "/", hash: "testimonials" }}
+                >
+                  Testimonials
+                </Link>
               </div>
             </motion.nav>
           )}
