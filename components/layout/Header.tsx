@@ -44,7 +44,7 @@ export function Header() {
       <div className="relative max-w-7xl mx-auto">
         <div className="h-14 sm:h-16 flex items-center justify-between rounded-2xl sm:rounded-full border border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 sm:px-6 shadow-sm">
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/logo.jpeg" alt="Dino Network Logo" width={50} height={50} className="object-contain sm:w-14 sm:h-14" />
+            <Image src="/logo.jpeg" alt="Dino Network Logo" width={68} height={68} className="object-contain w-14 h-14 sm:w-18 sm:h-18" />
           </Link>
           <nav className="hidden lg:flex items-center gap-8">
             <Link className="text-sm font-semibold hover:text-primary transition-colors" href="/">Home</Link>
