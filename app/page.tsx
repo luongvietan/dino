@@ -5,6 +5,7 @@ import { VideoSection } from "@/components/sections/VideoSection";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { FeatureFlow } from "@/components/sections/FeatureFlow";
 import { StandOut } from "@/components/sections/StandOut";
+import { BeforeAfter } from "@/components/sections/BeforeAfter";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -19,6 +20,7 @@ export default function Home() {
         <WhyChooseUs />
         <FeatureFlow />
         <StandOut />
+        <BeforeAfter />
         <Testimonials />
         <FAQSection />
         <FinalCTA />
