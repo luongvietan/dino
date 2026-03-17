@@ -6,13 +6,13 @@ const items = [
   {
     title: "Priority Live Issue Support",
     desc: "Get priority support if your live gets banned and your appeals get denied. Since we’re partnered with TikTok, we can open a ticket directly with them to escalate your case.",
-    img: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    img: "/box2.jpg",
     large: true,
   },
   {
     title: "Grow Your Viewership with Proven Strategies",
     desc: "We provide tips, stream optimization, and data-driven insights to help you consistently improve and grow.",
-    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    img: "/box1.jpg",
     large: false,
   },
   {
