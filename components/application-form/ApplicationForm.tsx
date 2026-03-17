@@ -63,7 +63,7 @@ function RequiredMessage({ message }: { message?: string }) {
 }
 
 export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion } = {}) {
-  const [step, setStep] = useState(0); // 0 = Landing, 1 = Onboarding, 2-9 = Questions, 10 = Rejection, 11 = Success
+  const [step, setStep] = useState(0); // 0 = Landing, 1 = Getting Started, 2-9 = Questions, 10 = Rejection, 11 = Success
   const [formData, setFormData] = useState<FormData>(() => ({
     ...initialFormData,
     ...(regionProp && {
@@ -253,7 +253,7 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
             className="w-full max-w-3xl space-y-5 md:space-y-6 rounded-3xl border border-violet-400/20 bg-gradient-to-b from-violet-500/10 via-fuchsia-500/5 to-transparent p-5 md:p-7 text-center"
           >
             <p className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-violet-300">
-              Onboarding
+              Getting Started
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">COMPLETELY FREE</h2>
             <p className="text-base md:text-lg text-slate-200">Zero upfront fees. No hidden costs.</p>

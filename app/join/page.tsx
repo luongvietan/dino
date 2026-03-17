@@ -5,14 +5,13 @@ import Image from "next/image";
 import { Header } from "@/components/layout/Header";
 import { FooterPrivilege } from "@/components/layout/FooterPrivilege";
 
-// Ảnh con người theo từng vùng (Unsplash)
 const REGIONS = [
   {
     id: "usa-canada",
     title: "USA & CANADA CREATORS",
-    href: "/apply?region=usa-canada",
+    href: "https://www.tiktok.com/t/ZMB3WNJJ9/",
     comingSoon: false,
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop",
+    image: "/us-can.jpg",
     alt: "USA & Canada creators",
   },
   {
@@ -20,15 +19,15 @@ const REGIONS = [
     title: "AUSTRALIA & NEW ZEALAND CREATORS",
     href: null,
     comingSoon: true,
-    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80&auto=format&fit=crop",
+    image: "/aus.jpg",
     alt: "Australia & New Zealand creators",
   },
   {
     id: "philippines",
     title: "PHILIPPINES CREATORS",
-    href: "/apply?region=philippines",
+    href: "https://www.tiktok.com/t/ZSux6Wsut/",
     comingSoon: false,
-    image: "https://images.unsplash.com/photo-1763896081109-ed6bf56ae955?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/phi.jpg",
     alt: "Philippines creators",
   },
 ] as const;
@@ -52,7 +51,7 @@ export default function JoinPage() {
         <section className="relative overflow-hidden px-4 sm:px-6 pt-10 pb-12 md:pt-14 md:pb-16">
           <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight text-center mb-12 sm:mb-16">
-              APPLY IN-APP
+              Choose Your Region
             </h1>
 
             <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">

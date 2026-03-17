@@ -7,27 +7,27 @@ const faqs = [
   {
     question: "Who can apply to join Dino Network?",
     answer:
-      "Dino Network is built for TikTok LIVE creators who want stronger support, better guidance, and a real community behind their growth. If you are actively streaming or ready to start taking LIVE seriously, you are welcome to apply.",
+      "Anyone who actively livestreams is welcome to apply. We accept creators at all levels, whether you are just starting out or already established. Our goal is to help you grow by providing guidance, proven tips, and access to additional opportunities that are not typically available to independent creators. Dino Network is built to support you throughout your journey while continuing to grow a strong, supportive community of creators.",
+  },
+  {
+    question: "How much does it cost to join?",
+    answer:
+      "Joining Dino Network is 100% free-there are no upfront costs or fees. We are partnered with TikTok. TikTok takes a percentage from the creator's earnings, and from that share, TikTok pays us a small percentage to help you grow and assist with any live-related issues. You never pay us directly-our focus is to support you and help you succeed.",
+  },
+  {
+    question: "Am I locked into any sort of contracts?",
+    answer:
+      "There are no long-term contracts or lock-in commitments. Creators are free to leave at any time. Our focus is on delivering real results by providing support, growth opportunities, and valuable resources, so you choose to stay because of the value you receive, not because you are obligated to.",
   },
   {
     question: "How long does the application process take?",
     answer:
-      "The application itself takes less than 2 minutes to complete. Once submitted, our team typically reviews it and responds within 48 hours.",
+      "The application process is quick and straightforward. Most applications are reviewed within a short timeframe, and once approved, onboarding can begin immediately. Once you submit your application, you will be asked to join our Discord server and open a ticket so we can assist you promptly. Our goal is to get you into the Dino Network family as soon as possible, so you are supported early and covered in case you run into any live issues.",
   },
   {
-    question: "What kind of support do members receive?",
+    question: "What kind of support do creators receive?",
     answer:
-      "Members get access to direct guidance, creator resources, community support, and strategic help around growing on TikTok LIVE. We focus on helping creators improve consistently, not just getting them in the door.",
-  },
-  {
-    question: "Do I need to be a large creator to join?",
-    answer:
-      "No. We work with creators at different stages of growth. What matters most is that you are serious about improving your LIVE presence and willing to build with the community.",
-  },
-  {
-    question: "Is there any cost to apply?",
-    answer:
-      "No. Applying is free, and submitting your application simply lets our team review whether Dino Network is a good fit for you.",
+      "We provide real, hands-on support to help you grow on TikTok LIVE. This includes tips to improve your streams, increase engagement, and get more exposure. If you ever run into live issues-like suspensions or technical problems-we are here to help and can step in when needed. You will also get access to bonus opportunities and our Discord community, where you can connect with other creators and stay locked in. Overall, we are here to support you, guide you, and help you grow every step of the way.",
   },
 ];
 

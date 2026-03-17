@@ -98,7 +98,7 @@ ________________
 
 TAB 2: CREATOR PATHWAY
 This tab must include a dropdown menu with:
-* Onboarding
+* Getting Started
 * Invitation Code
 * Accept Invitation
 The primary goal of this tab is to guide users into the Creator Application flow.
