@@ -4,21 +4,21 @@ import { motion } from "framer-motion";
 
 const items = [
   {
-    title: "Unparalleled Network Reach",
-    desc: "Leverage our extensive relationships with TikTok corporate to put your content in front of the right decision makers.",
+    title: "Priority Live Issue Support",
+    desc: "Get priority support if your live gets banned and your appeals get denied. Since we’re partnered with TikTok, we can open a ticket directly with them to escalate your case.",
     img: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     large: true,
   },
   {
-    title: "Creator-First Mentality",
-    desc: "We prioritize your creative vision. We provide the structure so you can focus on being your authentic self.",
+    title: "Grow Your Viewership with Proven Strategies",
+    desc: "We provide tips, stream optimization, and data-driven insights to help you consistently improve and grow.",
     img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     large: false,
   },
   {
-    title: "Proven Track Record",
-    desc: "Our creators consistently hit the TikTok Top Rankings. We have the data and the results to back up our methodologies.",
-    img: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    title: "Exclusive Opportunities & Rewards",
+    desc: "Access to exclusive TikTok events, bonuses, and growth opportunities available only within the network.",
+    img: "/box3.jpg",
     large: false,
   },
 ];

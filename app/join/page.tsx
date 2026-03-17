@@ -9,7 +9,7 @@ const REGIONS = [
   {
     id: "usa-canada",
     title: "USA & CANADA CREATORS",
-    href: "https://www.tiktok.com/t/ZMB3WNJJ9/",
+    href: "/apply?region=usa-canada",
     comingSoon: false,
     image: "/us-can.jpg",
     alt: "USA & Canada creators",
@@ -25,7 +25,7 @@ const REGIONS = [
   {
     id: "philippines",
     title: "PHILIPPINES CREATORS",
-    href: "https://www.tiktok.com/t/ZSux6Wsut/",
+    href: "/apply?region=philippines",
     comingSoon: false,
     image: "/phi.jpg",
     alt: "Philippines creators",
