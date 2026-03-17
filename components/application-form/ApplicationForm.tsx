@@ -45,6 +45,12 @@ const REGION_LABELS: Record<ApplyRegion, string> = {
   philippines: "Philippines",
 };
 
+/** TikTok direct sign-up link per region */
+const TIKTOK_APPLY_LINK: Record<ApplyRegion, string> = {
+  "usa-canada": "https://www.tiktok.com/t/ZMB3WNJJ9/",
+  philippines: "https://www.tiktok.com/t/ZSux6Wsut/",
+};
+
 /** Inline "Required" message shown under a field when validation fails */
 function RequiredMessage({ message }: { message?: string }) {
   if (!message) return null;
@@ -309,7 +315,7 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
               <p className="text-slate-600 dark:text-slate-400 text-sm text-center">
                 Prefer to apply directly through TikTok?{" "}
                 <a
-                  href="https://www.tiktok.com/t/ZMB3WNJJ9/"
+                  href={regionProp ? TIKTOK_APPLY_LINK[regionProp] : TIKTOK_APPLY_LINK["usa-canada"]}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-semibold text-primary hover:text-primary/80 underline underline-offset-2 transition-colors"
