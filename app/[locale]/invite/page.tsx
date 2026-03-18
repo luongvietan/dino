@@ -3,8 +3,47 @@ import { Header } from "@/components/layout/Header";
 import { PhoneMockup } from "@/components/PhoneMockup";
 import { InviteStepsStack } from "@/components/sections/InviteStepsStack";
 import { FaDiscord } from "react-icons/fa";
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/src/i18n/navigation";
+import { locales, type AppLocale } from "@/src/i18n/routing";
+
+const SITE_URL = "https://thedinonetwork.com";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: maybeLocale } = await params;
+  const locale = locales.includes(maybeLocale as AppLocale)
+    ? (maybeLocale as AppLocale)
+    : ("en" as AppLocale);
+
+  const t = await getTranslations({ locale, namespace: "invitePage" });
+  const pathname = `/${locale}/invite`;
+  const title = `${t("titleLine1")} ${t("titleLine2")}`.trim();
+
+  return {
+    title,
+    description: t("subtitle"),
+    alternates: {
+      canonical: pathname,
+      languages: {
+        en: "/en/invite",
+        fil: "/fil/invite",
+        "x-default": "/en/invite",
+      },
+    },
+    openGraph: {
+      title,
+      description: t("subtitle"),
+      url: pathname,
+      images: ["/hero.webp"],
+    },
+    metadataBase: new URL(SITE_URL),
+  };
+}
 
 export default async function InvitePage() {
   const t = await getTranslations("invitePage");

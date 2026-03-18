@@ -3,7 +3,14 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { LenisProvider } from "@/components/providers/LenisProvider";
 import { ScrollToTopOnRouteChange } from "@/components/providers/ScrollToTopOnRouteChange";
-import { locales, type AppLocale } from "@/src/i18n/routing";
+import { defaultLocale, locales, type AppLocale } from "@/src/i18n/routing";
+
+const SITE_URL = "https://thedinonetwork.com";
+
+const OG_LOCALE_MAP: Record<AppLocale, string> = {
+  en: "en_US",
+  fil: "fil_PH",
+};
 
 export async function generateMetadata({
   params,
@@ -15,15 +22,35 @@ export async function generateMetadata({
     ? (maybeLocale as AppLocale)
     : ("en" as AppLocale);
   const t = await getTranslations({ locale, namespace: "meta" });
+  const pathname = `/${locale}`;
 
   return {
     title: t("title"),
     description: t("description"),
-    icons: {
-      icon: [{ url: "/logo.jpeg", type: "image/jpeg" }],
-      shortcut: ["/logo.jpeg"],
-      apple: ["/logo.jpeg"],
+    alternates: {
+      canonical: pathname,
+      languages: {
+        en: "/en",
+        fil: "/fil",
+        "x-default": `/${defaultLocale}`,
+      },
     },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: pathname,
+      siteName: "Dino Network",
+      locale: OG_LOCALE_MAP[locale],
+      type: "website",
+      images: ["/hero.webp"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: ["/hero.webp"],
+    },
+    metadataBase: new URL(SITE_URL),
   };
 }
 

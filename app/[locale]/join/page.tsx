@@ -1,8 +1,47 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { FooterPrivilege } from "@/components/layout/FooterPrivilege";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/src/i18n/navigation";
+import { locales, type AppLocale } from "@/src/i18n/routing";
+
+const SITE_URL = "https://thedinonetwork.com";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: maybeLocale } = await params;
+  const locale = locales.includes(maybeLocale as AppLocale)
+    ? (maybeLocale as AppLocale)
+    : ("en" as AppLocale);
+
+  const tJoin = await getTranslations({ locale, namespace: "joinPage" });
+  const tMeta = await getTranslations({ locale, namespace: "meta" });
+  const pathname = `/${locale}/join`;
+
+  return {
+    title: tJoin("title"),
+    description: tMeta("description"),
+    alternates: {
+      canonical: pathname,
+      languages: {
+        en: "/en/join",
+        fil: "/fil/join",
+        "x-default": "/en/join",
+      },
+    },
+    openGraph: {
+      title: tJoin("title"),
+      description: tMeta("description"),
+      url: pathname,
+      images: ["/hero.webp"],
+    },
+    metadataBase: new URL(SITE_URL),
+  };
+}
 
 const backgroundStyle = {
   backgroundImage:
