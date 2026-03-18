@@ -48,7 +48,7 @@ function ApplyPageContent() {
       style={backgroundStyle}
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(255,255,255,0.07),transparent_30%),radial-gradient(circle_at_80%_40%,rgba(255,255,255,0.05),transparent_24%)]" />
-      <header className="px-4 sm:px-6 py-4 sm:py-6 absolute top-0 w-full z-10 flex justify-between items-center">
+      <header className="px-4 sm:px-6 py-4 sm:py-6 absolute top-0 w-full z-20 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/logo.jpeg" alt={t("logoAlt")} width={32} height={32} className="object-contain" />
           <h2 className="text-base sm:text-lg font-bold">Dino Network</h2>
