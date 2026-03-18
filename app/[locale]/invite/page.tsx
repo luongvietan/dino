@@ -31,7 +31,7 @@ export async function generateMetadata({
       canonical: pathname,
       languages: {
         en: "/en/invite",
-        fil: "/fil/invite",
+        "tl-PH": "/fil/invite",
         "x-default": "/en/invite",
       },
     },

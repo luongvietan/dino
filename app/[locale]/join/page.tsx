@@ -29,7 +29,7 @@ export async function generateMetadata({
       canonical: pathname,
       languages: {
         en: "/en/join",
-        fil: "/fil/join",
+        "tl-PH": "/fil/join",
         "x-default": "/en/join",
       },
     },

@@ -31,7 +31,7 @@ export async function generateMetadata({
       canonical: pathname,
       languages: {
         en: "/en",
-        fil: "/fil",
+        "tl-PH": "/fil",
         "x-default": `/${defaultLocale}`,
       },
     },
