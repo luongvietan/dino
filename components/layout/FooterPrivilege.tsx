@@ -1,7 +1,9 @@
-import Link from "next/link";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/src/i18n/navigation";
 
-export const FooterPrivilege = () => {
+export const FooterPrivilege = async () => {
+  const t = await getTranslations("footer");
   const backgroundStyle = {
     backgroundImage:
       "radial-gradient(circle at 14% 22%, rgba(34,197,94,0.16), transparent 28%), radial-gradient(circle at 86% 18%, rgba(59,130,246,0.14), transparent 30%), radial-gradient(circle at 48% 90%, rgba(236,72,153,0.12), transparent 30%), linear-gradient(180deg, #0b1220 0%, #05070d 55%, #03050b 100%)",
@@ -19,7 +21,7 @@ export const FooterPrivilege = () => {
         <div>
           <div className="mb-4">
             <h3 className="text-white font-bold text-base sm:text-lg mb-3">
-              Find Us on Social Media
+              {t("socialTitle")}
             </h3>
             <div className="flex flex-col gap-3">
               <a
@@ -51,49 +53,47 @@ export const FooterPrivilege = () => {
             </div>
           </div>
           <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-[10px] font-bold uppercase tracking-[0.2em]">
-            Official TikTok LIVE Partner
+            {t("badge")}
           </p>
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-[-0.03em] mt-5 md:mt-6 mb-3 md:mb-4">
-            Dino Network.
+            {t("brand")}
           </h2>
           <div className="mt-6 sm:mt-8 md:mt-10 flex items-center gap-3 sm:gap-4">
             <div className="w-12 h-12 rounded-sm overflow-hidden">
               <Image
                 src="/logo.jpeg"
-                alt="Dino Network logo"
+                alt={t("logoAlt")}
                 width={48}
                 height={48}
                 className="w-full h-full object-cover"
               />
             </div>
             <span className="text-base sm:text-xl md:text-2xl font-semibold tracking-tight text-slate-200">
-              TikTok LIVE Partner
+              {t("partnerLabel")}
             </span>
           </div>
         </div>
 
         <div className="space-y-6 md:space-y-7 md:mt-6">
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-[-0.03em] text-slate-300">
-            Built for <span className="text-primary">LIVE</span> Creators.
+            {t("headline.builtFor")} <span className="text-primary">{t("headline.live")}</span> {t("headline.creators")}
           </h2>
           <p className="max-w-md text-sm sm:text-base text-slate-300 leading-relaxed">
-            Trusted by creators across the USA and Canada to grow faster on
-            TikTok LIVE with expert support, strategic campaigns, and a
-            community that backs you every day.
+            {t("description")}
           </p>
           <Link
             href="/apply"
             className="inline-flex w-full sm:w-auto items-center justify-center bg-[#b9e43a] hover:bg-[#c6f04a] text-black px-6 sm:px-8 py-3 rounded-full font-bold text-sm sm:text-base transition-colors sm:min-w-[245px]"
           >
-            Join the Dino Family
+            {t("cta")}
           </Link>
         </div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto mt-6 sm:mt-8 md:mt-10 pt-3 md:pt-4 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] font-medium text-slate-500 gap-1 md:gap-4">
-        <p className="text-center md:text-left">© 2026 DINO NETWORK</p>
-        <p className="text-center md:text-left">All Rights Reserved</p>
-        <p className="text-center md:text-left">Official TikTok LIVE Partner Agency</p>
+        <p className="text-center md:text-left">{t("copyright")}</p>
+        <p className="text-center md:text-left">{t("rights")}</p>
+        <p className="text-center md:text-left">{t("partnerAgency")}</p>
       </div>
     </footer>
   );

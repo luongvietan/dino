@@ -2,8 +2,10 @@ import { FooterPrivilege } from "@/components/layout/FooterPrivilege";
 import { Header } from "@/components/layout/Header";
 import { PhoneMockup } from "@/components/PhoneMockup";
 import { AcceptStepsStack } from "@/components/sections/AcceptStepsStack";
+import { getTranslations } from "next-intl/server";
 
-export default function AcceptPage() {
+export default async function AcceptPage() {
+  const t = await getTranslations("acceptPage");
   const backgroundStyle = {
     backgroundImage:
       "radial-gradient(circle at 12% 18%, rgba(34,197,94,0.18), transparent 28%), radial-gradient(circle at 82% 12%, rgba(59,130,246,0.16), transparent 32%), radial-gradient(circle at 50% 88%, rgba(236,72,153,0.14), transparent 30%), linear-gradient(135deg, #0b1220 0%, #05070d 50%, #0b1220 100%)",
@@ -23,16 +25,16 @@ export default function AcceptPage() {
           <div className="relative z-10 max-w-6xl mx-auto grid gap-8 lg:gap-12 lg:grid-cols-12 lg:items-start">
             <div className="min-w-0 space-y-6 lg:col-span-7 lg:pr-2">
               <p className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                Accept Invitation
+                {t("badge")}
               </p>
 
               <h1 className="max-w-2xl text-3xl md:text-4xl xl:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.08]">
-                <span className="block">How to Accept Your</span>
-                <span className="block">TikTok Agency Invitation</span>
+                <span className="block">{t("titleLine1")}</span>
+                <span className="block">{t("titleLine2")}</span>
               </h1>
 
               <p className="max-w-2xl text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                Follow these steps to officially join Dino on TikTok LIVE.
+                {t("subtitle")}
               </p>
 
               <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
@@ -40,13 +42,13 @@ export default function AcceptPage() {
                   href="#step-guide"
                   className="rounded-full bg-primary px-6 py-3 text-sm font-bold text-slate-950 hover:bg-primary/90 transition-colors text-center w-full sm:w-auto"
                 >
-                  Get Started
+                  {t("primaryLink")}
                 </a>
                 <a
                   href="#see-how-it-works"
                   className="rounded-full border border-slate-300 dark:border-slate-700 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-primary/50 hover:text-primary transition-colors text-center w-full sm:w-auto"
                 >
-                  Watch Tutorial
+                  {t("secondaryLink")}
                 </a>
               </div>
 
@@ -55,22 +57,22 @@ export default function AcceptPage() {
                   id="see-how-it-works"
                   className="space-y-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/75 dark:bg-slate-900/55 p-5 md:p-6"
                 >
-                  <h2 className="text-xl font-bold text-slate-900 dark:text-white">See How It Works</h2>
+                  <h2 className="text-xl font-bold text-slate-900 dark:text-white">{t("card1Title")}</h2>
                   <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                    Watch this quick tutorial to see exactly how to accept your TikTok agency invitation step by step.
+                    {t("card1Body")}
                   </p>
                 </div>
 
                 <div className="space-y-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/75 dark:bg-slate-900/55 p-5 md:p-6">
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">Live tutorial video</h3>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">{t("card2Title")}</h3>
                   <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                    This video shows the exact process you'll follow to accept your Dino agency invitation on TikTok.
+                    {t("card2Body")}
                   </p>
                   <a
                     href="#step-guide"
                     className="inline-flex text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
                   >
-                    Continue to step-by-step guide
+                    {t("card2Cta")}
                   </a>
                 </div>
               </div>
@@ -80,12 +82,12 @@ export default function AcceptPage() {
               <div className="phone-mockup-wrapper rounded-3xl bg-white/65 dark:bg-slate-900/45 px-3 sm:px-4 py-1.5 sm:py-2 shadow-lg">
                 <PhoneMockup
                   src="/HOW TO ACCEPT INVITATION CODE.gif"
-                  alt="How to accept TikTok agency invitation tutorial"
+                  alt={t("phoneAlt")}
                   imgClassName="rounded-2xl"
                 />
               </div>
               <p className="mt-3 text-center text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-                Tutorial preview from TikTok app.
+                {t("previewCaption")}
               </p>
             </div>
           </div>
@@ -94,13 +96,13 @@ export default function AcceptPage() {
         <section id="step-guide" className="px-4 sm:px-6 pt-8 pb-20 md:pb-24 bg-slate-950">
           <div className="max-w-6xl mx-auto mb-10 md:mb-14 text-center">
             <p className="text-primary font-semibold text-sm uppercase tracking-[0.18em]">
-              Follow these steps in your TikTok app
+              {t("stepsKicker")}
             </p>
             <h2 className="mt-3 max-w-3xl mx-auto text-3xl md:text-5xl font-black tracking-tight text-white">
-              Accept Your Agency Invitation
+              {t("stepsTitle")}
             </h2>
             <p className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-slate-300 leading-relaxed">
-              Just 8 simple steps and you'll be part of Dino in under a minute!
+              {t("stepsSubtitle")}
             </p>
           </div>
 
@@ -109,9 +111,9 @@ export default function AcceptPage() {
           </div>
 
           <div className="max-w-4xl mx-auto mt-4 rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 md:p-8 text-white">
-            <h3 className="text-2xl md:text-3xl font-black tracking-tight">Congratulations!</h3>
+            <h3 className="text-2xl md:text-3xl font-black tracking-tight">{t("congratsTitle")}</h3>
             <p className="mt-3 text-sm md:text-base text-slate-200 leading-relaxed">
-              Once you tap Accept, you'll officially be part of the Dino team and ready to start your TikTok LIVE journey!
+              {t("congratsBody")}
             </p>
           </div>
         </section>
@@ -121,3 +123,4 @@ export default function AcceptPage() {
     </>
   );
 }
+

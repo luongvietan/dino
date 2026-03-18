@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export function VideoSection() {
+  const t = useTranslations("videoSection");
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [volume, setVolume] = useState(80);
@@ -168,8 +170,8 @@ export function VideoSection() {
           transition={{ duration: 0.6 }}
           className="space-y-4"
         >
-          <h4 className="text-primary font-bold uppercase tracking-[0.2em] text-sm">Educational Guide</h4>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">What Is a TikTok LIVE Agency?</h2>
+          <h4 className="text-primary font-bold uppercase tracking-[0.2em] text-sm">{t("kicker")}</h4>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">{t("title")}</h2>
         </motion.div>
         
         <motion.div 
@@ -210,7 +212,7 @@ export function VideoSection() {
                   ? "w-16 h-16 sm:w-20 sm:h-20 bg-black/55 text-white opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 focus-visible:opacity-100"
                   : "w-16 h-16 sm:w-20 sm:h-20 bg-black/55 text-white opacity-100 scale-100"
               }`}
-              aria-label={isPlaying ? "Pause video" : "Play video"}
+              aria-label={isPlaying ? t("a11y.pause") : t("a11y.play")}
             >
               <span
                 className={`material-symbols-outlined fill-current text-3xl sm:text-4xl ${
@@ -237,7 +239,7 @@ export function VideoSection() {
               <button
                 onClick={toggleMute}
                 className="text-white hover:text-primary transition-colors flex items-center justify-center"
-                aria-label={isMuted ? "Unmute video" : "Mute video"}
+                aria-label={isMuted ? t("a11y.unmute") : t("a11y.mute")}
               >
                 <span className="material-symbols-outlined fill-current text-2xl">
                   {isMuted ? "volume_off" : "volume_up"}
@@ -251,7 +253,7 @@ export function VideoSection() {
                   max={100}
                   value={volume}
                   onChange={handleVolumeInput}
-                  aria-label="Video volume"
+                  aria-label={t("a11y.volume")}
                   className="w-24 accent-primary cursor-pointer"
                 />
                 <span className="text-[11px] text-white/85 tabular-nums min-w-[34px] text-right">

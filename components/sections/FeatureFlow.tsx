@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react'
 import {
   Handshake,
@@ -16,41 +18,39 @@ import {
   SliderPrevButton,
   SliderNextButton,
 } from '@/components/ui/carousel'
+import { useTranslations } from "next-intl"
 
-const items = [
+const itemIcons = [
   {
     icon: Handshake,
-    title: 'TikTok Partner Agency',
-    desc: 'Support with growth, compliance, and monetization to build a safer, stronger LIVE presence.',
+    key: 0,
   },
   {
     icon: Lightbulb,
-    title: '1-on-1 Coaching & Growth Tips',
-    desc: 'Performance-based LIVE strategy guidance with practical coaching tailored to your stream goals.',
+    key: 1,
   },
   {
     icon: ShieldCheck,
-    title: 'Live Ban Assistance',
-    desc: 'Fast help resolving bans and restoring LIVE access so your momentum is protected.',
+    key: 2,
   },
   {
     icon: Gift,
-    title: 'Why Join: TikTok Events & Bonuses',
-    desc: 'Campaigns, bonus opportunities, and event invites available to eligible Dino creators.',
+    key: 3,
   },
   {
     icon: KeyRound,
-    title: 'Live Pro Badge & Stream Key',
-    desc: 'Access to OBS and stream tools when eligible so you can level up production quality.',
+    key: 4,
   },
   {
     icon: Users,
-    title: 'Community Discord Server',
-    desc: 'Private support community and creator networking space for ongoing help and collaboration.',
+    key: 5,
   },
 ]
 
 export const FeatureFlow: React.FC = () => {
+  const t = useTranslations("featureFlow")
+  const items = t.raw("items") as Array<{ title: string; desc: string }>
+
   return (
     <section
       id="why-join"
@@ -63,14 +63,13 @@ export const FeatureFlow: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between md:items-end mb-10 md:mb-16 gap-6 md:gap-8">
             <div className="max-w-xl">
               <span className="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest rounded mb-6 inline-block">
-                Why Join
+                {t("badge")}
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-4 md:mb-6 tracking-tight">
-                What Dino Network Provides
+                {t("title")}
               </h2>
               <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed">
-                Hands-on support, account protection, and proven LIVE
-                strategies to help creators grow safely and earn consistently.
+                {t("subtitle")}
               </p>
             </div>
 
@@ -78,13 +77,13 @@ export const FeatureFlow: React.FC = () => {
               <div className="flex gap-4">
                 <SliderPrevButton
                   className="size-12 rounded-full border disabled:opacity-40 cursor-pointer border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                  aria-label="Previous"
+                  aria-label={t("a11y.previous")}
                 >
                   <ChevronLeft className="size-5 text-primary" />
                 </SliderPrevButton>
                 <SliderNextButton
                   className="size-12 rounded-full disabled:opacity-40 cursor-pointer border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                  aria-label="Next"
+                  aria-label={t("a11y.next")}
                 >
                   <ChevronRight className="size-5 text-primary" />
                 </SliderNextButton>
@@ -93,9 +92,9 @@ export const FeatureFlow: React.FC = () => {
           </div>
 
           <SliderContainer className="gap-4 sm:gap-6">
-            {items.map((item, i) => (
+            {itemIcons.map((item, i) => (
               <Slider key={i} className="basis-full sm:basis-[85%] md:basis-1/3 lg:basis-1/4">
-                <FlowCard {...item} />
+                <FlowCard icon={item.icon} title={items[item.key]?.title} desc={items[item.key]?.desc} />
               </Slider>
             ))}
           </SliderContainer>
@@ -105,7 +104,9 @@ export const FeatureFlow: React.FC = () => {
   )
 }
 
-const FlowCard = ({ icon: Icon, title, desc }: any) => (
+type IconComponent = React.ComponentType<{ className?: string }>;
+
+const FlowCard = ({ icon: Icon, title, desc }: { icon: IconComponent; title: string; desc: string }) => (
   <div className="bg-white dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 p-5 sm:p-8 rounded-2xl flex flex-col gap-6 sm:gap-8 hover:border-primary/40 transition-colors h-full">
     <div className="size-10 flex items-center justify-center text-primary">
       <Icon className="size-8" />

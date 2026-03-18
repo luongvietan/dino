@@ -1,8 +1,10 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/src/i18n/navigation";
 import { motion } from "framer-motion";
 export function Hero() {
+  const t = useTranslations("hero");
   const backgroundStyle = {
     backgroundImage:
       "radial-gradient(circle at 12% 18%, rgba(34,197,94,0.18), transparent 28%), radial-gradient(circle at 82% 12%, rgba(59,130,246,0.16), transparent 32%), radial-gradient(circle at 50% 88%, rgba(236,72,153,0.14), transparent 30%), linear-gradient(135deg, #0b1220 0%, #05070d 50%, #0b1220 100%)",
@@ -31,21 +33,19 @@ export function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              Official TikTok LIVE Partner
+              {t("badge")}
             </div>
 
             <h1 className="text-white text-3xl sm:text-5xl lg:text-7xl font-black leading-[0.95] tracking-[-0.02em]">
-              Build Your <span className="text-primary">LIVE</span> Career
+              {t("headlineTop")} <span className="text-primary">{t("headlineEmphasis")}</span> {t("headlineBottom")}
               <br />
-              <span className="italic font-semibold">the Right Way</span>
+              <span className="italic font-semibold">{t("headlineSub")}</span>
             </h1>
 
             <div className="h-px w-full bg-white/10" />
 
             <p className="text-sm sm:text-base md:text-lg text-slate-300 max-w-xl leading-relaxed">
-              Official TikTok LIVE Partner Agency for creators in USA and
-              Canada. Grow your audience and monetize your content with expert
-              support.
+              {t("description")}
             </p>
 
             <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3 sm:gap-4 pt-1">
@@ -53,13 +53,13 @@ export function Hero() {
                 href="/apply"
                 className="inline-flex w-full sm:w-auto items-center justify-center bg-[#b9e43a] hover:bg-[#c6f04a] text-black px-6 sm:px-8 py-3 rounded-full font-bold text-sm sm:text-base transition-colors sm:min-w-[170px]"
               >
-                Join the Dino Family
+                {t("primaryCta")}
               </Link>
               <Link
                 href="#why-join"
                 className="inline-flex w-full sm:w-auto items-center justify-center border border-white/40 hover:border-white/70 hover:bg-white/10 text-white px-6 sm:px-8 py-3 rounded-full font-semibold text-sm sm:text-base transition-colors sm:min-w-[170px]"
               >
-                Why Join
+                {t("secondaryCta")}
               </Link>
             </div>
           </motion.div>

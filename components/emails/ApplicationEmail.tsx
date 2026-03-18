@@ -15,6 +15,7 @@ interface ApplicationEmailProps {
   invitationCode: string;
   isUsOrCanada: string;
   region?: string;
+  locale?: "en" | "fil";
   firstName: string;
   lastName: string;
   dobMonth: string;
@@ -29,54 +30,75 @@ interface ApplicationEmailProps {
 }
 
 export const ApplicationEmail = (props: ApplicationEmailProps) => {
+  const isFil = props.locale === "fil";
+  const copy = {
+    preview: isFil ? "Bagong Creator Application mula kina" : "New Creator Application from",
+    heading: isFil ? "Bagong Creator Application" : "New Creator Application",
+    intro: isFil ? "May bagong application para sa Dino Network." : "You have received a new application for Dino Network.",
+    invitation: isFil ? "1. Invitation Code:" : "1. Invitation Code:",
+    region: isFil ? "2. Rehiyon:" : "2. Region:",
+    basic: isFil ? "3. Basic Information:" : "3. Basic Information:",
+    name: isFil ? "Pangalan" : "Name",
+    dob: isFil ? "DOB" : "DOB",
+    email: isFil ? "Email" : "Email",
+    tiktok: isFil ? "4. TikTok Username:" : "4. TikTok Username:",
+    only: isFil ? "5. Only TikTok Account:" : "5. Only TikTok Account:",
+    freq: isFil ? "6. Streaming Frequency:" : "6. Streaming Frequency:",
+    niche: isFil ? "7. Content Niche:" : "7. Content Niche:",
+    discord: isFil ? "8. Discord Username:" : "8. Discord Username:",
+    footer: isFil
+      ? "Na-submit sa Dino Network Application Form."
+      : "Submitted via Dino Network Application Form.",
+  };
+
   return (
     <Html>
       <Head />
-      <Preview>New Creator Application from {props.firstName} {props.lastName}</Preview>
+      <Preview>
+        {copy.preview} {props.firstName} {props.lastName}
+      </Preview>
       <Body style={main}>
         <Container style={container}>
-          <Heading style={h1}>New Creator Application</Heading>
-          <Text style={text}>You have received a new application for Dino Network.</Text>
+          <Heading style={h1}>{copy.heading}</Heading>
+          <Text style={text}>{copy.intro}</Text>
           <Hr style={hr} />
           
           <Section>
-            <Text style={label}>1. Invitation Code:</Text>
+            <Text style={label}>{copy.invitation}</Text>
             <Text style={value}>{props.invitationCode}</Text>
             
-            <Text style={label}>2. Region:</Text>
+            <Text style={label}>{copy.region}</Text>
             <Text style={value}>{props.isUsOrCanada || props.region || "—"}</Text>
             
-            <Text style={label}>3. Basic Information:</Text>
+            <Text style={label}>{copy.basic}</Text>
             <Text style={value}>
-              Name: {props.firstName} {props.lastName}<br />
-              DOB: {props.dobMonth} {props.dobYear}<br />
-              Email: {props.email}
+              {copy.name}: {props.firstName} {props.lastName}<br />
+              {copy.dob}: {props.dobMonth} {props.dobYear}<br />
+              {copy.email}: {props.email}
             </Text>
             
-            <Text style={label}>4. TikTok Username:</Text>
+            <Text style={label}>{copy.tiktok}</Text>
             <Text style={value}>@{props.tiktokUsername}</Text>
             
-            <Text style={label}>5. Only TikTok Account:</Text>
+            <Text style={label}>{copy.only}</Text>
             <Text style={value}>{props.onlyTiktokAccount}</Text>
             
-            <Text style={label}>6. Streaming Frequency:</Text>
+            <Text style={label}>{copy.freq}</Text>
             <Text style={value}>{props.streamingFrequency}</Text>
             
-            <Text style={label}>7. Content Niche:</Text>
+            <Text style={label}>{copy.niche}</Text>
             <Text style={value}>
               {props.contentNiche}
-              {props.contentNiche === "Other" && props.contentNicheOther && (
-                <> – {props.contentNicheOther}</>
-              )}
+              {props.contentNicheOther ? <> – {props.contentNicheOther}</> : null}
             </Text>
             
-            <Text style={label}>8. Discord Username:</Text>
+            <Text style={label}>{copy.discord}</Text>
             <Text style={value}>{props.discordUsername}</Text>
           </Section>
           
           <Hr style={hr} />
           <Text style={footer}>
-            Submitted via Dino Network Application Form. Timestamp: {new Date().toISOString()}
+            {copy.footer} Timestamp: {new Date().toISOString()}
           </Text>
         </Container>
       </Body>

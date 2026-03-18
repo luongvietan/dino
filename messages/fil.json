@@ -1,0 +1,448 @@
+{
+  "meta": {
+    "title": "Dino Network - TikTok LIVE Agency",
+    "description": "Opisyal na TikTok LIVE Partner Agency para sa mga creator sa USA, Canada, at Pilipinas. Palaguin ang iyong audience at kumita sa iyong content gamit ang expert support."
+  },
+  "language": {
+    "english": "English",
+    "filipino": "Filipino",
+    "englishFlagAlt": "Bandila ng English",
+    "filipinoFlagAlt": "Bandila ng Pilipinas"
+  },
+  "header": {
+    "logoAlt": "Dino Network Logo",
+    "nav": {
+      "home": "Home",
+      "creatorPathway": "Creator Pathway",
+      "invitationCode": "Invitation Code",
+      "invitationCodeDescription": "Alamin kung paano makuha ang invitation code",
+      "acceptInvitation": "Tanggapin ang Invitation",
+      "acceptInvitationDescription": "Alamin kung paano tanggapin ang invitation",
+      "gettingStarted": "Pagsisimula",
+      "whyJoin": "Bakit Sumali",
+      "testimonials": "Mga Testimonial"
+    },
+    "cta": {
+      "joinNow": "Sumali Ngayon"
+    },
+    "a11y": {
+      "toggleNav": "I-toggle ang navigation menu",
+      "toggleLanguage": "I-toggle ang wika"
+    }
+  },
+  "hero": {
+    "badge": "Opisyal na TikTok LIVE Partner",
+    "headlineTop": "Buuin ang iyong",
+    "headlineEmphasis": "LIVE",
+    "headlineBottom": "Career",
+    "headlineSub": "sa tamang paraan",
+    "description": "Opisyal na TikTok LIVE Partner Agency para sa mga creator sa USA, Canada, at Pilipinas. Palaguin ang iyong audience at kumita sa iyong content gamit ang expert support.",
+    "primaryCta": "Sumali sa Dino Family",
+    "secondaryCta": "Bakit Sumali"
+  },
+  "footer": {
+    "socialTitle": "Hanapin kami sa Social Media",
+    "badge": "Opisyal na TikTok LIVE Partner",
+    "brand": "Dino Network.",
+    "partnerLabel": "TikTok LIVE Partner",
+    "headline": {
+      "builtFor": "Ginawa para sa mga",
+      "live": "LIVE",
+      "creators": "Creator."
+    },
+    "description": "Pinagkakatiwalaan ng mga creator sa USA at Canada para mas mabilis lumago sa TikTok LIVE—may expert support, strategic campaigns, at komunidad na sumusuporta araw-araw.",
+    "cta": "Sumali sa Dino Family",
+    "copyright": "© 2026 DINO NETWORK",
+    "rights": "Lahat ng Karapatan ay Nakalaan",
+    "partnerAgency": "Opisyal na TikTok LIVE Partner Agency",
+    "logoAlt": "Dino Network logo"
+  },
+  "steps": {
+    "invite": {
+      "stepLabel": "Hakbang {number}",
+      "items": [
+        {
+          "title": "Pumunta sa iyong TikTok Profile",
+          "description": "Buksan ang TikTok at i-tap ang iyong profile sa ibabang kanang bahagi."
+        },
+        {
+          "title": "I-tap ang menu icon",
+          "description": "Hanapin ang hamburger menu sa kanang itaas o ang maliit na arrow."
+        },
+        {
+          "title": "Piliin ang TikTok Studio",
+          "description": "Hanapin at i-tap ang 'TikTok Studio' sa mga option."
+        },
+        {
+          "title": "I-tap ang LIVE Center",
+          "description": "Pumunta sa LIVE Center sa TikTok Studio."
+        },
+        {
+          "title": "Pumunta sa Join Creator Network",
+          "description": "Hanapin at piliin ang 'Join Creator Network'."
+        },
+        {
+          "title": "I-tap ang How to Join",
+          "description": "I-click ang 'How to Join' na button o link."
+        },
+        {
+          "title": "Hanapin ang iyong Invitation Code!",
+          "description": "Makikita mo agad doon ang iyong unique invitation code!"
+        }
+      ]
+    },
+    "accept": {
+      "stepLabel": "Hakbang {number}",
+      "items": [
+        {
+          "title": "Buksan ang TikTok App",
+          "description": "I-launch ang TikTok app sa iyong phone."
+        },
+        {
+          "title": "I-tap ang menu icon",
+          "description": "Hanapin ang hamburger menu sa kanang itaas ng iyong profile."
+        },
+        {
+          "title": "I-tap ang TikTok Studio",
+          "description": "Hanapin at piliin ang 'TikTok Studio' sa menu."
+        },
+        {
+          "title": "I-tap ang LIVE Center",
+          "description": "Pumunta sa LIVE Center sa TikTok Studio."
+        },
+        {
+          "title": "I-tap ang Join Creator Network",
+          "description": "Hanapin at piliin ang 'Join Creator Network'."
+        },
+        {
+          "title": "I-tap ang How to Join",
+          "description": "I-click ang 'How to Join' na button o link."
+        },
+        {
+          "title": "Makikita mo ang agency invite",
+          "description": "Ipakikita ang iyong Dino agency invitation."
+        },
+        {
+          "title": "I-tap ang Accept",
+          "description": "I-click ang Accept para opisyal na sumali sa Dino!"
+        }
+      ]
+    }
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Mga Tanong na Madalas Itanong",
+    "subtitle": "Lahat ng kailangang malaman bago mag-apply para sumali sa Dino Network.",
+    "items": [
+      {
+        "question": "Sino ang puwedeng mag-apply para sumali sa Dino Network?",
+        "answer": "Malugod na tinatanggap ang sinumang aktibong nagli-livestream. Tumatanggap kami ng creators sa lahat ng level—baguhan man o established na. Layunin naming tulungan kang lumago sa pamamagitan ng gabay, subok na tips, at access sa dagdag na oportunidad na kadalasang wala sa independent creators. Nandito ang Dino Network para suportahan ka sa buong journey mo habang pinapalakas ang isang supportive na creator community."
+      },
+      {
+        "question": "Magkano ang gastos para sumali?",
+        "answer": "100% libre ang pagsali sa Dino Network—walang upfront cost o fees. Partner kami ng TikTok. Kumukuha ang TikTok ng porsyento mula sa earnings ng creator, at mula roon binabayaran nila kami ng maliit na porsyento para tulungan kang lumago at tumulong sa mga live-related issues. Hindi ka kailanman magbabayad sa amin nang direkta—focus naming suportahan ka at tulungan kang magtagumpay."
+      },
+      {
+        "question": "May kontrata ba o lock-in commitment?",
+        "answer": "Walang long-term contract o lock-in. Malaya kang umalis anumang oras. Ang focus namin ay maghatid ng tunay na resulta sa pamamagitan ng suporta, growth opportunities, at valuable resources—kaya pinipili mong manatili dahil sa value, hindi dahil obligado ka."
+      },
+      {
+        "question": "Gaano katagal ang application process?",
+        "answer": "Mabilis at simple lang ang application process. Kadalasan ay nare-review ang applications sa maikling panahon, at kapag approved, puwedeng magsimula agad ang onboarding. Pagkatapos mong mag-submit, hihilingin naming sumali ka sa Discord server at magbukas ng ticket para matulungan ka agad. Layunin naming mapasali ka sa Dino Network family sa lalong madaling panahon para maaga kang masuportahan at masalo kapag may live issues."
+      },
+      {
+        "question": "Anong klaseng support ang natatanggap ng creators?",
+        "answer": "Nagbibigay kami ng hands-on support para tulungan kang lumago sa TikTok LIVE—kasama ang tips para mas gumanda ang streams, tumaas ang engagement, at mas dumami ang exposure. Kapag may live issues tulad ng suspensions o technical problems, nandito kami para tumulong at puwedeng makialam kung kailangan. May access ka rin sa bonus opportunities at sa Discord community namin kung saan makakakonekta ka sa ibang creators. Sa kabuuan, nandito kami para suportahan ka, gabayan ka, at tulungan kang lumago sa bawat hakbang."
+      }
+    ]
+  },
+  "videoSection": {
+    "kicker": "Gabay Pang-Edukasyon",
+    "title": "Ano ang TikTok LIVE Agency?",
+    "a11y": {
+      "play": "I-play ang video",
+      "pause": "I-pause ang video",
+      "mute": "I-mute ang video",
+      "unmute": "I-unmute ang video",
+      "volume": "Lakas ng tunog ng video"
+    }
+  },
+  "whyChooseUs": {
+    "title": "Bakit Pinipili ng Creators ang Dino Network",
+    "p1": "Ang Dino Network ay ginawa ng isang streamer na tunay na nakakaunawa sa journey ng creators. Bilang isang nag-stream din, alam ko ang challenges, pressure, at dedication na kailangan para lumago sa TikTok LIVE.",
+    "p2": "Marami na akong nakitang creators na sumali sa kung anu-anong agencies at nakaranas ng mabagal na sagot, kulang na support, at mahinang gabay sa oras na pinaka-kailangan nila ng tulong. Kaya ginawa ang Dino Network — isang creator-first network na talagang may malasakit.",
+    "p3": "Nakatuon kami sa account protection, tunay na engagement, at subok na LIVE growth systems—may iisang layunin: tulungan ang creators na lumago nang ligtas, kumita nang consistent, at bumuo ng pangmatagalan — magkasama.",
+    "stats": {
+      "activeCreators": "Aktibong Creators",
+      "globalSupport": "Global Support"
+    }
+  },
+  "featureFlow": {
+    "badge": "Bakit Sumali",
+    "title": "Ano ang Ibinibigay ng Dino Network",
+    "subtitle": "Hands-on support, account protection, at subok na LIVE strategies para tulungan ang creators na lumago nang ligtas at kumita nang consistent.",
+    "a11y": {
+      "previous": "Nakaraan",
+      "next": "Susunod"
+    },
+    "items": [
+      {
+        "title": "TikTok Partner Agency",
+        "desc": "Tulong sa growth, compliance, at monetization para mas ligtas at mas matibay ang iyong LIVE presence."
+      },
+      {
+        "title": "1-on-1 Coaching at Growth Tips",
+        "desc": "Performance-based LIVE strategy guidance at practical coaching na ayon sa goals ng stream mo."
+      },
+      {
+        "title": "Tulong sa LIVE Ban",
+        "desc": "Mabilis na tulong sa pag-resolve ng bans at pagbalik ng LIVE access para protektado ang momentum mo."
+      },
+      {
+        "title": "Bakit Sumali: TikTok Events at Bonuses",
+        "desc": "Mga campaigns, bonus opportunities, at event invites para sa eligible na Dino creators."
+      },
+      {
+        "title": "Live Pro Badge at Stream Key",
+        "desc": "Access sa OBS at stream tools kapag eligible para ma-level up ang production quality."
+      },
+      {
+        "title": "Community Discord Server",
+        "desc": "Private support community at creator networking space para sa tuloy-tuloy na tulong at collaboration."
+      }
+    ]
+  },
+  "standOut": {
+    "title": "Ano ang Nagpapatingkad sa Dino Network",
+    "items": [
+      {
+        "title": "Priority Support sa LIVE Issues",
+        "desc": "May priority support kapag na-ban ang live mo at na-deny ang appeals. Dahil partner kami ng TikTok, puwede kaming magbukas ng ticket diretso sa kanila para i-escalate ang case mo."
+      },
+      {
+        "title": "Palaguin ang Viewership gamit ang Subok na Strategies",
+        "desc": "Nagbibigay kami ng tips, stream optimization, at data-driven insights para tuluy-tuloy kang mag-improve at lumago."
+      },
+      {
+        "title": "Exclusive Opportunities at Rewards",
+        "desc": "Access sa exclusive TikTok events, bonuses, at growth opportunities na available lang sa loob ng network."
+      }
+    ]
+  },
+  "beforeAfter": {
+    "badge": "Tunay na Resulta",
+    "title": "Mga Resulta ng Tunay na Suporta",
+    "subtitle": "Mula sa rejected appeal hanggang sa naibalik ang account gamit ang gabay at suporta.",
+    "results": [
+      {
+        "label": "Bago ang Suporta",
+        "title": "Hindi na-approve ang appeal",
+        "alt": "TikTok notice na nagpapakitang hindi na-approve ang appeal"
+      },
+      {
+        "label": "Pagkatapos ng Suporta",
+        "title": "Na-lift ang suspension",
+        "alt": "Confirmation na na-lift ang account suspension"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Nagsasalita ang Dino Family",
+    "subtitle": "Tingnan ang sinasabi ng creators tungkol sa pagiging bahagi ng network na tunay na sumusuporta sa kanila.",
+    "a11y": {
+      "previous": "Nakaraang testimonial",
+      "next": "Susunod na testimonial"
+    },
+    "items": [
+      {
+        "username": "@huntski0",
+        "role": "Gaming Streamer",
+        "quote": "Hey guys! My name is Hunter, my TikTok is @hunt2active. I stream Fortnite and I am a fairly new streamer to TikTok and have been on my journey since July. I've been a member of Dino Network for 2 months now and I have nothing but positive feedback since being a member of the best agency on the app. Dino has helped me with more than just TikTok questions, a genuine agency and person that will talk to you about anything and everything and is nothing but supportive. Dino offers so much more than anyone could ask for and joining was the best decision I've made since clicking that go live button! The community we have and the people I've met through this is incredible! I would highly recommend Dino Network to anyone new to the app or looking for an agency! DINO ON TOP",
+        "url": "https://www.tiktok.com/@huntski0",
+        "img": "/hunt.webp",
+        "sideImg": "/hunt_img.webp",
+        "avatarSize": "110%",
+        "avatarPosition": "center 105%"
+      },
+      {
+        "username": "@jona_breton",
+        "role": "Live Battler",
+        "quote": "Hey guys! My name is Jonathan and my TikTok is @jona_breton. I do Banter Battles on TikTok and sometimes stream games on here, still fairly new to my streaming journey. I've been with Dino Network for a little over a month now and honestly have nothing but positive feedback. The community Dino has built is something special, any questions or concerns I've ever had, Dino has been there to answer. We get 1 on 1 support when we need it, a whole discord so we can communicate with others in the agency and so much more! I would 100 percent recommend Dino Network to anyone who's new to streaming and wants to join an amazing community! You won't regret it!",
+        "url": "https://www.tiktok.com/@jona_breton",
+        "img": "/jona.webp",
+        "sideImg": "/jona_img.webp",
+        "avatarSize": "110%",
+        "avatarPosition": "center 120%"
+      },
+      {
+        "username": "@billyswilly",
+        "role": "Gaming Streamer",
+        "quote": "Yurrr wsg guys, this is Billy (@billyswilly_). l joined Dino Network because they're U.S.based and I saw other real creators already in the family, so I knew it was legit. After joining, I realized they're trustworthy and really focused on helping you grow. I don't regret it one bit. The community is super supportive. They give 1-on-1 help, assist with getting a stream key, and have a Discord full of guides and resources. Dino has helped me a lot, and this agency honestly stands out. From quick personal support to and even picking creators for TikTok events—no one else is doing that. It's more than an agency, it's a community. I love Dino Network and will be with them till the end. I have no regrets and 100% recommend them! Big shoutout to DINO NETWORK!",
+        "url": "https://www.tiktok.com/@billyswilly_?_r=1&_t=ZP-94kSXFn36FD",
+        "img": "/billy.webp",
+        "sideImg": "/billy_img.webp",
+        "avatarSize": "110%",
+        "avatarPosition": "center"
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Handa ka na bang i-level up ang iyong LIVE streams?",
+    "subtitle": "Mas mababa sa 2 minuto lang ang application. Ire-review ng team namin at babalikan ka sa loob ng 48 oras.",
+    "button": "Mag-apply para Sumali"
+  },
+  "joinPage": {
+    "title": "Piliin ang Iyong Rehiyon",
+    "comingSoon": "Malapit Na",
+    "applyHere": "MAG-APPLY DITO",
+    "regions": {
+      "usaCanadaTitle": "USA & CANADA CREATORS",
+      "usaCanadaAlt": "USA & Canada creators",
+      "australiaTitle": "AUSTRALIA & NEW ZEALAND CREATORS",
+      "australiaAlt": "Australia & New Zealand creators",
+      "philippinesTitle": "PHILIPPINES CREATORS",
+      "philippinesAlt": "Philippines creators"
+    }
+  },
+  "invitePage": {
+    "badge": "Invitation Code",
+    "titleLine1": "Paano Hanapin ang Iyong",
+    "titleLine2": "TikTok Invitation Code",
+    "subtitle": "Sundin ang mabilis na steps na ito sa TikTok app—wala pang 10 segundo.",
+    "primaryLink": "Ipakita kung paano",
+    "secondaryLink": "Tingnan kung paano ito gumagana",
+    "cardTitle": "Invite Code",
+    "cardBody": "Sundan ang quick tutorial na ito para mahanap ang iyong TikTok invitation code sa ilang segundo.",
+    "cardCta": "Magpatuloy sa step-by-step guide",
+    "previewCaption": "Preview ng tutorial mula sa TikTok app.",
+    "stepsKicker": "Sundin ang mga hakbang na ito sa TikTok app",
+    "stepsTitle": "Hanapin ang Iyong Invitation Code",
+    "stepsSubtitle": "7 simpleng hakbang lang at makukuha mo ang code sa wala pang 10 segundo!",
+    "whatToDoTitle": "Ano ang gagawin sa code mo:",
+    "whatToDoBody": "Ipadala sa amin gamit ang alinman sa application methods (Application Form, Discord, atbp.).",
+    "applicationForm": "Application Form",
+    "discord": "Discord",
+    "chooseMethod": "Piliin ang gusto mong paraan",
+    "phoneAlt": "Tutorial kung paano kunin ang TikTok invitation code"
+  },
+  "acceptPage": {
+    "badge": "Tanggapin ang Invitation",
+    "titleLine1": "Paano Tanggapin ang Iyong",
+    "titleLine2": "TikTok Agency Invitation",
+    "subtitle": "Sundin ang mga hakbang na ito para opisyal na sumali sa Dino sa TikTok LIVE.",
+    "primaryLink": "Magsimula",
+    "secondaryLink": "Panoorin ang Tutorial",
+    "card1Title": "Tingnan Kung Paano Ito Gumagana",
+    "card1Body": "Panoorin ang quick tutorial na ito para makita kung paano tanggapin ang iyong TikTok agency invitation step by step.",
+    "card2Title": "Live tutorial video",
+    "card2Body": "Ipinapakita ng video na ito ang eksaktong proseso para tanggapin ang Dino agency invitation sa TikTok.",
+    "card2Cta": "Magpatuloy sa step-by-step guide",
+    "previewCaption": "Preview ng tutorial mula sa TikTok app.",
+    "stepsKicker": "Sundin ang mga hakbang na ito sa TikTok app",
+    "stepsTitle": "Tanggapin ang Iyong Agency Invitation",
+    "stepsSubtitle": "8 simpleng hakbang lang at bahagi ka na ng Dino sa wala pang isang minuto!",
+    "congratsTitle": "Congratulations!",
+    "congratsBody": "Kapag na-tap mo ang Accept, opisyal ka nang bahagi ng Dino team at handa nang simulan ang iyong TikTok LIVE journey!",
+    "phoneAlt": "Tutorial kung paano tanggapin ang TikTok agency invitation"
+  },
+  "applyPage": {
+    "redirecting": "Inililipat sa pagpili ng rehiyon...",
+    "chooseRegion": "Pumili ng rehiyon",
+    "exit": "Lumabas",
+    "loading": "Naglo-load...",
+    "logoAlt": "Dino Network Logo"
+  },
+  "applicationForm": {
+    "landing": {
+      "title": "Creator Application",
+      "subtitle": "Welcome sa Dino Family",
+      "tagline": "Dito nagsisimula ang future mo.",
+      "begin": "Magsimula",
+      "duration": "1 minuto lang"
+    },
+    "gettingStarted": {
+      "kicker": "Pagsisimula",
+      "title": "GANAP NA LIBRE",
+      "subtitle": "Walang upfront fees. Walang hidden costs.",
+      "body": "Naniniwala kami sa talent mo at magtatagumpay lang kami kapag nagtagumpay ka.",
+      "bullets": ["Walang Joining Fee", "Libreng Training", "Libreng Equipment Support"],
+      "continue": "Magpatuloy"
+    },
+    "steps": {
+      "invitationCodeTitle": "1. Invitation Code",
+      "invitationCodePath": "Profile → Menu → TikTok Studio → Live Center → Tools and Resources → Join Creator Network → How to Join",
+      "needHelp": "Kailangan ng tulong? Buksan ang Invitation Code tutorial",
+      "invitationPlaceholder": "7 characters",
+      "or": "o",
+      "preferDirect": "Mas gusto mong mag-apply diretso sa TikTok?",
+      "clickHere": "I-click dito",
+      "locationQuestion": "2. Nasa United States o Canada ka ba?",
+      "yes": "Oo",
+      "no": "Hindi",
+      "basicInfoTitle": "3. Basic Information",
+      "basicInfoSubtitle": "Sagutin ang ilang mabilis na tanong para mas makilala ka namin.",
+      "firstName": "First Name *",
+      "lastName": "Last Name *",
+      "dobMonth": "Araw ng Kapanganakan (Buwan) *",
+      "dobYear": "Araw ng Kapanganakan (Taon) *",
+      "selectMonth": "Piliin ang Buwan",
+      "yearPlaceholder": "YYYY",
+      "email": "Email Address *",
+      "tiktokUsernameTitle": "4. Ano ang TikTok username mo?",
+      "niceToMeet": "Nice to meet you, {name}",
+      "niceToMeetFallback": "kaibigan",
+      "tiktokPlaceholder": "dinonetworkus",
+      "onlyAccountTitle": "5. Ito lang ba ang TikTok account mo?",
+      "liveFrequencyTitle": "6. Gaano kadalas ka mag-LIVE sa TikTok?",
+      "liveFrequencySubtitle": "Vine-verify namin ang activity sa aming side.",
+      "liveFrequencyOptions": ["Araw-araw", "Lingguhan", "Buwan-buwan", "Hindi ako nag-LIVE"],
+      "nicheTitle": "7. Anong niche ang target mo sa content mo?",
+      "nicheOptions": ["Gaming", "Battler", "Musician", "Dancer", "Fitness", "Iba pa"],
+      "nicheOtherLabel": "Pakispecify ang niche mo",
+      "nicheOtherPlaceholder": "hal. Cooking, Art, Tech...",
+      "discordTitle": "8. Discord Username",
+      "discordSubtitle": "Ilagay ang Discord username mo (halimbawa: username#1234)",
+      "discordPlaceholder": "username",
+      "rejectionTitle": "Hindi Na-approve ang Application",
+      "rejectionBody": "Pasensya na, pero hindi ka kwalipikado para sa LIVE Agency namin. Tumatanggap lang kami ng creators na nasa United States o Canada.",
+      "successTitle": "Maraming salamat sa application mo!",
+      "successBody": "Sumali sa Discord server namin at magbukas ng Application Ticket kapag tapos na ang form.",
+      "joinDiscord": "Sumali sa Discord Server"
+    },
+    "validation": {
+      "required": "Pakipunan ito",
+      "emailInvalid": "Pakilagay ang tamang email address.",
+      "captchaRequired": "Pakikumpleto ang captcha.",
+      "invitationLength": "Dapat eksaktong 7 characters ang invitation code.",
+      "selectOption": "Pumili ng option.",
+      "requiredFields": "Pakipunan ang lahat ng required fields.",
+      "tiktokRequired": "Ilagay ang TikTok username mo.",
+      "describeNiche": "Pakidescribe ang niche mo.",
+      "completeAll": "Pakikumpleto ang lahat ng required fields."
+    },
+    "submission": {
+      "networkError": "Network error. Pakisubukan ulit mamaya.",
+      "genericError": "May mali. Pakisubukan ulit."
+    },
+    "apiErrors": {
+      "captcha_missing": "Pakikumpleto ang captcha.",
+      "captcha_failed": "Hindi pumasa ang captcha. Pakisubukan ulit.",
+      "email_send_failed": "Hindi na-submit. Pakisubukan ulit mamaya.",
+      "internal_error": "Internal server error. Pakisubukan ulit mamaya."
+    },
+    "navFooter": {
+      "question": "Tanong {current} sa {total}",
+      "next": "Susunod",
+      "submit": "I-submit",
+      "backA11y": "Bumalik"
+    }
+  }
+  }
+  }
+  ,
+  "carousel": {
+    "goToSlide": "Pumunta sa slide {number}",
+    "slide": "Slide {number}"
+  }
+}
+

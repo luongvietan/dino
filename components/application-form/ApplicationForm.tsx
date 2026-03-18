@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Turnstile } from "@marsidev/react-turnstile";
+import { useLocale, useTranslations } from "next-intl";
 
 export type ApplyRegion = "usa-canada" | "philippines";
 
@@ -63,6 +64,8 @@ function RequiredMessage({ message }: { message?: string }) {
 }
 
 export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion } = {}) {
+  const t = useTranslations("applicationForm");
+  const locale = useLocale();
   const [step, setStep] = useState(0); // 0 = Landing, 1 = Getting Started, 2-9 = Questions, 10 = Rejection, 11 = Success
   const [formData, setFormData] = useState<FormData>(() => ({
     ...initialFormData,
@@ -92,8 +95,8 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
 
     if (step === 2) {
       if (formData.invitationCode.length !== 7) {
-        setFieldErrors({ invitationCode: "Please fill this in" });
-        setError("Invitation code must be exactly 7 characters long.");
+        setFieldErrors({ invitationCode: t("validation.required") });
+        setError(t("validation.invitationLength"));
         return;
       }
       if (hasRegion) {
@@ -103,72 +106,73 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
       }
     }
     if (step === 3 && !hasRegion) {
-      if (formData.isUsOrCanada === "No") {
+      if (formData.isUsOrCanada === t("steps.no")) {
         setStep(10); // Rejection
         return;
       }
       if (!formData.isUsOrCanada) {
-        setFieldErrors({ isUsOrCanada: "Please fill this in" });
-        setError("Please select an option.");
+        setFieldErrors({ isUsOrCanada: t("validation.required") });
+        setError(t("validation.selectOption"));
         return;
       }
     }
     if (step === 4) {
       const missing: Partial<Record<keyof FormData, string>> = {};
-      if (!formData.firstName?.trim()) missing.firstName = "Please fill this in";
-      if (!formData.lastName?.trim()) missing.lastName = "Please fill this in";
-      if (!formData.dobMonth) missing.dobMonth = "Please fill this in";
-      if (!formData.dobYear?.trim()) missing.dobYear = "Please fill this in";
-      if (!formData.email?.trim()) missing.email = "Please fill this in";
+      if (!formData.firstName?.trim()) missing.firstName = t("validation.required");
+      if (!formData.lastName?.trim()) missing.lastName = t("validation.required");
+      if (!formData.dobMonth) missing.dobMonth = t("validation.required");
+      if (!formData.dobYear?.trim()) missing.dobYear = t("validation.required");
+      if (!formData.email?.trim()) missing.email = t("validation.required");
       else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-        missing.email = "Please enter a valid email address.";
+        missing.email = t("validation.emailInvalid");
       }
       if (Object.keys(missing).length > 0) {
         setFieldErrors(missing);
-        setError("Please fill out all required fields.");
+        setError(t("validation.requiredFields"));
         return;
       }
     }
     if (step === 5) {
       if (!formData.tiktokUsername?.trim()) {
-        setFieldErrors({ tiktokUsername: "Please fill this in" });
-        setError("Please enter your TikTok username.");
+        setFieldErrors({ tiktokUsername: t("validation.required") });
+        setError(t("validation.tiktokRequired"));
         return;
       }
     }
     if (step === 6) {
       if (!formData.onlyTiktokAccount) {
-        setFieldErrors({ onlyTiktokAccount: "Please fill this in" });
-        setError("Please select an option.");
+        setFieldErrors({ onlyTiktokAccount: t("validation.required") });
+        setError(t("validation.selectOption"));
         return;
       }
     }
     if (step === 7) {
       if (!formData.streamingFrequency) {
-        setFieldErrors({ streamingFrequency: "Please fill this in" });
-        setError("Please select an option.");
+        setFieldErrors({ streamingFrequency: t("validation.required") });
+        setError(t("validation.selectOption"));
         return;
       }
     }
     if (step === 8) {
       if (!formData.contentNiche) {
-        setFieldErrors({ contentNiche: "Please fill this in" });
-        setError("Please select an option.");
+        setFieldErrors({ contentNiche: t("validation.required") });
+        setError(t("validation.selectOption"));
         return;
       }
-      if (formData.contentNiche === "Other" && !formData.contentNicheOther?.trim()) {
-        setFieldErrors({ contentNicheOther: "Please fill this in" });
-        setError("Please describe your niche.");
+      const otherOption = (t.raw("steps.nicheOptions") as string[]).slice(-1)[0];
+      if (formData.contentNiche === otherOption && !formData.contentNicheOther?.trim()) {
+        setFieldErrors({ contentNicheOther: t("validation.required") });
+        setError(t("validation.describeNiche"));
         return;
       }
     }
     if (step === 9) {
       const missing: Partial<Record<keyof FormData | "turnstile", string>> = {};
-      if (!formData.discordUsername?.trim()) missing.discordUsername = "Please fill this in";
-      if (!turnstileToken) missing.turnstile = "Please complete the captcha.";
+      if (!formData.discordUsername?.trim()) missing.discordUsername = t("validation.required");
+      if (!turnstileToken) missing.turnstile = t("validation.captchaRequired");
       if (Object.keys(missing).length > 0) {
         setFieldErrors(missing);
-        setError("Please complete all required fields.");
+        setError(t("validation.completeAll"));
         return;
       }
       submitForm();
@@ -197,16 +201,34 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
       const res = await fetch("/api/apply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, turnstileToken })
+        body: JSON.stringify({ ...formData, turnstileToken, locale })
       });
       if (res.ok) {
         setStep(11); // Success
       } else {
         const data = await res.json();
-        setError(data.error || "Something went wrong. Please try again.");
+        if (data?.errorCode && typeof data.errorCode === "string") {
+          const knownErrorCodes = [
+            "captcha_missing",
+            "captcha_failed",
+            "email_send_failed",
+            "internal_error",
+          ] as const;
+          const errorCode = knownErrorCodes.includes(data.errorCode as (typeof knownErrorCodes)[number])
+            ? (data.errorCode as (typeof knownErrorCodes)[number])
+            : null;
+
+          if (errorCode) {
+            setError(t(`apiErrors.${errorCode}`));
+          } else {
+            setError(t("submission.genericError"));
+          }
+        } else {
+          setError(data.error || t("submission.genericError"));
+        }
       }
-    } catch (err) {
-      setError("Network error. Please try again later.");
+    } catch {
+      setError(t("submission.networkError"));
     } finally {
       setIsSubmitting(false);
     }
@@ -232,14 +254,14 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
         {step === 0 && (
           <motion.div key="step0" variants={variants} initial="initial" animate="animate" exit="exit" className="text-center space-y-8">
             <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl font-black">Creator Application</h1>
-              <h2 className="text-2xl text-slate-600 dark:text-slate-400">Welcome to the Dino Family</h2>
-              <p className="text-lg text-primary font-medium">This is where your future starts.</p>
+              <h1 className="text-4xl md:text-5xl font-black">{t("landing.title")}</h1>
+              <h2 className="text-2xl text-slate-600 dark:text-slate-400">{t("landing.subtitle")}</h2>
+              <p className="text-lg text-primary font-medium">{t("landing.tagline")}</p>
             </div>
             <button onClick={nextStep} className="bg-primary hover:bg-primary/90 text-background-dark px-12 py-4 rounded-xl font-bold text-xl transition-all shadow-xl shadow-primary/20">
-              Begin
+              {t("landing.begin")}
             </button>
-            <p className="text-sm text-slate-500">Takes 1 minute</p>
+            <p className="text-sm text-slate-500">{t("landing.duration")}</p>
           </motion.div>
         )}
 
@@ -253,16 +275,16 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
             className="w-full max-w-3xl space-y-5 md:space-y-6 rounded-3xl border border-violet-400/20 bg-gradient-to-b from-violet-500/10 via-fuchsia-500/5 to-transparent p-5 md:p-7 text-center"
           >
             <p className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-violet-300">
-              Getting Started
+              {t("gettingStarted.kicker")}
             </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">COMPLETELY FREE</h2>
-            <p className="text-base md:text-lg text-slate-200">Zero upfront fees. No hidden costs.</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">{t("gettingStarted.title")}</h2>
+            <p className="text-base md:text-lg text-slate-200">{t("gettingStarted.subtitle")}</p>
             <p className="text-sm md:text-base text-slate-300 max-w-xl mx-auto">
-              We invest in your talent and only succeed when you do.
+              {t("gettingStarted.body")}
             </p>
 
             <div className="grid gap-2 sm:grid-cols-2 max-w-xl mx-auto text-left">
-              {["No Joining Fee", "Free Training", "Free Equipment Support"].map(item => (
+              {(t.raw("gettingStarted.bullets") as string[]).map(item => (
                 <p key={item} className="inline-flex items-center gap-2 text-sm md:text-base text-slate-100">
                   <span className="material-symbols-outlined text-violet-400 text-[20px]">check_circle</span>
                   {item}
@@ -274,7 +296,7 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
               onClick={nextStep}
               className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary to-lime-300 px-8 py-3.5 text-base font-black text-slate-950 shadow-lg shadow-primary/20 hover:shadow-primary/35 hover:-translate-y-0.5 transition-all"
             >
-              Continue
+              {t("gettingStarted.continue")}
               <span className="material-symbols-outlined transition-transform group-hover:translate-x-0.5">arrow_forward</span>
             </button>
           </motion.div>
@@ -282,10 +304,10 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
 
         {step === 2 && (
           <motion.div key="step2" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
-            <h2 className="text-3xl font-bold">1. Invitation Code</h2>
+            <h2 className="text-3xl font-bold">{t("steps.invitationCodeTitle")}</h2>
             <div className="space-y-3">
               <p className="text-slate-600 dark:text-slate-400">
-                Profile → Menu → TikTok Studio → Live Center → Tools and Resources → Join Creator Network → How to Join
+                {t("steps.invitationCodePath")}
               </p>
               <a
                 href="/invite"
@@ -293,14 +315,14 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
               >
-                Need help? Open the Invitation Code tutorial
+                {t("steps.needHelp")}
                 <span className="material-symbols-outlined text-base">open_in_new</span>
               </a>
             </div>
             <input 
               type="text" 
               maxLength={7}
-              placeholder="7 characters" 
+              placeholder={t("steps.invitationPlaceholder")} 
               value={formData.invitationCode}
               onChange={e => updateForm({ invitationCode: e.target.value.toUpperCase() })}
               className={`w-full bg-white dark:bg-slate-800 border-2 rounded-xl px-6 py-4 text-2xl font-mono uppercase focus:ring-0 transition-colors ${
@@ -311,16 +333,16 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
             <RequiredMessage message={fieldErrors.invitationCode} />
 
             <div className="flex flex-col items-center gap-3 pt-2">
-              <span className="text-slate-500 dark:text-slate-400 text-sm font-medium">or</span>
+              <span className="text-slate-500 dark:text-slate-400 text-sm font-medium">{t("steps.or")}</span>
               <p className="text-slate-600 dark:text-slate-400 text-sm text-center">
-                Prefer to apply directly through TikTok?{" "}
+                {t("steps.preferDirect")}{" "}
                 <a
                   href={regionProp ? TIKTOK_APPLY_LINK[regionProp] : TIKTOK_APPLY_LINK["usa-canada"]}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-semibold text-primary hover:text-primary/80 underline underline-offset-2 transition-colors"
                 >
-                  Click Here
+                  {t("steps.clickHere")}
                 </a>
               </p>
             </div>
@@ -329,9 +351,9 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
 
         {step === 3 && !hasRegion && (
           <motion.div key="step3" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
-            <h2 className="text-3xl font-bold">2. Are you located in the United States or Canada?</h2>
+            <h2 className="text-3xl font-bold">{t("steps.locationQuestion")}</h2>
             <div className="space-y-4">
-              {["Yes", "No"].map(option => (
+              {([t("steps.yes"), t("steps.no")] as const).map(option => (
                 <button
                   key={option}
                   type="button"
@@ -354,11 +376,11 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
 
         {step === 4 && (
           <motion.div key="step4" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
-            <h2 className="text-3xl font-bold">3. Basic Information</h2>
-            <p className="text-slate-600 dark:text-slate-400">Hey! 🦖 Please answer a few quick questions so we can learn more about you.</p>
+            <h2 className="text-3xl font-bold">{t("steps.basicInfoTitle")}</h2>
+            <p className="text-slate-600 dark:text-slate-400">{t("steps.basicInfoSubtitle")}</p>
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-500">First Name *</label>
+                <label className="text-sm font-bold text-slate-500">{t("steps.firstName")}</label>
                 <input 
                   type="text" 
                   value={formData.firstName}
@@ -370,7 +392,7 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
                 <RequiredMessage message={fieldErrors.firstName} />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-500">Last Name *</label>
+                <label className="text-sm font-bold text-slate-500">{t("steps.lastName")}</label>
                 <input 
                   type="text" 
                   value={formData.lastName}
@@ -384,7 +406,7 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
             </div>
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-500">Date of Birth (Month) *</label>
+                <label className="text-sm font-bold text-slate-500">{t("steps.dobMonth")}</label>
                 <select 
                   value={formData.dobMonth}
                   onChange={e => updateForm({ dobMonth: e.target.value })}
@@ -392,16 +414,16 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
                     fieldErrors.dobMonth ? "border-red-500 focus:border-red-500" : "border-slate-200 dark:border-slate-700 focus:border-primary"
                   }`}
                 >
-                  <option value="">Select Month</option>
+                  <option value="">{t("steps.selectMonth")}</option>
                   {["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"].map(m => <option key={m} value={m}>{m}</option>)}
                 </select>
                 <RequiredMessage message={fieldErrors.dobMonth} />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-500">Date of Birth (Year) *</label>
+                <label className="text-sm font-bold text-slate-500">{t("steps.dobYear")}</label>
                 <input 
                   type="number" 
-                  placeholder="YYYY"
+                  placeholder={t("steps.yearPlaceholder")}
                   value={formData.dobYear}
                   onChange={e => updateForm({ dobYear: e.target.value })}
                   className={`w-full bg-white dark:bg-slate-800 border-2 rounded-xl px-4 py-3 focus:ring-0 transition-colors ${
@@ -412,7 +434,7 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
               </div>
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-bold text-slate-500">Email Address *</label>
+              <label className="text-sm font-bold text-slate-500">{t("steps.email")}</label>
               <input 
                 type="email" 
                 value={formData.email}
@@ -428,14 +450,16 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
 
         {step === 5 && (
           <motion.div key="step5" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
-            <h2 className="text-3xl font-bold">4. What is your TikTok username?</h2>
-            <p className="text-slate-600 dark:text-slate-400">Nice to meet you, {formData.firstName || "there"}</p>
+            <h2 className="text-3xl font-bold">{t("steps.tiktokUsernameTitle")}</h2>
+            <p className="text-slate-600 dark:text-slate-400">
+              {t("steps.niceToMeet", { name: formData.firstName || t("steps.niceToMeetFallback") })}
+            </p>
             <div className="space-y-2">
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl text-slate-400 pointer-events-none">@</span>
                 <input 
                   type="text" 
-                  placeholder="dinonetworkus" 
+                  placeholder={t("steps.tiktokPlaceholder")} 
                   value={formData.tiktokUsername}
                   onChange={e => updateForm({ tiktokUsername: e.target.value.replace('@', '') })}
                   className={`w-full bg-white dark:bg-slate-800 border-2 rounded-xl pl-12 pr-6 py-4 text-2xl focus:ring-0 transition-colors ${
@@ -451,9 +475,9 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
 
         {step === 6 && (
           <motion.div key="step6" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
-            <h2 className="text-3xl font-bold">5. Is this your only TikTok account?</h2>
+            <h2 className="text-3xl font-bold">{t("steps.onlyAccountTitle")}</h2>
             <div className="space-y-4">
-              {["Yes", "No"].map(option => (
+              {([t("steps.yes"), t("steps.no")] as const).map(option => (
                 <button
                   key={option}
                   onClick={() => { updateForm({ onlyTiktokAccount: option }); }}
@@ -476,10 +500,10 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
 
         {step === 7 && (
           <motion.div key="step7" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
-            <h2 className="text-3xl font-bold">6. How often do you go LIVE on TikTok?</h2>
-            <p className="text-slate-600 dark:text-slate-400">We verify activity on our end.</p>
+            <h2 className="text-3xl font-bold">{t("steps.liveFrequencyTitle")}</h2>
+            <p className="text-slate-600 dark:text-slate-400">{t("steps.liveFrequencySubtitle")}</p>
             <div className="space-y-4">
-              {["Daily", "Weekly", "Monthly", "I do not go LIVE at all"].map(option => (
+              {(t.raw("steps.liveFrequencyOptions") as string[]).map(option => (
                 <button
                   key={option}
                   type="button"
@@ -502,9 +526,9 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
 
         {step === 8 && (
           <motion.div key="step8" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
-            <h2 className="text-3xl font-bold">7. What niche do you target with your content?</h2>
+            <h2 className="text-3xl font-bold">{t("steps.nicheTitle")}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {["Gaming", "Battler", "Musician", "Dancer", "Fitness", "Other"].map(option => (
+              {(t.raw("steps.nicheOptions") as string[]).map(option => (
                 <button
                   key={option}
                   type="button"
@@ -521,12 +545,12 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
                 </button>
               ))}
             </div>
-            {formData.contentNiche === "Other" && (
+            {formData.contentNiche === (t.raw("steps.nicheOptions") as string[]).slice(-1)[0] && (
               <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-500">Please specify your niche</label>
+                <label className="text-sm font-bold text-slate-500">{t("steps.nicheOtherLabel")}</label>
                 <input
                   type="text"
-                  placeholder="e.g. Cooking, Art, Tech..."
+                  placeholder={t("steps.nicheOtherPlaceholder")}
                   value={formData.contentNicheOther}
                   onChange={e => updateForm({ contentNicheOther: e.target.value })}
                   className={`w-full bg-white dark:bg-slate-800 border-2 rounded-xl px-4 py-3 focus:ring-0 transition-colors ${
@@ -542,12 +566,12 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
 
         {step === 9 && (
           <motion.div key="step9" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-8">
-            <h2 className="text-3xl font-bold">8. Discord Username</h2>
-            <p className="text-slate-600 dark:text-slate-400">Enter your Discord username (example: username#1234)</p>
+            <h2 className="text-3xl font-bold">{t("steps.discordTitle")}</h2>
+            <p className="text-slate-600 dark:text-slate-400">{t("steps.discordSubtitle")}</p>
             <div className="space-y-2">
               <input 
                 type="text" 
-                placeholder="username" 
+                placeholder={t("steps.discordPlaceholder")} 
                 value={formData.discordUsername}
                 onChange={e => updateForm({ discordUsername: e.target.value })}
                 className={`w-full bg-white dark:bg-slate-800 border-2 rounded-xl px-6 py-4 text-2xl focus:ring-0 transition-colors ${
@@ -571,9 +595,9 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
         {step === 10 && (
           <motion.div key="step10" variants={variants} initial="initial" animate="animate" exit="exit" className="text-center space-y-8 py-12">
             <span className="material-symbols-outlined text-[80px] text-red-500">error</span>
-            <h2 className="text-3xl font-bold">Application Unsuccessful</h2>
+            <h2 className="text-3xl font-bold">{t("steps.rejectionTitle")}</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-md mx-auto">
-              Sorry, but you do not qualify for our LIVE Agency. We are only accepting creators based in the United States or Canada.
+              {t("steps.rejectionBody")}
             </p>
           </motion.div>
         )}
@@ -581,9 +605,9 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
         {step === 11 && (
           <motion.div key="step11" variants={variants} initial="initial" animate="animate" exit="exit" className="text-center space-y-8 py-12">
             <span className="text-6xl">🎉</span>
-            <h2 className="text-4xl font-bold text-primary">Thank you so much for your application!</h2>
+            <h2 className="text-4xl font-bold text-primary">{t("steps.successTitle")}</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-lg mx-auto">
-              Join our Discord server and open an Application Ticket once the form is completed.
+              {t("steps.successBody")}
             </p>
             <div className="pt-4">
               <a 
@@ -593,7 +617,7 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
                 className="inline-flex items-center gap-2 bg-[#5865F2] hover:bg-[#4752C4] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-[#5865F2]/20"
               >
                 <span className="material-symbols-outlined">forum</span>
-                Join Discord Server
+                {t("steps.joinDiscord")}
               </a>
             </div>
           </motion.div>
@@ -613,11 +637,15 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
                 onClick={prevStep}
                 disabled={isSubmitting}
                 className="flex items-center justify-center w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors disabled:opacity-50"
+                aria-label={t("navFooter.backA11y")}
               >
                 <span className="material-symbols-outlined">arrow_back</span>
               </button>
               <div className="text-sm font-medium text-slate-500">
-                Question {hasRegion ? (step === 2 ? 1 : step - 2) : step - 1} of {hasRegion ? 7 : 8}
+                {t("navFooter.question", {
+                  current: hasRegion ? (step === 2 ? 1 : step - 2) : step - 1,
+                  total: hasRegion ? 7 : 8,
+                })}
               </div>
             </div>
             
@@ -631,7 +659,7 @@ export function ApplicationForm({ region: regionProp }: { region?: ApplyRegion }
                 {isSubmitting ? (
                   <span className="material-symbols-outlined animate-spin">progress_activity</span>
                 ) : (
-                  step === 9 ? "Submit" : "Next"
+                  step === 9 ? t("navFooter.submit") : t("navFooter.next")
                 )}
                 {step !== 9 && !isSubmitting && <span className="material-symbols-outlined">arrow_forward</span>}
               </button>

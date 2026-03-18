@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     // 1. Verify Turnstile token
     if (process.env.NODE_ENV === "production") {
       if (!turnstileToken) {
-        return NextResponse.json({ error: "Captcha token is missing." }, { status: 400 });
+        return NextResponse.json({ errorCode: "captcha_missing" }, { status: 400 });
       }
 
       const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
@@ -28,7 +28,7 @@ export async function POST(req: Request) {
       const verifyData = await verifyRes.json();
       
       if (!verifyData.success) {
-        return NextResponse.json({ error: "Captcha verification failed." }, { status: 400 });
+        return NextResponse.json({ errorCode: "captcha_failed" }, { status: 400 });
       }
     }
 
@@ -45,13 +45,13 @@ export async function POST(req: Request) {
 
     if (error) {
       console.error("Resend Error:", error);
-      return NextResponse.json({ error: "Failed to send email. Please try again later." }, { status: 500 });
+      return NextResponse.json({ errorCode: "email_send_failed" }, { status: 500 });
     }
 
     return NextResponse.json({ success: true }, { status: 200 });
 
   } catch (error) {
     console.error("API Error:", error);
-    return NextResponse.json({ error: "Internal server error." }, { status: 500 });
+    return NextResponse.json({ errorCode: "internal_error" }, { status: 500 });
   }
 }

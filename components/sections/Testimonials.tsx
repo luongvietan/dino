@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/src/i18n/navigation";
 import {
   Carousel,
   SliderContainer,
@@ -11,40 +12,19 @@ import {
   SliderNextButton,
 } from "@/components/ui/carousel";
 
-const testimonials = [
-  {
-    username: "@huntski0",
-    followers: "Gaming Streamer",
-    quote: "Hey guys! My name is Hunter, my TikTok is @hunt2active. I stream Fortnite and I am a fairly new streamer to TikTok and have been on my journey since July. I've been a member of Dino Network for 2 months now and I have nothing but positive feedback since being a member of the best agency on the app. Dino has helped me with more than just TikTok questions, a genuine agency and person that will talk to you about anything and everything and is nothing but supportive. Dino offers so much more than anyone could ask for and joining was the best decision I've made since clicking that go live button! The community we have and the people I've met through this is incredible! I would highly recommend Dino Network to anyone new to the app or looking for an agency! DINO ON TOP",
-    img: "/hunt.webp",
-    sideImg: "/hunt_img.webp",
-    avatarSize: "110%",
-    avatarPosition: "center 105%",
-    url: "https://www.tiktok.com/@huntski0"
-  },
-  {
-    username: "@jona_breton",
-    followers: "Live Battler",
-    quote: "Hey guys! My name is Jonathan and my TikTok is @jona_breton. I do Banter Battles on TikTok and sometimes stream games on here, still fairly new to my streaming journey. I've been with Dino Network for a little over a month now and honestly have nothing but positive feedback. The community Dino has built is something special, any questions or concerns I've ever had, Dino has been there to answer. We get 1 on 1 support when we need it, a whole discord so we can communicate with others in the agency and so much more! I would 100 percent recommend Dino Network to anyone who's new to streaming and wants to join an amazing community! You won't regret it!",
-    img: "/jona.webp",
-    sideImg: "/jona_img.webp",
-    avatarSize: "110%",
-    avatarPosition: "center 120%",
-    url: "https://www.tiktok.com/@jona_breton"
-  },
-  {
-    username: "@billyswilly",
-    followers: "Gaming Streamer",
-    quote: "Yurrr wsg guys, this is Billy (@billyswilly_). l joined Dino Network because they're U.S.based and I saw other real creators already in the family, so I knew it was legit. After joining, I realized they're trustworthy and really focused on helping you grow. I don't regret it one bit. The community is super supportive. They give 1-on-1 help, assist with getting a stream key, and have a Discord full of guides and resources. Dino has helped me a lot, and this agency honestly stands out. From quick personal support to and even picking creators for TikTok events—no one else is doing that. It's more than an agency, it's a community. I love Dino Network and will be with them till the end. I have no regrets and 100% recommend them! Big shoutout to DINO NETWORK!",
-    img: "/billy.webp",
-    sideImg: "/billy_img.webp",
-    avatarSize: "110%",
-    avatarPosition: "center",
-    url: "https://www.tiktok.com/@billyswilly_?_r=1&_t=ZP-94kSXFn36FD"
-  }
-];
-
 export function Testimonials() {
+  const t = useTranslations("testimonials");
+  const testimonials = t.raw("items") as Array<{
+    username: string;
+    role: string;
+    quote: string;
+    img: string;
+    sideImg: string;
+    avatarSize: string;
+    avatarPosition: string;
+    url: string;
+  }>;
+
   return (
     <section className="relative py-16 md:py-24 px-4 sm:px-6">
       <div className="pointer-events-none absolute -top-24 -right-16 h-80 w-80 rounded-full bg-primary/15 blur-3xl" />
@@ -57,10 +37,9 @@ export function Testimonials() {
           viewport={{ once: true }}
           className="text-center space-y-4 scroll-mt-28"
         >
-          <h2 className="text-3xl sm:text-4xl font-black">The Dino Family Speaks</h2>
+          <h2 className="text-3xl sm:text-4xl font-black">{t("title")}</h2>
           <p className="text-slate-600 dark:text-slate-400">
-            See what creators say about being part of a network that truly
-            supports them.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -69,13 +48,13 @@ export function Testimonials() {
             <div className="absolute left-3 sm:left-4 top-0 z-20 flex gap-2 sm:gap-3">
               <SliderPrevButton
                 className="size-10 rounded-full border disabled:opacity-40 cursor-pointer border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-800/90 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                aria-label="Previous testimonial"
+                aria-label={t("a11y.previous")}
               >
                 <ChevronLeft className="size-4 text-primary" />
               </SliderPrevButton>
               <SliderNextButton
                 className="size-10 rounded-full disabled:opacity-40 cursor-pointer border border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-800/90 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                aria-label="Next testimonial"
+                aria-label={t("a11y.next")}
               >
                 <ChevronRight className="size-4 text-primary" />
               </SliderNextButton>
@@ -120,7 +99,7 @@ export function Testimonials() {
                             {item.username}
                           </Link>
                           <p className="text-sm text-primary font-bold">
-                            {item.followers}
+                            {item.role}
                           </p>
                         </div>
                       </div>

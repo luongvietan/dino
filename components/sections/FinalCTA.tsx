@@ -1,9 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/src/i18n/navigation";
 
 export function FinalCTA() {
+  const t = useTranslations("finalCta");
   return (
     <section className="py-16 md:py-24 px-4 sm:px-6 text-center">
       <motion.div 
@@ -15,17 +17,17 @@ export function FinalCTA() {
       >
         <div className="absolute inset-0 bg-primary/10 opacity-50 blur-3xl rounded-full translate-y-1/2"></div>
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white relative z-10 leading-tight">
-          Ready to Take Your LIVE Streams to the Next Level?
+          {t("title")}
         </h2>
         <p className="text-slate-400 text-sm sm:text-base md:text-lg relative z-10">
-          Application takes less than 2 minutes. Our team will review and get back to you within 48 hours.
+          {t("subtitle")}
         </p>
         <div className="relative z-10 pt-4">
           <Link 
             href="/apply" 
             className="inline-flex w-full sm:w-auto items-center justify-center bg-primary hover:bg-primary/90 text-background-dark px-7 sm:px-10 py-3.5 sm:py-5 rounded-xl sm:rounded-2xl font-black text-base sm:text-xl transition-all hover:scale-105 shadow-2xl shadow-primary/40"
           >
-            Apply to Join Now
+            {t("button")}
           </Link>
         </div>
       </motion.div>

@@ -1,36 +1,8 @@
-"use client";
-
-import Link from "next/link";
 import Image from "next/image";
 import { Header } from "@/components/layout/Header";
 import { FooterPrivilege } from "@/components/layout/FooterPrivilege";
-
-const REGIONS = [
-  {
-    id: "usa-canada",
-    title: "USA & CANADA CREATORS",
-    href: "/apply?region=usa-canada",
-    comingSoon: false,
-    image: "/us-can.jpg",
-    alt: "USA & Canada creators",
-  },
-  {
-    id: "australia",
-    title: "AUSTRALIA & NEW ZEALAND CREATORS",
-    href: null,
-    comingSoon: true,
-    image: "/aus.jpg",
-    alt: "Australia & New Zealand creators",
-  },
-  {
-    id: "philippines",
-    title: "PHILIPPINES CREATORS",
-    href: "/apply?region=philippines",
-    comingSoon: false,
-    image: "/phi.jpg",
-    alt: "Philippines creators",
-  },
-] as const;
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/src/i18n/navigation";
 
 const backgroundStyle = {
   backgroundImage:
@@ -38,7 +10,39 @@ const backgroundStyle = {
   backgroundColor: "#05070d",
 };
 
-export default function JoinPage() {
+export default async function JoinPage() {
+  const t = await getTranslations();
+  const labels = {
+    comingSoon: t("joinPage.comingSoon"),
+    applyHere: t("joinPage.applyHere"),
+  };
+  const REGIONS = [
+    {
+      id: "usa-canada",
+      title: t("joinPage.regions.usaCanadaTitle"),
+      href: "/apply?region=usa-canada",
+      comingSoon: false,
+      image: "/us-can.jpg",
+      alt: t("joinPage.regions.usaCanadaAlt"),
+    },
+    {
+      id: "australia",
+      title: t("joinPage.regions.australiaTitle"),
+      href: null,
+      comingSoon: true,
+      image: "/aus.jpg",
+      alt: t("joinPage.regions.australiaAlt"),
+    },
+    {
+      id: "philippines",
+      title: t("joinPage.regions.philippinesTitle"),
+      href: "/apply?region=philippines",
+      comingSoon: false,
+      image: "/phi.jpg",
+      alt: t("joinPage.regions.philippinesAlt"),
+    },
+  ] as const;
+
   return (
     <>
       <Header />
@@ -51,12 +55,12 @@ export default function JoinPage() {
         <section className="relative overflow-hidden px-4 sm:px-6 pt-10 pb-12 md:pt-14 md:pb-16">
           <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight text-center mb-12 sm:mb-16">
-              Choose Your Region
+              {t("joinPage.title")}
             </h1>
 
             <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
               {REGIONS.map((region) => (
-                <RegionCard key={region.id} region={region} />
+                <RegionCard key={region.id} region={region} labels={labels} />
               ))}
             </div>
           </div>
@@ -70,9 +74,19 @@ export default function JoinPage() {
 
 function RegionCard({
   region,
+  labels,
 }: {
-  region: (typeof REGIONS)[number];
+  region: {
+    id: string;
+    title: string;
+    href: string | null;
+    comingSoon: boolean;
+    image: string;
+    alt: string;
+  };
+  labels: { comingSoon: string; applyHere: string };
 }) {
+  // Note: Join page is a Server Component; translations are precomputed.
   const content = (
     <div className="group relative flex flex-col rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 h-full">
       <div className="relative aspect-[4/3] w-full overflow-hidden">
@@ -86,7 +100,7 @@ function RegionCard({
         {region.comingSoon && (
           <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
             <span className="bg-amber-500 text-black px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">
-              Coming Soon
+              {labels.comingSoon}
             </span>
           </div>
         )}
@@ -97,11 +111,11 @@ function RegionCard({
         </h3>
         {region.comingSoon ? (
           <div className="rounded-xl bg-white/10 text-white/70 text-center py-3.5 text-sm font-semibold cursor-not-allowed">
-            APPLY HERE
+            {labels.applyHere}
           </div>
         ) : (
           <span className="inline-flex items-center justify-center rounded-xl bg-white text-black py-3.5 px-6 text-sm font-bold transition-all group-hover:bg-white/90 shadow-lg">
-            APPLY HERE
+            {labels.applyHere}
           </span>
         )}
       </div>
@@ -113,8 +127,12 @@ function RegionCard({
   }
 
   return (
-    <Link href={region.href!} className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-2xl">
+    <Link
+      href={region.href!}
+      className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-2xl"
+    >
       {content}
     </Link>
   );
 }
+

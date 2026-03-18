@@ -18,6 +18,7 @@ import type {
 } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 import { cn } from '@/lib/utils';
+import { useTranslations } from "next-intl";
 
 // ============= TYPES =============
 interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -147,13 +148,15 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
           case 'ArrowLeft':
             event.preventDefault();
             if (orientation === 'horizontal') {
-              direction === 'rtl' ? onNextButtonClick() : onPrevButtonClick();
+              if (direction === 'rtl') onNextButtonClick();
+              else onPrevButtonClick();
             }
             break;
           case 'ArrowRight':
             event.preventDefault();
             if (orientation === 'horizontal') {
-              direction === 'rtl' ? onPrevButtonClick() : onNextButtonClick();
+              if (direction === 'rtl') onPrevButtonClick();
+              else onNextButtonClick();
             }
             break;
           case 'ArrowUp':
@@ -254,7 +257,9 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
     // Effects
     useEffect(() => {
       if (!emblaApi) return;
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setScrollSnaps(emblaApi.scrollSnapList());
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSnapCount(emblaApi.scrollSnapList().length);
       onSelect();
       onScroll(emblaApi);
@@ -470,11 +475,11 @@ export const SliderSnapDisplay = forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
   const { selectedSnap, snapCount } = useCarousel();
-  const prevSnapRef = useRef(selectedSnap);
-  const direction = selectedSnap > prevSnapRef.current ? 1 : -1;
+  const [prevSnap, setPrevSnap] = useState(selectedSnap);
+  const direction = selectedSnap > prevSnap ? 1 : -1;
 
   useEffect(() => {
-    prevSnapRef.current = selectedSnap;
+    setPrevSnap(selectedSnap);
   }, [selectedSnap]);
 
   return (
@@ -490,10 +495,10 @@ export const SliderSnapDisplay = forwardRef<
         <motion.div
           key={selectedSnap}
           custom={direction}
-          // @ts-ignore
+          // @ts-expect-error motion custom arg typing
           initial={(d: number) => ({ y: d * 20, opacity: 0 })}
           animate={{ y: 0, opacity: 1 }}
-          // @ts-ignore
+          // @ts-expect-error motion custom arg typing
           exit={(d: number) => ({ y: d * -20, opacity: 0 })}
         >
           {selectedSnap + 1}
@@ -578,6 +583,7 @@ export const CarouselIndicator = forwardRef<
 >(({ className, index, ...props }, ref) => {
   const { selectedIndex, onDotButtonClick } = useCarousel();
   const isActive = selectedIndex === index;
+  const t = useTranslations("carousel");
 
   return (
     <button
@@ -589,10 +595,10 @@ export const CarouselIndicator = forwardRef<
         isActive ? 'bg-primary' : 'bg-primary/50',
         className
       )}
-      aria-label={`Go to slide ${index + 1}`}
+      aria-label={t("goToSlide", { number: index + 1 })}
       {...props}
     >
-      <span className='sr-only'>Slide {index + 1}</span>
+      <span className='sr-only'>{t("slide", { number: index + 1 })}</span>
     </button>
   );
 });

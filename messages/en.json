@@ -1,0 +1,446 @@
+{
+  "meta": {
+    "title": "Dino Network - TikTok LIVE Agency",
+    "description": "Official TikTok LIVE Partner Agency for creators in USA, Canada and Philippines. Grow your audience and monetize your content with expert support."
+  },
+  "language": {
+    "english": "English",
+    "filipino": "Filipino",
+    "englishFlagAlt": "English flag",
+    "filipinoFlagAlt": "Philippines flag"
+  },
+  "header": {
+    "logoAlt": "Dino Network Logo",
+    "nav": {
+      "home": "Home",
+      "creatorPathway": "Creator Pathway",
+      "invitationCode": "Invitation Code",
+      "invitationCodeDescription": "Learn how to get your invitation code",
+      "acceptInvitation": "Accept Invitation",
+      "acceptInvitationDescription": "Learn how to accept an invitation",
+      "gettingStarted": "Getting Started",
+      "whyJoin": "Why Join",
+      "testimonials": "Testimonials"
+    },
+    "cta": {
+      "joinNow": "Join Now"
+    },
+    "a11y": {
+      "toggleNav": "Toggle navigation menu",
+      "toggleLanguage": "Toggle language"
+    }
+  },
+  "hero": {
+    "badge": "Official TikTok LIVE Partner",
+    "headlineTop": "Build Your",
+    "headlineEmphasis": "LIVE",
+    "headlineBottom": "Career",
+    "headlineSub": "the Right Way",
+    "description": "Official TikTok LIVE Partner Agency for creators in USA, Canada and Philippines. Grow your audience and monetize your content with expert support.",
+    "primaryCta": "Join the Dino Family",
+    "secondaryCta": "Why Join"
+  },
+  "footer": {
+    "socialTitle": "Find Us on Social Media",
+    "badge": "Official TikTok LIVE Partner",
+    "brand": "Dino Network.",
+    "partnerLabel": "TikTok LIVE Partner",
+    "headline": {
+      "builtFor": "Built for",
+      "live": "LIVE",
+      "creators": "Creators."
+    },
+    "description": "Trusted by creators across the USA and Canada to grow faster on TikTok LIVE with expert support, strategic campaigns, and a community that backs you every day.",
+    "cta": "Join the Dino Family",
+    "copyright": "© 2026 DINO NETWORK",
+    "rights": "All Rights Reserved",
+    "partnerAgency": "Official TikTok LIVE Partner Agency",
+    "logoAlt": "Dino Network logo"
+  },
+  "steps": {
+    "invite": {
+      "stepLabel": "Step {number}",
+      "items": [
+        {
+          "title": "Go to your TikTok Profile",
+          "description": "Open TikTok and tap on your profile picture in the bottom right corner."
+        },
+        {
+          "title": "Tap the menu icon",
+          "description": "Look for the hamburger menu icon in the top right or the little arrow."
+        },
+        {
+          "title": "Select TikTok Studio",
+          "description": "Find and tap on 'TikTok Studio' from the menu options."
+        },
+        {
+          "title": "Tap LIVE Center",
+          "description": "Navigate to the LIVE Center section in TikTok Studio."
+        },
+        {
+          "title": "Go to Join Creator Network",
+          "description": "Look for and select 'Join Creator Network' option."
+        },
+        {
+          "title": "Tap How to Join",
+          "description": "Click on the 'How to Join' button or link."
+        },
+        {
+          "title": "Find Your Invitation Code!",
+          "description": "Your unique invitation code will be displayed right there!"
+        }
+      ]
+    },
+    "accept": {
+      "stepLabel": "Step {number}",
+      "items": [
+        {
+          "title": "Open the TikTok App",
+          "description": "Launch the TikTok app on your mobile device."
+        },
+        {
+          "title": "Tap the menu icon",
+          "description": "Look for the hamburger menu icon in the top right on your profile."
+        },
+        {
+          "title": "Tap TikTok Studio",
+          "description": "Find and select 'TikTok Studio' from the menu options."
+        },
+        {
+          "title": "Tap LIVE Center",
+          "description": "Navigate to the LIVE Center section in TikTok Studio."
+        },
+        {
+          "title": "Tap Join Creator Network",
+          "description": "Look for and select 'Join Creator Network' option."
+        },
+        {
+          "title": "Tap How to Join",
+          "description": "Click on the 'How to Join' button or link."
+        },
+        {
+          "title": "You'll see the agency invite",
+          "description": "Your Dino agency invitation will be displayed."
+        },
+        {
+          "title": "Tap Accept",
+          "description": "Click the Accept button to officially join Dino!"
+        }
+      ]
+    }
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Questions Creators Usually Ask",
+    "subtitle": "Everything you need to know before applying to join Dino Network.",
+    "items": [
+      {
+        "question": "Who can apply to join Dino Network?",
+        "answer": "Anyone who actively livestreams is welcome to apply. We accept creators at all levels, whether you are just starting out or already established. Our goal is to help you grow by providing guidance, proven tips, and access to additional opportunities that are not typically available to independent creators. Dino Network is built to support you throughout your journey while continuing to grow a strong, supportive community of creators."
+      },
+      {
+        "question": "How much does it cost to join?",
+        "answer": "Joining Dino Network is 100% free-there are no upfront costs or fees. We are partnered with TikTok. TikTok takes a percentage from the creator's earnings, and from that share, TikTok pays us a small percentage to help you grow and assist with any live-related issues. You never pay us directly-our focus is to support you and help you succeed."
+      },
+      {
+        "question": "Am I locked into any sort of contracts?",
+        "answer": "There are no long-term contracts or lock-in commitments. Creators are free to leave at any time. Our focus is on delivering real results by providing support, growth opportunities, and valuable resources, so you choose to stay because of the value you receive, not because you are obligated to."
+      },
+      {
+        "question": "How long does the application process take?",
+        "answer": "The application process is quick and straightforward. Most applications are reviewed within a short timeframe, and once approved, onboarding can begin immediately. Once you submit your application, you will be asked to join our Discord server and open a ticket so we can assist you promptly. Our goal is to get you into the Dino Network family as soon as possible, so you are supported early and covered in case you run into any live issues."
+      },
+      {
+        "question": "What kind of support do creators receive?",
+        "answer": "We provide real, hands-on support to help you grow on TikTok LIVE. This includes tips to improve your streams, increase engagement, and get more exposure. If you ever run into live issues-like suspensions or technical problems-we are here to help and can step in when needed. You will also get access to bonus opportunities and our Discord community, where you can connect with other creators and stay locked in. Overall, we are here to support you, guide you, and help you grow every step of the way."
+      }
+    ]
+  },
+  "videoSection": {
+    "kicker": "Educational Guide",
+    "title": "What Is a TikTok LIVE Agency?",
+    "a11y": {
+      "play": "Play video",
+      "pause": "Pause video",
+      "mute": "Mute video",
+      "unmute": "Unmute video",
+      "volume": "Video volume"
+    }
+  },
+  "whyChooseUs": {
+    "title": "Why Creators Choose Dino Network",
+    "p1": "Dino Network was built by a streamer who understands the creator's journey firsthand. Having streamed myself, I know the challenges, pressure, and dedication it takes to grow on TikTok LIVE.",
+    "p2": "I've seen too many creators join random agencies only to experience slow responses, lack of support, and poor guidance when they needed help the most. That's exactly why Dino Network was created — to be a creator-first network that actually cares.",
+    "p3": "We focus on account protection, real engagement, and proven LIVE growth systems, all with the same shared goal: helping creators grow safely, earn consistently, and build something long-term — together.",
+    "stats": {
+      "activeCreators": "Active Creators",
+      "globalSupport": "Global Support"
+    }
+  },
+  "featureFlow": {
+    "badge": "Why Join",
+    "title": "What Dino Network Provides",
+    "subtitle": "Hands-on support, account protection, and proven LIVE strategies to help creators grow safely and earn consistently.",
+    "a11y": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "items": [
+      {
+        "title": "TikTok Partner Agency",
+        "desc": "Support with growth, compliance, and monetization to build a safer, stronger LIVE presence."
+      },
+      {
+        "title": "1-on-1 Coaching & Growth Tips",
+        "desc": "Performance-based LIVE strategy guidance with practical coaching tailored to your stream goals."
+      },
+      {
+        "title": "Live Ban Assistance",
+        "desc": "Fast help resolving bans and restoring LIVE access so your momentum is protected."
+      },
+      {
+        "title": "Why Join: TikTok Events & Bonuses",
+        "desc": "Campaigns, bonus opportunities, and event invites available to eligible Dino creators."
+      },
+      {
+        "title": "Live Pro Badge & Stream Key",
+        "desc": "Access to OBS and stream tools when eligible so you can level up production quality."
+      },
+      {
+        "title": "Community Discord Server",
+        "desc": "Private support community and creator networking space for ongoing help and collaboration."
+      }
+    ]
+  },
+  "standOut": {
+    "title": "What Makes Dino Network Stand Out",
+    "items": [
+      {
+        "title": "Priority Live Issue Support",
+        "desc": "Get priority support if your live gets banned and your appeals get denied. Since we're partnered with TikTok, we can open a ticket directly with them to escalate your case."
+      },
+      {
+        "title": "Grow Your Viewership with Proven Strategies",
+        "desc": "We provide tips, stream optimization, and data-driven insights to help you consistently improve and grow."
+      },
+      {
+        "title": "Exclusive Opportunities & Rewards",
+        "desc": "Access to exclusive TikTok events, bonuses, and growth opportunities available only within the network."
+      }
+    ]
+  },
+  "beforeAfter": {
+    "badge": "Real Outcomes",
+    "title": "Real Support Outcomes",
+    "subtitle": "From appeal rejected to account restored with guided support.",
+    "results": [
+      {
+        "label": "Before Support",
+        "title": "Appeal not approved",
+        "alt": "TikTok notice showing an appeal was not approved"
+      },
+      {
+        "label": "After Support",
+        "title": "Suspension lifted",
+        "alt": "Confirmation message showing account suspension was lifted"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "The Dino Family Speaks",
+    "subtitle": "See what creators say about being part of a network that truly supports them.",
+    "a11y": {
+      "previous": "Previous testimonial",
+      "next": "Next testimonial"
+    },
+    "items": [
+      {
+        "username": "@huntski0",
+        "role": "Gaming Streamer",
+        "quote": "Hey guys! My name is Hunter, my TikTok is @hunt2active. I stream Fortnite and I am a fairly new streamer to TikTok and have been on my journey since July. I've been a member of Dino Network for 2 months now and I have nothing but positive feedback since being a member of the best agency on the app. Dino has helped me with more than just TikTok questions, a genuine agency and person that will talk to you about anything and everything and is nothing but supportive. Dino offers so much more than anyone could ask for and joining was the best decision I've made since clicking that go live button! The community we have and the people I've met through this is incredible! I would highly recommend Dino Network to anyone new to the app or looking for an agency! DINO ON TOP",
+        "url": "https://www.tiktok.com/@huntski0",
+        "img": "/hunt.webp",
+        "sideImg": "/hunt_img.webp",
+        "avatarSize": "110%",
+        "avatarPosition": "center 105%"
+      },
+      {
+        "username": "@jona_breton",
+        "role": "Live Battler",
+        "quote": "Hey guys! My name is Jonathan and my TikTok is @jona_breton. I do Banter Battles on TikTok and sometimes stream games on here, still fairly new to my streaming journey. I've been with Dino Network for a little over a month now and honestly have nothing but positive feedback. The community Dino has built is something special, any questions or concerns I've ever had, Dino has been there to answer. We get 1 on 1 support when we need it, a whole discord so we can communicate with others in the agency and so much more! I would 100 percent recommend Dino Network to anyone who's new to streaming and wants to join an amazing community! You won't regret it!",
+        "url": "https://www.tiktok.com/@jona_breton",
+        "img": "/jona.webp",
+        "sideImg": "/jona_img.webp",
+        "avatarSize": "110%",
+        "avatarPosition": "center 120%"
+      },
+      {
+        "username": "@billyswilly",
+        "role": "Gaming Streamer",
+        "quote": "Yurrr wsg guys, this is Billy (@billyswilly_). l joined Dino Network because they're U.S.based and I saw other real creators already in the family, so I knew it was legit. After joining, I realized they're trustworthy and really focused on helping you grow. I don't regret it one bit. The community is super supportive. They give 1-on-1 help, assist with getting a stream key, and have a Discord full of guides and resources. Dino has helped me a lot, and this agency honestly stands out. From quick personal support to and even picking creators for TikTok events—no one else is doing that. It's more than an agency, it's a community. I love Dino Network and will be with them till the end. I have no regrets and 100% recommend them! Big shoutout to DINO NETWORK!",
+        "url": "https://www.tiktok.com/@billyswilly_?_r=1&_t=ZP-94kSXFn36FD",
+        "img": "/billy.webp",
+        "sideImg": "/billy_img.webp",
+        "avatarSize": "110%",
+        "avatarPosition": "center"
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Ready to Take Your LIVE Streams to the Next Level?",
+    "subtitle": "Application takes less than 2 minutes. Our team will review and get back to you within 48 hours.",
+    "button": "Apply to Join Now"
+  },
+  "joinPage": {
+    "title": "Choose Your Region",
+    "comingSoon": "Coming Soon",
+    "applyHere": "APPLY HERE",
+    "regions": {
+      "usaCanadaTitle": "USA & CANADA CREATORS",
+      "usaCanadaAlt": "USA & Canada creators",
+      "australiaTitle": "AUSTRALIA & NEW ZEALAND CREATORS",
+      "australiaAlt": "Australia & New Zealand creators",
+      "philippinesTitle": "PHILIPPINES CREATORS",
+      "philippinesAlt": "Philippines creators"
+    }
+  },
+  "invitePage": {
+    "badge": "Invitation Code",
+    "titleLine1": "How to Find Your",
+    "titleLine2": "TikTok Invitation Code",
+    "subtitle": "Follow these quick steps in your TikTok app - it takes less than 10 seconds.",
+    "primaryLink": "Show me how",
+    "secondaryLink": "See How It Works",
+    "cardTitle": "Invite Code",
+    "cardBody": "Follow along with this quick tutorial to find your TikTok invitation code in seconds.",
+    "cardCta": "Continue to step-by-step guide",
+    "previewCaption": "Tutorial preview from TikTok app.",
+    "stepsKicker": "Follow these steps in your TikTok app",
+    "stepsTitle": "Find Your Invitation Code",
+    "stepsSubtitle": "Just 7 simple steps and you'll have your code in less than 10 seconds!",
+    "whatToDoTitle": "What to do with your code:",
+    "whatToDoBody": "Send it to us through any of the application methods (Application Form, Discord, etc).",
+    "applicationForm": "Application Form",
+    "discord": "Discord",
+    "chooseMethod": "Choose your preferred method",
+    "phoneAlt": "How to accept TikTok invitation code tutorial"
+  },
+  "acceptPage": {
+    "badge": "Accept Invitation",
+    "titleLine1": "How to Accept Your",
+    "titleLine2": "TikTok Agency Invitation",
+    "subtitle": "Follow these steps to officially join Dino on TikTok LIVE.",
+    "primaryLink": "Get Started",
+    "secondaryLink": "Watch Tutorial",
+    "card1Title": "See How It Works",
+    "card1Body": "Watch this quick tutorial to see exactly how to accept your TikTok agency invitation step by step.",
+    "card2Title": "Live tutorial video",
+    "card2Body": "This video shows the exact process you'll follow to accept your Dino agency invitation on TikTok.",
+    "card2Cta": "Continue to step-by-step guide",
+    "previewCaption": "Tutorial preview from TikTok app.",
+    "stepsKicker": "Follow these steps in your TikTok app",
+    "stepsTitle": "Accept Your Agency Invitation",
+    "stepsSubtitle": "Just 8 simple steps and you'll be part of Dino in under a minute!",
+    "congratsTitle": "Congratulations!",
+    "congratsBody": "Once you tap Accept, you'll officially be part of the Dino team and ready to start your TikTok LIVE journey!",
+    "phoneAlt": "How to accept TikTok agency invitation tutorial"
+  },
+  "applyPage": {
+    "redirecting": "Redirecting to region selection...",
+    "chooseRegion": "Choose region",
+    "exit": "Exit",
+    "loading": "Loading...",
+    "logoAlt": "Dino Network Logo"
+  },
+  "applicationForm": {
+    "landing": {
+      "title": "Creator Application",
+      "subtitle": "Welcome to the Dino Family",
+      "tagline": "This is where your future starts.",
+      "begin": "Begin",
+      "duration": "Takes 1 minute"
+    },
+    "gettingStarted": {
+      "kicker": "Getting Started",
+      "title": "COMPLETELY FREE",
+      "subtitle": "Zero upfront fees. No hidden costs.",
+      "body": "We invest in your talent and only succeed when you do.",
+      "bullets": ["No Joining Fee", "Free Training", "Free Equipment Support"],
+      "continue": "Continue"
+    },
+    "steps": {
+      "invitationCodeTitle": "1. Invitation Code",
+      "invitationCodePath": "Profile → Menu → TikTok Studio → Live Center → Tools and Resources → Join Creator Network → How to Join",
+      "needHelp": "Need help? Open the Invitation Code tutorial",
+      "invitationPlaceholder": "7 characters",
+      "or": "or",
+      "preferDirect": "Prefer to apply directly through TikTok?",
+      "clickHere": "Click Here",
+      "locationQuestion": "2. Are you located in the United States or Canada?",
+      "yes": "Yes",
+      "no": "No",
+      "basicInfoTitle": "3. Basic Information",
+      "basicInfoSubtitle": "Please answer a few quick questions so we can learn more about you.",
+      "firstName": "First Name *",
+      "lastName": "Last Name *",
+      "dobMonth": "Date of Birth (Month) *",
+      "dobYear": "Date of Birth (Year) *",
+      "selectMonth": "Select Month",
+      "yearPlaceholder": "YYYY",
+      "email": "Email Address *",
+      "tiktokUsernameTitle": "4. What is your TikTok username?",
+      "niceToMeet": "Nice to meet you, {name}",
+      "niceToMeetFallback": "there",
+      "tiktokPlaceholder": "dinonetworkus",
+      "onlyAccountTitle": "5. Is this your only TikTok account?",
+      "liveFrequencyTitle": "6. How often do you go LIVE on TikTok?",
+      "liveFrequencySubtitle": "We verify activity on our end.",
+      "liveFrequencyOptions": ["Daily", "Weekly", "Monthly", "I do not go LIVE at all"],
+      "nicheTitle": "7. What niche do you target with your content?",
+      "nicheOptions": ["Gaming", "Battler", "Musician", "Dancer", "Fitness", "Other"],
+      "nicheOtherLabel": "Please specify your niche",
+      "nicheOtherPlaceholder": "e.g. Cooking, Art, Tech...",
+      "discordTitle": "8. Discord Username",
+      "discordSubtitle": "Enter your Discord username (example: username#1234)",
+      "discordPlaceholder": "username",
+      "rejectionTitle": "Application Unsuccessful",
+      "rejectionBody": "Sorry, but you do not qualify for our LIVE Agency. We are only accepting creators based in the United States or Canada.",
+      "successTitle": "Thank you so much for your application!",
+      "successBody": "Join our Discord server and open an Application Ticket once the form is completed.",
+      "joinDiscord": "Join Discord Server"
+    },
+    "validation": {
+      "required": "Please fill this in",
+      "emailInvalid": "Please enter a valid email address.",
+      "captchaRequired": "Please complete the captcha.",
+      "invitationLength": "Invitation code must be exactly 7 characters long.",
+      "selectOption": "Please select an option.",
+      "requiredFields": "Please fill out all required fields.",
+      "tiktokRequired": "Please enter your TikTok username.",
+      "describeNiche": "Please describe your niche.",
+      "completeAll": "Please complete all required fields."
+    },
+    "submission": {
+      "networkError": "Network error. Please try again later.",
+      "genericError": "Something went wrong. Please try again."
+    },
+    "apiErrors": {
+      "captcha_missing": "Please complete the captcha.",
+      "captcha_failed": "Captcha verification failed. Please try again.",
+      "email_send_failed": "Failed to submit. Please try again later.",
+      "internal_error": "Internal server error. Please try again later."
+    },
+    "navFooter": {
+      "question": "Question {current} of {total}",
+      "next": "Next",
+      "submit": "Submit",
+      "backA11y": "Go back"
+    }
+  }
+  ,
+  "carousel": {
+    "goToSlide": "Go to slide {number}",
+    "slide": "Slide {number}"
+  }
+}
+
