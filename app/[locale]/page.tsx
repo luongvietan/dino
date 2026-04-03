@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="flex-grow">
+      <main className="min-w-0 flex-grow overflow-x-clip">
         <Hero />
         <VideoSection />
         <WhyChooseUs />

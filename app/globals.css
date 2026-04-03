@@ -36,14 +36,20 @@ body {
 }
 
 @layer base {
+  /* Prevent horizontal scroll / “rubber-band” pan on mobile from decorative overflows
+     (blurs, rotated media, carousels). Clip on html, not only body. */
   html {
     font-size: 17px;
+    overflow-x: clip;
+    max-width: 100%;
   }
 
   body {
     line-height: 1.6;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+    max-width: 100%;
   }
 }
 

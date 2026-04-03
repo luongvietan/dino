@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 export function WhyChooseUs() {
   const t = useTranslations("whyChooseUs");
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+    <section className="max-w-7xl mx-auto overflow-x-clip px-4 sm:px-6 py-16 md:py-24">
       <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
         <motion.div 
           initial={{ opacity: 0, x: -30 }}

@@ -26,7 +26,7 @@ export function Testimonials() {
   }>;
 
   return (
-    <section className="relative py-16 md:py-24 px-4 sm:px-6">
+    <section className="relative overflow-x-clip py-16 md:py-24 px-4 sm:px-6">
       <div className="pointer-events-none absolute -top-24 -right-16 h-80 w-80 rounded-full bg-primary/15 blur-3xl" />
       <div className="pointer-events-none absolute bottom-0 -left-20 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
       <div className="relative z-10 max-w-7xl mx-auto space-y-10 md:space-y-16">

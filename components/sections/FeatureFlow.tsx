@@ -54,7 +54,7 @@ export const FeatureFlow: React.FC = () => {
   return (
     <section
       id="why-join"
-      className="py-16 md:py-24 px-4 sm:px-6 bg-slate-50 dark:bg-slate-900/30 relative"
+      className="relative overflow-x-clip py-16 md:py-24 px-4 sm:px-6 bg-slate-50 dark:bg-slate-900/30"
     >
       <div className="pointer-events-none absolute -top-28 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
       <div className="pointer-events-none absolute bottom-0 -right-24 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl" />

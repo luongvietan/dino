@@ -75,7 +75,9 @@ export default async function LocaleLayout({
     <NextIntlClientProvider locale={locale} messages={messages}>
       <LenisProvider>
         <ScrollToTopOnRouteChange />
-        <div className="relative flex min-h-screen w-full flex-col">{children}</div>
+        <div className="relative flex min-h-screen w-full min-w-0 flex-col overflow-x-clip">
+          {children}
+        </div>
       </LenisProvider>
     </NextIntlClientProvider>
   );
